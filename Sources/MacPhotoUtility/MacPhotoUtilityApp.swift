@@ -130,6 +130,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApp.setActivationPolicy(.regular)
+        // For checking the window's look (TESTING.md): `open -a … --args
+        // -MPUAppearance dark` makes this app alone dark, for that run only,
+        // without touching the Mac's own setting.
+        if let a = UserDefaults.standard.string(forKey: "MPUAppearance") {
+            NSApp.appearance = NSAppearance(named: a == "dark" ? .darkAqua : .aqua)
+        }
         NSApp.activate()
         // After any launch-time file has gone through SwiftUI.
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { self.takeOpenEvents() }

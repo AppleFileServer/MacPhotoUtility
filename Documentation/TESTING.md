@@ -152,4 +152,13 @@ None has run yet.
 20. Quit: Save / Don't Save / Cancel; Save keeps the new places.
 21. With the app running, drag a photograph onto its Dock icon: it's
     added; the window stays.
+22. (Phase 6) Dark appearance without changing the Mac:
+    `open -a "build/MacPhoto Utility.app" --args -MPUAppearance dark`.
+    Checked 26 Oct 2026: panels, lists, controls and captions follow it;
+    the previews stay true grey and black and white.
+
+## 5. Before a release (Phase 6)
+
+    tools/check-fresh-checkout.sh     # a clone builds, tests, builds the app
+    tools/make-release.sh             # refuses uncommitted changes
 

@@ -19,7 +19,7 @@ renumber or delete an entry; mark it **Superseded by PHn**.
 | PH8 | **No transfer in MacPhoto Utility.** Its files reach the Plus through the Macintosh Transfer Utility (formerly the MacMusic Transfer Utility), which recognises them by content (`FILE_FORMATS.md` §5). Programme P25. | Firm (Jack, 26 Oct) | 2026-10-26 |
 | PH9 | **Greyscale working image:** decode with ImageIO (EXIF orientation applied), then draw into an 8-bit Generic Gray Gamma 2.2 context with CoreGraphics' colour management. The print image stores these gamma-encoded values. | Provisional, Phase 1 | 2026-10-26 |
 | PH10 | **Resampling and dithering:** resample with vImage's high-quality (Lanczos) scaling, separately for the print and the screen from the same crop. Atkinson in integer arithmetic: threshold 128, one-eighth of the error to each of (x+1,y), (x+2,y), (x−1,y+1), (x,y+1), (x+1,y+1), (x,y+2), left to right, top to bottom, no serpentine, error past an edge dropped. Same input, same output. | Provisional, Phase 1 | 2026-10-26 |
-| PH11 | **Versions:** `D-0.0.x` in development, `B-x.y.z` beta, `1.0` release (as the suite's other apps). | Firm | 2026-10-26 |
+| PH11 | **Versions:** `D-0.0.x` in development, `B-x.y.z` beta, `1.0` release (as the suite's other apps). **The B- part is withdrawn by PH80** (the programme's P22: B- means the British edition). | Firm | 2026-10-26 |
 | PH12 | **The screen image is centred on the MacPaint page**, both ways: x 32, y 189 (x is a whole 4 bytes); the rest of the page white. Answers PQ2. | Firm (Jack) | 2026-10-26 |
 | PH13 | **Screen images are force-cropped in the utility:** each photograph has its own screen crop at exactly 512:342 that always fills the screen, with no bars and no stretching, set in MacPhoto Utility. The result goes to the Plus ready to view, not for editing there. Answers PQ1. | Firm (Jack) | 2026-10-26 |
 | PH14 | **A small photograph gets a warning:** when the crop has fewer source pixels than the output in either direction (so it would be enlarged), the photograph is marked and the export says so; it still exports. Answers PQ7. | Firm (Jack) | 2026-10-26 |
@@ -88,6 +88,16 @@ renumber or delete an entry; mark it **Superseded by PHn**.
 | PH77 | **Errors kept, warnings worked out again** on opening. | Provisional, Phase 5 | 2026-10-26 |
 | PH78 | **A project carries its own settings;** a new project starts from the last used; a missing folder is shown and asked for at export. | Provisional, Phase 5 | 2026-10-26 |
 | PH79 | **A newer project version is refused, unknown fields ignored, a damaged file reported;** checked by tests, screenshots and Jack; D-0.0.6. | Firm (Jack) | 2026-10-26 |
+| PH80 | **The release is 1.0;** builds before it stay D-0.0.x; no B- for beta (P22 uses B- for the British edition). | Firm (Jack) | 2026-10-26 |
+| PH81 | **Compatibility from evidence only:** Plus checks recorded with dates, apart from emulator and netpbm results; anything unchecked listed in the release notes. | Firm (Jack) | 2026-10-26 |
+| PH82 | **The freeze:** FILE_FORMATS.md §1–§5 become 1.0 when the Plus checks pass (§6 versioned on its own); problems fixed first; the Transfer session told at once. | Firm (Jack) | 2026-10-26 |
+| PH83 | **The MacPhoto importer check is outstanding** in 1.0 (MacPhoto doesn't exist); what does confirm the print PICT is listed. | Firm (Jack) | 2026-10-26 |
+| PH84 | **An icon of its own:** a print and a Mac Plus-style screen, drawn by a script in `tools/`, previewed for Jack. | Provisional, Phase 6 | 2026-10-26 |
+| PH85 | **A user guide:** `USER-GUIDE.md` and the release notes (PQ11 (a)). | Firm (Jack) | 2026-10-26 |
+| PH86 | **Example files** from the fixtures and the generated test images, never Jack's photographs. | Firm (Jack) | 2026-10-26 |
+| PH87 | **`tools/check-fresh-checkout.sh`:** clone, build, test, build the app, keep the log. | Firm (Jack) | 2026-10-26 |
+| PH88 | **`tools/make-release.sh`** as the Transfer Utility's, into `releases/MacPhoto-Utility-1.0/`; ad hoc signed; for Jack's own use, not published. | Firm (Jack) | 2026-10-26 |
+| PH89 | **1.0 needs:** Plus checks and the freeze, Jack's acceptance of Phases 3–5, dark appearance and VoiceOver looked at, the release candidate tried; then the tag, the release, the catalogue, the Transfer session. | Firm (Jack) | 2026-10-26 |
 
 ## Open questions
 
@@ -103,3 +113,4 @@ renumber or delete an entry; mark it **Superseded by PHn**.
 | PQ8 | **Answered by PH16–PH18.** **What are the 8-bit editable files for MacPhoto?** Jack: "the PICT/MAC output will be 8-bit editable images on the Mac Plus". A MacPaint document can only be 1-bit. An 8-bit PICT is possible (a version 2 PICT with an 8-bit grey PixMap), but the Plus's own QuickDraw can't draw one: only MacPhoto, reading it itself, could use it (perhaps not SuperPaint or Photoshop 1.0). To settle: is the editable file the print-size image as an 8-bit PICT (instead of, or as well as, `.mppi`)? Are the screen images still 1-bit Atkinson? Should PICTs carry MacPhoto's creator `MPho` instead of `SPNT` (PQ3)? | Answered (PH16–PH18) |
 | PQ9 | Would a tone or contrast adjustment help the screen image (Atkinson loses detail at both ends)? Folded into PH32's comparison. The linear-tone curve was far too dark and Jack chose plain Atkinson (PH33); a brightness or contrast control isn't planned unless the Plus check shows a need. **Answered by PH57: Jack asked for brightness and contrast for the screen image.** | Answered (PH57) |
 | PQ10 | How does the Phase 2 test pack reach the Plus: the Macintosh Transfer Utility if it handles pictures by then, else wait, or the Transfer session's card routine? **Jack (26 Oct): a separate disk image, which he copies to the card himself.** `Photo Test.hda` (20 MB, built like the Transfer Utility's images from its template, the 30 files typed and checked back) in `../MacPhotoUtility-Samples/`. The Transfer session doesn't write to the card. | Answered |
+| PQ11 | The user guide's form: release notes and USER-GUIDE.md, or a printed 7½ × 9 in manual? | Answered: the first, for 1.0 (PH85) |

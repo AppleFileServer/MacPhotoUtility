@@ -8,6 +8,8 @@
 	<string>MacPhoto Utility</string>
 	<key>CFBundleIdentifier</key>
 	<string>local.macphoto.utility</string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
 	<key>CFBundleExecutable</key>
 	<string>MacPhotoUtility</string>
 	<key>CFBundlePackageType</key>

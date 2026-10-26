@@ -50,4 +50,6 @@ photograph, and turns are exact moves of pixels (PH23).
 | `MacPhotoKit/Importer.probe` | a file's header and a 160 px upright thumbnail, without decoding the photograph (PH61) | 4 |
 | `MacPhotoUtility` | the SwiftUI app: `MainWindow` (with the dialogs and the summary), `QueuePanel`, `CompositionEditor`, `PreviewsRow`, `OutputPanel`; drawing and gestures only (PH47–PH54, PH62) | 3, 4 |
 | `tools/build-app.sh`, `Resources/Info.plist` | the app bundle (PH55) | 3 |
+| `tools/make-icon.swift`, `make-icon.sh`, `Resources/AppIcon.icns` | the icon (PH84) | 6 |
+| `tools/check-fresh-checkout.sh`, `make-release.sh` | the clean-build check and the release (PH87, PH88) | 6 |
 | `MacPhotoKitTests` | the tests | 0 → |

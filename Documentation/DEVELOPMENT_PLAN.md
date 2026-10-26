@@ -14,7 +14,7 @@ both validated. The batch interface comes only after that works.
 | 3 Single-image app | **Built, 26 Oct 2026** (D-0.0.4, `PHASE-3-PLAN.md`, `PHASE-3-REPORT.md`). Waiting for Jack to use it on his own photographs (PH56) |
 | 4 Batch processing | **Built, 26 Oct 2026** (D-0.0.5, `PHASE-4-PLAN.md`, `PHASE-4-REPORT.md`). Waiting for Jack to export a folder of his own (PH69) |
 | 5 Saved projects | **Built, 26 Oct 2026** (D-0.0.6, `PHASE-5-PLAN.md`, `PHASE-5-REPORT.md`). Waiting for Jack to save, quit, move a photograph and reopen (PH79) |
-| 6 Compatibility and release | — |
+| 6 Compatibility and release | **Under way** (D-0.0.7, `PHASE-6-PLAN.md`): icon, user guide, release tools and dark appearance done; waiting for the Plus checks, then the freeze and 1.0 (PH89) |
 
 ## Checklist from the specification
 
@@ -96,6 +96,15 @@ evidence from the real machine.
 - [x] Newer and damaged projects refused in words (PH79)
 - [ ] **Jack:** saves, quits, moves a photograph and reopens it (PH79)
 
-### Phase 6
-- [ ] Projects: save and reopen, relink missing sources, export history (§9)
-- [ ] Plus checks (§11 real-hardware tests 1–6); user guide; clean build from a fresh checkout (§12 Phase 6)
+### Phase 6: compatibility and release
+- [x] Version names put right: 1.0, no B- for beta (PH80)
+- [x] The icon (PH84): `tools/make-icon.swift`, `make-icon.sh`, in the bundle
+- [x] `USER-GUIDE.md` and draft `RELEASE-NOTES.md` (PH85)
+- [x] `tools/check-fresh-checkout.sh` (PH87): a clone builds, tests and builds the app (66 s)
+- [x] `tools/make-release.sh` (PH88), with examples (PH86)
+- [x] Dark appearance looked at (the app alone, `-MPUAppearance dark`)
+- [ ] VoiceOver listened to (needs Jack's permission to switch it on, or Jack)
+- [ ] **Jack:** the Plus checks (`PLUS-CHECKS.md` on `Photo Test.hda`), recorded in COMPATIBILITY.md (PH81)
+- [ ] FILE_FORMATS.md 1.0 (PH82); the Transfer session told
+- [ ] **Jack:** acceptance of Phases 3–5
+- [ ] Version 1.0, the release candidate tried, `v1.0`, the release, the catalogue (PH89)

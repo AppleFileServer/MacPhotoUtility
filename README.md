@@ -6,9 +6,8 @@ Plus edits) and a 512 × 342 1-bit Atkinson-dithered screen image (PICT,
 or MacPaint). The files reach the Plus through the Macintosh Transfer
 Utility.
 
-**Status: Phase 5 built** (D-0.0.6): a queue of photographs, each framed
-on its own, exported in one go, saved and reopened as a project. Phase
-2's formats wait for the Plus checks before they're frozen.
+**Status: Phase 6 under way** (D-0.0.7): the app is complete; 1.0 waits
+for the Plus checks, the freeze of the file formats and Jack's acceptance.
 
     tools/test.sh                                  # the tests
     tools/build-app.sh                             # build/MacPhoto Utility.app
@@ -20,6 +19,7 @@ on its own, exported in one go, saved and reopened as a project. Phase
 
 | Document | |
 |---|---|
+| `Documentation/USER-GUIDE.md` | how to use it |
 | `Documentation/SPECIFICATION.md` | the brief, unedited |
 | `Documentation/DEVELOPMENT_PLAN.md` | phase status and the checklist |
 | `Documentation/PHASE-0-REPORT.md` | what was found, the risks, the questions |

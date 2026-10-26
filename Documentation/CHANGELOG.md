@@ -1,5 +1,14 @@
 # Changelog
 
+## D-0.0.7 (26 October 2026, not released)
+
+Phase 6, before the Plus checks.
+- An icon of its own.
+- A user guide (`USER-GUIDE.md`) and draft release notes.
+- `tools/check-fresh-checkout.sh` and `tools/make-release.sh`.
+- `-MPUAppearance dark` at launch shows the app alone in dark appearance,
+  for checking it.
+
 ## D-0.0.6 (26 October 2026, not released)
 
 Phase 5: projects.

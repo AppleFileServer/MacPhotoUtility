@@ -1,12 +1,13 @@
 # File formats
 
-**Status: draft 0.2 (Phase 0, 26 October 2026). PROVISIONAL throughout.**
-What the editable files for MacPhoto are is still open (DECISIONS.md
-PQ8): it may add an 8-bit PICT, or change §1 and §2.
+**Status: draft 0.3 (Phase 0, 26 October 2026). PROVISIONAL throughout.**
 Frozen as version 1.0 at the end of Phase 2, once the exporters and their
-validators agree and the screen files have opened on the real Plus. After
+validators agree and the files have been checked on the real Plus. After
 that, any change is a new format version recorded in `DECISIONS.md`, never
 a silent edit (SPECIFICATION.md §15).
+
+Draft 0.3 replaces draft 0.2's native print format (`.mppi`) with an
+**8-bit PICT** (PH16): MacPhoto on the Plus edits PICTs.
 
 These are also the files the Macintosh Transfer Utility receives: §5 is
 the handoff contract between the two apps.
@@ -17,73 +18,98 @@ Conventions for every format here:
 - **Data fork only.** No resource fork. The Mac file type and creator are
   set when the file is put on an HFS volume (the Transfer Utility does it);
   macOS doesn't carry them reliably.
-- 1-bit images: **1 = black**, 0 = white (QuickDraw's convention).
+- PICT files start with a **512-byte header of zeros**, as every PICT file
+  does; the picture follows at offset 512.
+- PackBits is Apple's (Inside Macintosh I, `PackBits`). Every row is packed
+  on its own; no run crosses a row.
 
-## 1. Print master (`.mppi`)
+| Output | Use | Format | Section |
+|---|---|---|---|
+| Print image | Edited in MacPhoto on the Plus; printed | 8-bit grey PICT, version 2 | §1 |
+| Screen image | Shown on the Plus as it is | 1-bit PICT, version 1 | §2 |
+| Screen image (rarely) | Shown or touched up in MacPaint | MacPaint document | §3 |
 
-The 2.5 × 3.5-inch print image: 8-bit greyscale, uncompressed, made to be
-read by a future 68000 C application one strip of rows at a time.
+## 1. Print image: 8-bit greyscale PICT (`.pict`)
 
-| | |
-|---|---|
-| Extension | `.mppi` |
-| Mac type / creator | `MPpi` / `MPho` (PROVISIONAL; MacPhoto's creator) |
-| Size | 64 + width × height bytes: 787,564 (300 PPI) or 1,134,064 (360 PPI) |
-
-### Header: 64 bytes, every field at an even offset
-
-| Offset | Size | Field | Value |
-|---:|---:|---|---|
-| 0 | 4 | magic | `MPPI` (0x4D 50 50 49) |
-| 4 | 2 | versionMajor | 1. A reader refuses a major version it doesn't know. |
-| 6 | 2 | versionMinor | 0. A reader accepts a higher minor version (only additions in reserved space). |
-| 8 | 2 | headerLength | 64. A reader seeks to pixelOffset, not to 64. |
-| 10 | 2 | flags | 0 (none defined; a reader ignores unknown bits) |
-| 12 | 2 | width | pixels: 750, 1050, 900 or 1260 |
-| 14 | 2 | height | pixels: 1050, 750, 1260 or 900 |
-| 16 | 2 | bitsPerPixel | 8 |
-| 18 | 2 | pixelEncoding | 1 = greyscale, 0 black … 255 white, gamma-encoded (Gray Gamma 2.2) |
-| 20 | 4 | rowBytes | = width (no padding; every allowed width is even) |
-| 24 | 4 | pixelOffset | 64 |
-| 28 | 4 | pixelLength | rowBytes × height |
-| 32 | 2 | ppi | 300 or 360 |
-| 34 | 2 | printWidth | hundredths of an inch: 250 or 350 |
-| 36 | 2 | printHeight | hundredths of an inch: 350 or 250 |
-| 38 | 2 | orientation | 0 portrait, 1 landscape |
-| 40 | 2 | checksumType | 0 none, 1 CRC-32 of the pixel data |
-| 42 | 2 | reserved | 0 |
-| 44 | 4 | pixelChecksum | CRC-32 (IEEE 802.3, reflected, polynomial 0xEDB88320, initial and final XOR 0xFFFFFFFF: zlib's `crc32`), or 0 |
-| 48 | 16 | reserved | 0 |
-
-### Pixels
-
-Rows from top to bottom, each row's pixels from left to right, one byte
-each. The file ends exactly at `pixelOffset + pixelLength`.
-
-### Validity (both the writer's check and the Transfer Utility's)
-
-magic; versionMajor 1; headerLength ≥ 64; bitsPerPixel 8;
-pixelEncoding 1; (width, height, ppi, printWidth, printHeight,
-orientation) one of the four allowed profiles and consistent with each
-other (width × 100 = printWidth × ppi, likewise height); rowBytes =
-width; pixelOffset ≥ headerLength; pixelLength = rowBytes × height; file
-length = pixelOffset + pixelLength; if checksumType 1, the CRC matches;
-reserved fields 0.
-
-## 2. PICT screen image (`.pict`)
+The 2.5 × 3.5-inch image MacPhoto edits: 750 × 1050, 1050 × 750,
+900 × 1260 or 1260 × 900 pixels, 256 greys.
 
 | | |
 |---|---|
 | Extension | `.pict` |
-| Mac type / creator | `PICT` / `SPNT` (PROVISIONAL: SuperPaint 2.0, on the Plus's Applications disk, owns the only PICT there) |
-| Picture | **version 1** (PH5), one 1-bit 512 × 342 bitmap |
+| Mac type / creator | `PICT` / `MPho` (MacPhoto, PH17) |
+| Size | about 0.8–1.2 MB (PackBits rarely saves much on photographs) |
 
-Layout:
+**Who can read it.** The Plus has no Color QuickDraw, so its own
+`DrawPicture` can't draw an 8-bit PixMap. **MacPhoto decodes the file
+itself**, a row at a time, and never needs it whole in memory (the rows
+come in order, each with its own length). Whether any other program on the
+Plus (SuperPaint 2.0, Photoshop 1.0, the Scrapbook) opens it is untested
+(PQ6); nothing depends on it. On a colour Mac it is an ordinary
+version 2 picture.
+
+The layout is one fixed subset of version 2. A reader may refuse anything
+else. Version 2 opcodes are 2 bytes, and every opcode starts on an even
+offset from the start of the picture.
 
 | Bytes | Content |
 |---|---|
-| 512 | file header: all zeros (applications skip it) |
-| 2 | picSize: the picture's length in bytes, from picSize to the end opcode inclusive |
+| 512 | file header: zeros |
+| 2 | picSize: the picture's length **modulo 65,536** (meaningless for pictures this big; readers use the file's length) |
+| 8 | picFrame: top 0, left 0, bottom = height, right = width |
+| 2 + 2 | `0011` VersionOp, `02FF` version 2 |
+| 2 + 24 | `0C00` HeaderOp, **extended** form: version −2 (`FFFE`), reserved 0 (2), hRes and vRes as Fixed = PPI (`012C0000` for 300, `01680000` for 360), srcRect = picFrame (8), reserved 0 (4) |
+| 2 + 10 | `0001` Clip: region size 10, bounding box = picFrame |
+| 2 + 2 + 2 + 20 | `00A1` LongComment: kind **100** (application comment), size 20, then MacPhoto's record below |
+| 2 | `0098` PackBitsRect |
+| 2 | rowBytes = width, with the top bit set (PixMap): `0x8000 | width` |
+| 8 | bounds = picFrame |
+| 2, 2, 4 | pmVersion 0, packType 0 (PackBits by row), packSize 0 |
+| 4, 4 | hRes, vRes: Fixed PPI, as in the header |
+| 2, 2, 2, 2 | pixelType 0 (chunky), pixelSize 8, cmpCount 1, cmpSize 8 |
+| 4, 4, 4 | planeBytes 0, pmTable 0, pmReserved 0 |
+| 4, 2, 2 | colour table: ctSeed 0, ctFlags 0, ctSize 255 (256 entries) |
+| 256 × 8 | entry *i*: value *i*, then red = green = blue = (255 − *i*) × 257: **index 0 white, 255 black**, the Mac's grey convention |
+| 8, 8, 2 | srcRect = picFrame, dstRect = picFrame, mode 0 (srcCopy) |
+| … | *height* rows, top to bottom: a **2-byte** count (rowBytes > 250), then that row packed. A pixel's value is 255 − grey, where grey is 0 black … 255 white, gamma-encoded (Gray Gamma 2.2, PH9) |
+| 0 or 1 | a zero byte if needed so the next opcode is at an even offset |
+| 2 | `00FF` OpEndPic |
+
+**MacPhoto's record** (in the LongComment, 20 bytes):
+
+| Offset | Size | Field | Value |
+|---:|---:|---|---|
+| 0 | 4 | signature | `MPho` |
+| 4 | 2 | recordVersion | 1 (a reader ignores a record whose version it doesn't know) |
+| 6 | 2 | ppi | 300 or 360 |
+| 8 | 2 | printWidth | hundredths of an inch: 250 or 350 |
+| 10 | 2 | printHeight | 350 or 250 |
+| 12 | 2 | orientation | 0 portrait, 1 landscape |
+| 14 | 2 | checksumType | 1: CRC-32 of the unpacked pixel values, row by row |
+| 16 | 4 | pixelChecksum | CRC-32 (IEEE 802.3, reflected, polynomial 0xEDB88320, initial and final XOR 0xFFFFFFFF: zlib's `crc32`) |
+
+**Valid when:** the 512-byte header is zeros; the opcodes are exactly the
+ones above, in that order; (width, height) and the record's ppi, print
+size and orientation are one of the four allowed profiles and agree
+(width × 100 = printWidth × ppi, likewise height); hRes and vRes equal
+the PPI; the colour table is exactly as above; every row unpacks to
+exactly rowBytes bytes; the CRC matches; the file ends at OpEndPic.
+
+## 2. Screen image: 1-bit PICT (`.pict`)
+
+| | |
+|---|---|
+| Extension | `.pict` |
+| Mac type / creator | `PICT` / `MPho` (PH17) |
+| Picture | **version 1** (PH5), one 1-bit 512 × 342 bitmap; 1 = black |
+
+Version 1 so the Plus's own QuickDraw draws it: any application that
+opens PICTs can show it.
+
+| Bytes | Content |
+|---|---|
+| 512 | file header: zeros |
+| 2 | picSize: the picture's length, from picSize to the end opcode inclusive |
 | 8 | picFrame: top 0, left 0, bottom 342, right 512 |
 | 2 | `11 01`: picVersion, version 1 |
 | 1 + 10 | `01` clipRgn: region size 10, bounding box = picFrame |
@@ -93,14 +119,16 @@ Layout:
 | 8 | srcRect: 0, 0, 342, 512 |
 | 8 | dstRect: 0, 0, 342, 512 |
 | 2 | mode: 0 (srcCopy) |
-| … | 342 rows, each: a 1-byte count (rowBytes ≤ 250) then that row packed with PackBits |
+| … | 342 rows, each: a 1-byte count (rowBytes ≤ 250) then that row packed |
 | 1 | `FF`: end of picture |
 
 Version 1 opcodes are one byte with no word alignment. The largest
-possible picture (every row incompressible) is about 22.6 KB, so picSize
-always holds the true length.
+possible picture is about 22.6 KB, so picSize always holds the true
+length.
 
 ## 3. MacPaint document (`.MAC`)
+
+Rarely used (PH15), but supported.
 
 | | |
 |---|---|
@@ -130,14 +158,18 @@ validation result. For the user's record, not for the Plus.
 
 ## 5. Handoff contract with the Macintosh Transfer Utility
 
-| Kind | Extension | Type / creator | Folder on the transfer volume | Recognised by |
+| Kind | Extension | Type / creator | Folder on the transfer volume (proposed) | Recognised by |
 |---|---|---|---|---|
+| Print image (8-bit PICT) | `.pict` | `PICT` / `MPho` | `Print Files` | §1's rules |
+| Screen image (1-bit PICT) | `.pict` | `PICT` / `MPho` | `PICT Files` | §2's rules |
 | MacPaint | `.MAC` | `PNTG` / `MPNT` | `MacPaint Files` | §3's rules |
-| PICT | `.pict` | `PICT` / `SPNT` | `PICT Files` | §2's rules |
-| Print master | `.mppi` | `MPpi` / `MPho` | `Print Files` | §1's rules |
 
-(The folder names are the Transfer Utility's, approved by Jack.) Each
-file's Mac name keeps its extension and fits in 31 characters.
+The two PICT kinds share an extension and type; the content tells them
+apart (version 2 with an 8-bit PixMap and MacPhoto's record, or version 1
+with a 512 × 342 bitmap). The folder names are the Transfer Utility's;
+whether the print images keep the "Print Files" folder is for that session
+to put to Jack. Each file's Mac name keeps its extension and fits in 31
+characters.
 
 The Transfer Utility recognises a file **by its content**, with its own
 validators written from these rules and the public specifications,

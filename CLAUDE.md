@@ -2,9 +2,10 @@
 
 ## Project
 
-A native macOS app that turns photographs into a 2.5 × 3.5-inch greyscale
-print master and a 512 × 342 Atkinson screen image (PICT, MacPaint) for a
-Macintosh Plus (4 MB, System 6.0.7). The requirements:
+A native macOS app that turns photographs into a 2.5 × 3.5-inch 8-bit
+greyscale PICT (edited by MacPhoto on the Plus) and a 512 × 342 1-bit
+Atkinson screen image (PICT, MacPaint) for a Macintosh Plus (4 MB,
+System 6.0.7). The requirements:
 `Documentation/SPECIFICATION.md` (Jack's brief, unedited); decisions in
 `Documentation/DECISIONS.md` (PH, PQ). Start with `README.md` and
 `Documentation/DEVELOPMENT_PLAN.md`.

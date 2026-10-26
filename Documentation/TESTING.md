@@ -34,8 +34,8 @@ Expected outputs: print 750 × 1050 / 1050 × 750 (300 PPI) and
 
 ## 3. Real-hardware tests (Jack, on the Plus)
 
-Specification §11's list (opening a PICT, a MacPaint file, appearance,
-portrait and landscape, the screensaver, and later the print master in
-MacPhoto). The files go over with the Macintosh Transfer Utility. Each
-run is recorded in `COMPATIBILITY.md` with the date and what was seen.
+Specification §11's list (opening a screen PICT, a MacPaint file,
+appearance, portrait and landscape, the screensaver, and later the 8-bit
+print PICT in MacPhoto). The files go over with the Macintosh Transfer
+Utility. Each run is recorded in `COMPATIBILITY.md` with the date and what was seen.
 None has run yet.

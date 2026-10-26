@@ -11,9 +11,9 @@
         ▼ PrintRenderer (PH10)              ▼ ScreenRenderer (PH10)
     8-bit print image                    8-bit 512 × 342 → Atkinson → 1-bit
     750 × 1050 … 1260 × 900                 │
-        │                                   ├─ PICTWriter     → .pict
-        ▼ PrintMasterWriter                 └─ MacPaintWriter → .MAC
-    .mppi
+        │                                   ├─ PICT1Writer    → .pict (1-bit)
+        ▼ PICT2Writer (PH16)                └─ MacPaintWriter → .MAC
+    .pict (8-bit, for MacPhoto to edit)
         │  each output checked by its validator before it counts as done
         ▼
     export folder (+ manifest.json)  →  Macintosh Transfer Utility  →  Plus

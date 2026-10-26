@@ -3,12 +3,12 @@
 The phases are SPECIFICATION.md §12's. Each is planned, built, tested and
 documented before the next; nothing is committed until Jack approves.
 **First milestone** (§15): one photograph imported, cropped and exported
-as a correctly sized print master and a 512 × 342 Atkinson screen image,
+as a correctly sized 8-bit print image and a 512 × 342 Atkinson screen image,
 both validated. The batch interface comes only after that works.
 
 | Phase | Status |
 |---|---|
-| 0 Inspect and specify | **Done, 26 Oct 2026.** PQ1, PQ2, PQ7 answered; PQ8 (the 8-bit editable files) open (`PHASE-0-REPORT.md`) |
+| 0 Inspect and specify | **Done, 26 Oct 2026.** PQ1–PQ3, PQ7, PQ8 answered; PQ4–PQ6 wait for Plus checks (`PHASE-0-REPORT.md`) |
 | 1 Conversion engine | Next |
 | 2 File exporters | — |
 | 3 Single-image app | — |
@@ -24,7 +24,7 @@ evidence from the real machine.
 ### Phase 0
 - [x] Repository and build environment inspected (new repository; Swift 6.3.3, macOS 26 SDK, Swift Testing)
 - [x] Fixed print profiles defined and tested (§2; PH2)
-- [x] Print master format specified (`FILE_FORMATS.md` §1; PH3)
+- [x] Print image format specified: 8-bit PICT (`FILE_FORMATS.md` §1; PH16)
 - [x] PICT and MacPaint requirements researched (§2, §3; PH4, PH5)
 - [x] Test images and expected sizes established (`TESTING.md` §2)
 - [x] Buildable skeleton: engine, harness, app, tests
@@ -45,13 +45,13 @@ evidence from the real machine.
 - [ ] `mpu convert`: one photograph to both canonical images
 
 ### Phase 2: exporters
-- [ ] Print master writer and validator (`FILE_FORMATS.md` §1)
-- [ ] PICT writer and validator (§2)
+- [ ] 8-bit print PICT writer and validator (`FILE_FORMATS.md` §1)
+- [ ] 1-bit screen PICT writer and validator (§2)
 - [ ] MacPaint writer and validator (§3)
 - [ ] Manifest (§4)
 - [ ] Safe names; never overwrite silently
 - [ ] Handoff fixtures for the Transfer Utility (§5)
-- [ ] Plus: PICT and MacPaint files open (Jack)
+- [ ] Plus: screen PICT and MacPaint files open (Jack); whether anything opens the 8-bit PICT (PQ6)
 - [ ] FILE_FORMATS.md frozen as 1.0
 
 ### Phases 3–6

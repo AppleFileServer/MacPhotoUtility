@@ -11,7 +11,7 @@ System 6.0.7). The requirements:
 `Documentation/DEVELOPMENT_PLAN.md`.
 
 Related projects (don't change them):
-- `~/MacPlusProjects/MacMusicTransfer/` (becoming `MacintoshTransfer`):
+- `~/MacPlusProjects/MacintoshTransfer/` (formerly `MacMusicTransfer`):
   the Macintosh Transfer Utility, developed alongside in its own session.
   It reads this app's files; the contract is `FILE_FORMATS.md` §5. Agree
   changes with that session (SendMessage) and Jack; never write there.

@@ -4,7 +4,7 @@
 
     tools/test.sh          # swift test, naming the SDK
 
-Phase 0: `ProfileTests`. The four print sizes, 300 PPI by default,
+Phase 0: `ProfileTests`. The four print sizes, 360 PPI by default (PH19),
 exactly 2.5 × 3.5 in and 5:7 at both resolutions, orientation swapping
 the sides only, only two resolutions, the screen and MacPaint sizes.
 

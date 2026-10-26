@@ -7,3 +7,4 @@ Phase 0: the project's skeleton. Nothing for a user yet.
 - Draft file formats: the 8-bit print PICT, the 1-bit screen PICT, MacPaint.
 - A placeholder window.
 - The MacPaint page centres the screen image (PH12).
+- 360 PPI is the default print resolution; 300 PPI remains (PH19).

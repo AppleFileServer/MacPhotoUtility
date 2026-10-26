@@ -15,8 +15,8 @@ struct ProfileTests {
         #expect(p.width == w && p.height == h)
     }
 
-    @Test func defaultIs300() {
-        #expect(PrintProfile(orientation: .portrait).resolution == .ppi300)
+    @Test func defaultIs360() {
+        #expect(PrintProfile(orientation: .portrait).resolution == .ppi360)
     }
 
     @Test(arguments: Orientation.allCases, PrintResolution.allCases)

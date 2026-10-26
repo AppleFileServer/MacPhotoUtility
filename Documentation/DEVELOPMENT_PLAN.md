@@ -23,7 +23,7 @@ evidence from the real machine.
 
 ### Phase 0
 - [x] Repository and build environment inspected (new repository; Swift 6.3.3, macOS 26 SDK, Swift Testing)
-- [x] Fixed print profiles defined and tested (§2; PH2)
+- [x] Fixed print profiles defined and tested (§2; PH2); 360 PPI the default (PH19)
 - [x] Print image format specified: 8-bit PICT (`FILE_FORMATS.md` §1; PH16)
 - [x] PICT and MacPaint requirements researched (§2, §3; PH4, PH5)
 - [x] Test images and expected sizes established (`TESTING.md` §2)
@@ -37,7 +37,7 @@ evidence from the real machine.
 - [ ] Corrupt, unsupported and missing files reported clearly
 - [ ] Originals never written (checked by hash before and after)
 - [ ] Composition geometry: crop, zoom, position, 90° rotation, reset (§5), independent of the window
-- [ ] Composition unchanged by 300 ↔ 360 PPI
+- [ ] Composition unchanged by 300 ↔ 360 PPI; new photographs start at 360 PPI (PH19)
 - [ ] Print renderer: exact sizes, 8-bit, no stretching (§6)
 - [ ] Screen crop per photograph, forced to 512:342 (PH13); screen renderer from it, not from the print (§7)
 - [ ] Small-photograph warning (PH14)

@@ -1,5 +1,5 @@
 /// The one print size (SPECIFICATION.md §2): 2.5 × 3.5 inches, portrait
-/// or landscape, at 300 PPI (the default) or 360 PPI. There is
+/// or landscape, at 360 PPI (the default, PH19) or 300 PPI. There is
 /// deliberately no way to ask for another size.
 public enum Orientation: String, Sendable, Codable, CaseIterable {
     case portrait, landscape
@@ -9,7 +9,7 @@ public enum PrintResolution: Int, Sendable, Codable, CaseIterable {
     case ppi300 = 300
     case ppi360 = 360
 
-    public static let standard = PrintResolution.ppi300
+    public static let standard = PrintResolution.ppi360
     public var ppi: Int { rawValue }
 }
 
@@ -33,8 +33,8 @@ public struct PrintProfile: Sendable, Equatable, Codable {
                                  : (Self.longSideHundredths, Self.shortSideHundredths)
     }
 
-    /// The output in pixels: 750 × 1050 (portrait, 300 PPI), 1050 × 750,
-    /// 900 × 1260 or 1260 × 900. Both sides divide exactly.
+    /// The output in pixels: 900 × 1260 (portrait, 360 PPI), 1260 × 900,
+    /// 750 × 1050 or 1050 × 750. Both sides divide exactly.
     public var pixels: (width: Int, height: Int) {
         let h = hundredths
         return (h.width * resolution.ppi / 100, h.height * resolution.ppi / 100)

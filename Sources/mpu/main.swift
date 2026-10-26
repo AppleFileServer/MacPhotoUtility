@@ -17,7 +17,8 @@ case "profiles":
     for r in PrintResolution.allCases {
         for o in Orientation.allCases {
             let p = PrintProfile(orientation: o, resolution: r).pixels
-            print("  \(r.ppi) PPI \(o.rawValue): \(p.width) x \(p.height) px")
+            let mark = r == .standard ? " (default)" : ""
+            print("  \(r.ppi) PPI \(o.rawValue): \(p.width) x \(p.height) px\(mark)")
         }
     }
     print("Screen: \(ScreenImage.width) x \(ScreenImage.height) px, 1-bit, Atkinson")

@@ -48,8 +48,18 @@ public enum Importer {
     static let kinds: [(UTType, String)] = [(.jpeg, "JPEG"), (.heic, "HEIC"), (.heif, "HEIF"),
                                             (.png, "PNG"), (.tiff, "TIFF")]
 
-    /// Reads a photograph. The file is only read, never written.
-    public static func load(_ url: URL) throws -> ImportedPhoto {
+    /// A file opened and checked, before anything is decoded.
+    struct Opened {
+        let source: CGImageSource
+        let kind: String
+        let index: Int
+        let width: Int, height: Int
+        let orientation: Int
+    }
+
+    /// The checks every read starts with: there, not empty, a picture of an
+    /// accepted kind (by content), not cut short, not too large.
+    static func openChecked(_ url: URL) throws -> Opened {
         let name = url.lastPathComponent
         guard let size = (try? FileManager.default.attributesOfItem(atPath: url.path))?[.size] as? Int
         else { throw ImportError.missing(name) }
@@ -72,7 +82,14 @@ public enum Importer {
         let h = props[kCGImagePropertyPixelHeight] as? Int ?? 0
         if w * h > maxMegapixels * 1_000_000 { throw ImportError.tooLarge(name, megapixels: w * h / 1_000_000) }
         let orientation = (props[kCGImagePropertyOrientation] as? Int).flatMap { (1...8).contains($0) ? $0 : nil } ?? 1
+        return Opened(source: source, kind: kind, index: index, width: w, height: h, orientation: orientation)
+    }
 
+    /// Reads a photograph. The file is only read, never written.
+    public static func load(_ url: URL) throws -> ImportedPhoto {
+        let name = url.lastPathComponent
+        let o = try openChecked(url)
+        let source = o.source, index = o.index, kind = o.kind, orientation = o.orientation
         guard CGImageSourceGetStatusAtIndex(source, index) == .statusComplete,
               let cg = CGImageSourceCreateImageAtIndex(source, index, nil)
         else { throw ImportError.damaged(name, reason: "it can't be decoded") }
@@ -80,6 +97,32 @@ public enum Importer {
         let stored = try greyscale(cg, name: name)
         return ImportedPhoto(url: url, kind: kind, storedWidth: cg.width, storedHeight: cg.height,
                              exifOrientation: orientation, image: stored.applyingEXIF(orientation))
+    }
+
+    /// What adding a photograph to the queue reads (PH61): its kind and
+    /// sizes, and a thumbnail of at most `thumbnailSide` pixels, the right
+    /// way up, in grey. Nothing else is decoded.
+    public struct Probe: Sendable {
+        public let url: URL
+        public let kind: String
+        public let storedWidth: Int, storedHeight: Int
+        public let exifOrientation: Int
+        public var uprightWidth: Int { exifOrientation >= 5 ? storedHeight : storedWidth }
+        public var uprightHeight: Int { exifOrientation >= 5 ? storedWidth : storedHeight }
+        public let thumbnail: GreyImage
+    }
+
+    public static func probe(_ url: URL, thumbnailSide: Int = 160) throws -> Probe {
+        let o = try openChecked(url)
+        let options = [kCGImageSourceCreateThumbnailFromImageAlways: true,
+                       kCGImageSourceCreateThumbnailWithTransform: true,
+                       kCGImageSourceThumbnailMaxPixelSize: thumbnailSide] as CFDictionary
+        guard let cg = CGImageSourceCreateThumbnailAtIndex(o.source, o.index, options) else {
+            throw ImportError.damaged(url.lastPathComponent, reason: "it can't be decoded")
+        }
+        return Probe(url: url, kind: o.kind, storedWidth: o.width, storedHeight: o.height,
+                     exifOrientation: o.orientation,
+                     thumbnail: try greyscale(cg, name: url.lastPathComponent))
     }
 
     /// ImageIO decodes a JPEG or PNG that has been cut short without

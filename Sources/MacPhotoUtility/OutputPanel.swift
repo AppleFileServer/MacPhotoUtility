@@ -2,10 +2,12 @@ import AppKit
 import SwiftUI
 import MacPhotoKit
 
-/// Output and export (PH51): the PPI, the files, the folder, Export, and
-/// what the last export wrote.
+/// Output and export (PH51, PH64): the shared settings (PPI, files,
+/// folder), Export This and Export All with progress, and what the last
+/// single export wrote.
 struct OutputPanel: View {
-    @Bindable var session: EditorSession
+    let queue: PhotoQueue
+    private var session: EditorSession { queue.editor }
 
     var body: some View {
         ScrollView {
@@ -14,7 +16,8 @@ struct OutputPanel: View {
 
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Print resolution").font(.subheadline.weight(.medium))
-                    Picker("Print resolution", selection: $session.settings.resolution) {
+                    Picker("Print resolution", selection: Binding(
+                        get: { session.settings.resolution }, set: { session.settings.resolution = $0 })) {
                         Text("360 PPI").tag(PrintResolution.ppi360)
                         Text("300 PPI").tag(PrintResolution.ppi300)
                     }
@@ -45,24 +48,44 @@ struct OutputPanel: View {
                         .fixedSize(horizontal: false, vertical: true)
                 }
 
-                HStack {
+                VStack(spacing: 8) {
                     Button {
-                        Task { await session.export() }
+                        Task { await queue.exportAll() }
                     } label: {
-                        Text("Export").frame(maxWidth: .infinity)
+                        Text(exportAllTitle).frame(maxWidth: .infinity)
                     }
                     .controlSize(.large)
                     .buttonStyle(.borderedProminent)
-                    .disabled(!session.canExport)
+                    .disabled(readyCount == 0 || queue.isExporting || session.settings.destination == nil
+                              || session.settings.outputs.isEmpty)
+                    Button {
+                        Task { await session.export() }
+                    } label: {
+                        Text("Export This Photograph").frame(maxWidth: .infinity)
+                    }
+                    .disabled(!session.canExport || queue.isExporting)
                     if session.isExporting { ProgressView().controlSize(.small) }
                 }
 
-                if let result = session.lastExport { exported(result.files) }
+                if let p = queue.progress {
+                    VStack(alignment: .leading, spacing: 6) {
+                        ProgressView(value: Double(p.index - 1), total: Double(p.total))
+                        Text("\(p.index) of \(p.total): \(p.name)").font(.caption).lineLimit(1).truncationMode(.middle)
+                        Button("Stop") { queue.stop() }
+                            .help("Stop after the photograph being exported now")
+                    }
+                }
+
+                if let result = session.lastExport, !queue.isExporting { exported(result.files) }
             }
             .padding(16)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
+
+    private var readyCount: Int { queue.entries.filter { $0.state == .ready }.count }
+
+    private var exportAllTitle: String { readyCount == 0 ? "Export All" : "Export All (\(readyCount))" }
 
     private func toggle(_ kind: OutputKind, _ title: String, _ note: String) -> some View {
         Toggle(isOn: Binding(

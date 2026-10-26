@@ -12,7 +12,7 @@ both validated. The batch interface comes only after that works.
 | 1 Conversion engine | **Done, 26 Oct 2026** (D-0.0.2, `PHASE-1-REPORT.md`). Jack chose Atkinson (PH33) after seeing ten of his photographs |
 | 2 File exporters | **Built and tested, 26 Oct 2026** (D-0.0.3, `PHASE-2-PLAN.md`, `PHASE-2-REPORT.md`). Emulator check passed. Waiting for: the Plus checks (PH44, PQ10), then the freeze (PH45) |
 | 3 Single-image app | **Built, 26 Oct 2026** (D-0.0.4, `PHASE-3-PLAN.md`, `PHASE-3-REPORT.md`). Waiting for Jack to use it on his own photographs (PH56) |
-| 4 Batch processing | — |
+| 4 Batch processing | **Built, 26 Oct 2026** (D-0.0.5, `PHASE-4-PLAN.md`, `PHASE-4-REPORT.md`). Waiting for Jack to export a folder of his own (PH69) |
 | 5 Saved projects | — |
 | 6 Compatibility and release | — |
 
@@ -72,7 +72,20 @@ evidence from the real machine.
 - [ ] Dark appearance seen (not yet: the window uses system colours)
 - [ ] **Jack:** exports one of his photographs without the command line and is happy with it (PH56)
 
-### Phases 4–6
-- [ ] Batch: folder import, thumbnails, per-photo crops kept, shared profile, carry on after a failure, conflict choice (§8)
+### Phase 4: batch processing
+- [x] `PhotoQueue`, tested without a window (PH59)
+- [x] Adding files and folders, by content, no duplicates, Finder order, other files skipped and listed (PH60)
+- [x] Quick adding: header and thumbnail only (PH61)
+- [x] The queue panel: thumbnails, P/L, status, ↑ ↓, remove (PH62)
+- [x] Shared settings; each photograph's own framing kept (PH63)
+- [x] Export All one at a time, progress, Stop, failures recorded, summary (PH64)
+- [x] Names for the batch first; Keep Both / Replace / Skip / Cancel (PH65)
+- [x] Unseen photographs asked about (PH66)
+- [x] Memory flat over 200 photographs (PH67)
+- [x] Quitting with unexported changes asks (PH68)
+- [x] Specification §11's batch tests; screenshots (PHASE-4-REPORT.md)
+- [ ] **Jack:** exports a folder of his own photographs (PH69)
+
+### Phases 5–6
 - [ ] Projects: save and reopen, relink missing sources, export history (§9)
 - [ ] Plus checks (§11 real-hardware tests 1–6); user guide; clean build from a fresh checkout (§12 Phase 6)

@@ -49,6 +49,19 @@ Phase 3 (93 tests in all):
   warning, export with the conflict question (cancel, keep both), export
   without a folder, remembered settings, the crop fractions for drawing.
 
+Phase 4 (107 tests in all):
+- `PhotoQueueTests`: adding a mixed folder (order, skipped files, the
+  damaged one marked, thumbnails), no file twice, each photograph keeping
+  its framing through selection and a shared PPI change, a file damaged
+  after adding, Export All asking about unseen photographs and exporting
+  each as framed, the same name twice numbered, the taken-names question
+  (cancel, skip, keep both, replace), one failure not stopping the rest,
+  Stop, sources unchanged, removing, unexported changes counted, small
+  worked out without rendering.
+- `memoryStaysFlat`: 200 twelve-megapixel photographs exported; run on its
+  own, as it's slow and other tests move the footprint:
+  `MPU_MEMORY_TEST=1 tools/test.sh --filter memoryStaysFlat`.
+
 The harness: `swift build`, then `.build/debug/mpu profiles`, `convert`,
 `compare`, `export`, `validate`, `fixtures`, `testimages` (usage: `mpu`
 with no arguments).
@@ -112,4 +125,13 @@ None has run yet.
     doesn't; Normal puts both back to 0.
 12. Drag each corner handle: the crop keeps its shape, the opposite
     corner stays, the zoom slider follows; it stops at the edges.
+13. (Phase 4) Add a folder with photographs and other files: the others
+    are listed as skipped; a damaged photograph is marked ✕.
+14. Select several in turn and frame each differently; come back: each as
+    left. Change the PPI: nobody's framing changes.
+15. Export All with some not looked at: asked first. Again: asked about
+    names already there; Keep Both is the default.
+16. Export All on a long queue and press Stop: it finishes the photograph
+    in hand and says so.
+17. Change a photograph's framing and quit: asked first.
 

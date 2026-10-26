@@ -57,7 +57,7 @@ public enum Exporter {
     public static func export(_ photo: ImportedPhoto, _ c: Composition,
                               resolution: PrintResolution = .standard,
                               kinds: Set<OutputKind> = Set(OutputKind.allCases),
-                              to folder: URL, ifExists: IfExists = .stop,
+                              to folder: URL, ifExists: IfExists = .stop, firstCopy: Int = 1,
                               tamper: (OutputKind, inout [UInt8]) -> Void = { _, _ in }) throws
         -> (files: [ExportedFile], warnings: [RenderWarning]) {
         let fm = FileManager.default
@@ -85,9 +85,11 @@ public enum Exporter {
         var taken = [String]()
         for kind in order {
             let dir = folder.appendingPathComponent(kind.folder)
-            var copy = 1
+            // firstCopy > 1: a batch has already given this photograph a
+            // number, because another in the queue has the same name (PH65).
+            var copy = firstCopy
             var url = dir.appendingPathComponent(MacNames.name(for: photo.url.lastPathComponent,
-                                                               extension: kind.fileExtension))
+                                                               extension: kind.fileExtension, copy: copy))
             if fm.fileExists(atPath: url.path) {
                 switch ifExists {
                 case .stop: taken.append("\(kind.folder)/\(url.lastPathComponent)")

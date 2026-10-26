@@ -67,6 +67,17 @@ renumber or delete an entry; mark it **Superseded by PHn**.
 | PH56 | **Checked** by tests of the session, screenshots of every state of the real app, and Jack using it on his own photographs. | Firm (Jack) | 2026-10-26 |
 | PH57 | **Brightness and contrast for the screen image** (Jack, 26 Oct; answers PQ9): per photograph, stored with the composition (and so in the manifest), −100 to +100 each, applied to the 512 × 342 grey image before Atkinson through a 256-entry integer table: (g − 128) × (100 + contrast) / 100 + 128 + brightness × 128 / 100, clamped. 0 and 0 change nothing (plain Atkinson, PH33). Never applied to the print. Two sliders and Normal under the Mac Plus preview. MacPaint files get it too (same screen image). | Firm (Jack) | 2026-10-26 |
 | PH58 | **Resizing a crop by its corners** (Jack, 26 Oct): handles on the four corners of the crop being edited; dragging one resizes the crop keeping its shape (5:7, 7:5 or 512:342), the opposite corner fixed, following whichever way the corner moved further; it stops at full size, at zoom 8 and at the photograph's edges. The same as zooming, so the slider moves with it; the editor's size and the other controls unchanged. `Composition.resize`. | Firm (Jack) | 2026-10-26 |
+| PH59 | **A queue over the editor:** `PhotoQueue` holds the photographs in order (composition, screen tone, status, thumbnail each) and the shared settings; the `EditorSession` edits the selected one and writes changes back. Tested without a window. | Provisional, Phase 4 | 2026-10-26 |
+| PH60 | **Adding:** files, a folder (its own photographs, not subfolders) or dragging; recognised by content; other files skipped and counted; no file twice; name order as the Finder sorts. | Provisional, Phase 4 | 2026-10-26 |
+| PH61 | **Quick to add:** only the header and a 160 px thumbnail (EXIF applied) on adding, two at a time; the full photograph decoded when selected or exported; damage marks that entry only. | Provisional, Phase 4 | 2026-10-26 |
+| PH62 | **The queue panel:** thumbnail, name, P/L, status (not seen, seen, small, can't be read, exported); ↑ ↓, ⌫ removes from the queue only, Remove All; the selected photograph's details below. | Provisional, Phase 4 | 2026-10-26 |
+| PH63 | **Shared:** PPI, files, folder. **Each photograph's own:** framing, turns, orientation, screen tone; nothing shared changes them. | Provisional, Phase 4 | 2026-10-26 |
+| PH64 | **Export All one photograph at a time,** with progress and Stop (after the photograph in hand); a failure marks that photograph and the batch carries on; a summary at the end. Export This for the selected one. | Provisional, Phase 4 | 2026-10-26 |
+| PH65 | **Names decided for the whole batch first:** duplicates within the queue numbered automatically; one question for names already taken: Keep Both (default), Replace, Skip Those Photographs, Cancel. | Provisional, Phase 4 | 2026-10-26 |
+| PH66 | **Unseen photographs:** Export All asks before exporting photographs never looked at with the default framing. | Provisional, Phase 4 | 2026-10-26 |
+| PH67 | **Flat memory:** thumbnails, one selected photograph, at most one being exported; checked with 200 generated photographs. | Provisional, Phase 4 | 2026-10-26 |
+| PH68 | **Not saved yet:** quitting with changed, unexported framing asks first. | Provisional, Phase 4 | 2026-10-26 |
+| PH69 | **Checked** by tests (specification §11's batch list), a generated mixed test folder, screenshots, and Jack exporting a folder; D-0.0.5. | Firm (Jack) | 2026-10-26 |
 
 ## Open questions
 

@@ -63,25 +63,43 @@ public final class EditorSession {
 
     // MARK: Opening
 
-    public func open(_ url: URL) async {
+    /// Called with the composition after every edit, so the queue can keep
+    /// each photograph's own (PH59).
+    public var onEdit: ((Composition) -> Void)?
+    /// Called after the photograph in hand has been exported.
+    public var onExported: (() -> Void)?
+    private var openGeneration = 0
+
+    /// Opens a photograph, framed as `composition` says, or with the
+    /// defaults (PH26). Returns whether it opened.
+    @discardableResult
+    public func open(_ url: URL, composition saved: Composition? = nil) async -> Bool {
+        openGeneration += 1
+        let mine = openGeneration
         isOpening = true
-        defer { isOpening = false }
+        defer { if openGeneration == mine { isOpening = false } }
         do {
             let (photo, working) = try await Task.detached(priority: .userInitiated) {
                 let p = try Importer.load(url)
                 return (p, Resampler.reduced(p.image))
             }.value
+            // A later open has started since: this one is no longer wanted.
+            guard openGeneration == mine else { return false }
             self.photo = photo
             self.working = working
-            composition = Composition(uprightWidth: photo.image.width, height: photo.image.height)
-            turnedWorking = working
+            let c = saved ?? Composition(uprightWidth: photo.image.width, height: photo.image.height)
+            composition = c
+            turnedWorking = c.quarterTurns == 0 ? working : working.turned(c.quarterTurns)
             editing = .print
             printPreview = nil
             screenPreview = nil
             lastExport = nil
             schedulePreviews()
+            return true
         } catch {
+            guard openGeneration == mine else { return false }
             message = Message(title: "The photograph couldn't be opened.", detail: "\(error)")
+            return false
         }
     }
 
@@ -100,6 +118,7 @@ public final class EditorSession {
         guard c != composition else { return }
         if c.quarterTurns != composition?.quarterTurns { turnedWorking = working?.turned(c.quarterTurns) }
         composition = c
+        onEdit?(c)
         schedulePreviews()
     }
 
@@ -212,6 +231,7 @@ public final class EditorSession {
                                     to: folder, ifExists: ifExists)
             }.value
             lastExport = result
+            onExported?()
         } catch ExportError.exists(let names) {
             conflict = names
         } catch {

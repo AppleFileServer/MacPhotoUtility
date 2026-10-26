@@ -2,32 +2,35 @@ import AppKit
 import SwiftUI
 import MacPhotoKit
 
-/// MacPhoto Utility: one window for one photograph (Phase 3; PH46–PH55).
+/// MacPhoto Utility: one window, a queue of photographs (Phases 3–4).
 @main
 struct MacPhotoUtilityApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var delegate
-    @State private var session = EditorSession()
+    @State private var queue = PhotoQueue()
+    private var session: EditorSession { queue.editor }
 
     var body: some Scene {
         Window("MacPhoto Utility", id: "main") {
-            MainWindow(session: session)
-                .onAppear { delegate.session = session }
+            MainWindow(queue: queue)
+                .onAppear { delegate.queue = queue }
         }
         .defaultSize(width: 1380, height: 860)
         .windowResizability(.contentMinSize)
         .commands {
             CommandGroup(replacing: .newItem) {
-                Button("Open Photograph…") { Panels.openPhotograph(session) }
+                Button("Add Photographs…") { Panels.addPhotographs(queue) }
                     .keyboardShortcut("o")
-                Button("Close Photograph") { session.close() }
-                    .keyboardShortcut("w")
-                    .disabled(session.photo == nil)
+                Button("Add Folder…") { Panels.addFolder(queue) }
+                    .keyboardShortcut("o", modifiers: [.command, .shift])
             }
             CommandGroup(after: .newItem) {
                 Divider()
-                Button("Export") { Task { await session.export() } }
+                Button("Export This Photograph") { Task { await session.export() } }
                     .keyboardShortcut("e")
-                    .disabled(!session.canExport)
+                    .disabled(!session.canExport || queue.isExporting)
+                Button("Export All") { Task { await queue.exportAll() } }
+                    .keyboardShortcut("e", modifiers: [.command, .shift])
+                    .disabled(queue.entries.isEmpty || queue.isExporting)
             }
             CommandMenu("Photograph") {
                 Button("Turn Left") { session.turn(by: -1) }
@@ -49,20 +52,34 @@ struct MacPhotoUtilityApp: App {
 /// Closing the window quits, as in the Transfer Utility; a bare executable
 /// (swift run) still gets a Dock icon and menus.
 final class AppDelegate: NSObject, NSApplicationDelegate {
-    weak var session: EditorSession? { didSet { openWaiting() } }
-    private var waiting: URL?
+    weak var queue: PhotoQueue? { didSet { addWaiting() } }
+    private var waiting: [URL] = []
 
-    private func openWaiting() {
-        guard let url = waiting, let session else { return }
-        waiting = nil
-        Task { await session.open(url) }
+    private func addWaiting() {
+        guard !waiting.isEmpty, let queue else { return }
+        let urls = waiting
+        waiting = []
+        Task { await queue.add(urls) }
     }
 
-    /// A photograph dropped on the Dock icon or opened with the app.
+    /// Photographs or folders dropped on the Dock icon or opened with the app.
     func application(_ application: NSApplication, open urls: [URL]) {
-        guard let url = urls.first else { return }
-        waiting = url
-        openWaiting()
+        waiting += urls
+        addWaiting()
+    }
+
+    /// Nothing is saved yet (PH68): ask before losing changed framing.
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
+        let n = queue?.unexportedChanges ?? 0
+        guard n > 0 else { return .terminateNow }
+        let alert = NSAlert()
+        alert.messageText = n == 1 ? "Quit and lose the framing of 1 photograph?"
+                                   : "Quit and lose the framing of \(n) photographs?"
+        alert.informativeText = "Their crops, turns and screen settings have changed since they were last exported, and the queue isn't saved yet."
+        alert.addButton(withTitle: "Cancel")
+        alert.addButton(withTitle: "Quit")
+        alert.buttons[1].hasDestructiveAction = true
+        return alert.runModal() == .alertSecondButtonReturn ? .terminateNow : .terminateCancel
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -76,13 +93,26 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 /// The open and folder panels.
 @MainActor
 enum Panels {
-    static func openPhotograph(_ session: EditorSession) {
+    static func addPhotographs(_ queue: PhotoQueue) {
         let panel = NSOpenPanel()
-        panel.message = "Choose a photograph: JPEG, HEIC, PNG or TIFF."
+        panel.message = "Choose photographs: JPEG, HEIC, PNG or TIFF."
         panel.allowedContentTypes = [.jpeg, .heic, .heif, .png, .tiff]
-        panel.allowsMultipleSelection = false
-        guard panel.runModal() == .OK, let url = panel.url else { return }
-        Task { await session.open(url) }
+        panel.allowsMultipleSelection = true
+        guard panel.runModal() == .OK else { return }
+        let urls = panel.urls
+        Task { await queue.add(urls) }
+    }
+
+    static func addFolder(_ queue: PhotoQueue) {
+        let panel = NSOpenPanel()
+        panel.message = "Choose a folder: the photographs directly inside it are added."
+        panel.canChooseDirectories = true
+        panel.canChooseFiles = false
+        panel.allowsMultipleSelection = true
+        panel.prompt = "Add"
+        guard panel.runModal() == .OK else { return }
+        let urls = panel.urls
+        Task { await queue.add(urls) }
     }
 
     static func chooseDestination(_ session: EditorSession) {

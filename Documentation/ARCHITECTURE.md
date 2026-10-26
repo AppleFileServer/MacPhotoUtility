@@ -43,6 +43,8 @@ photograph, and turns are exact moves of pixels (PH23).
 | `MacPhotoKit` project, queue | saving, batches | 4–5 |
 | `mpu` | the harness: runs the engine without the window | 0 → |
 | `MacPhotoKit/EditorSession` | the window's model: photograph, working copy, composition, settings, previews, export, conflict (PH46) | 3 |
-| `MacPhotoUtility` | the SwiftUI app: `MainWindow`, `PhotoPanel`, `CompositionEditor`, `PreviewsRow`, `OutputPanel`; drawing and gestures only (PH47–PH54) | 3 |
+| `MacPhotoKit/PhotoQueue` | the queue: adding (probe and thumbnail), selection, each photograph's framing, shared settings, Export All with its questions, progress and summary (PH59–PH68) | 4 |
+| `MacPhotoKit/Importer.probe` | a file's header and a 160 px upright thumbnail, without decoding the photograph (PH61) | 4 |
+| `MacPhotoUtility` | the SwiftUI app: `MainWindow` (with the dialogs and the summary), `QueuePanel`, `CompositionEditor`, `PreviewsRow`, `OutputPanel`; drawing and gestures only (PH47–PH54, PH62) | 3, 4 |
 | `tools/build-app.sh`, `Resources/Info.plist` | the app bundle (PH55) | 3 |
 | `MacPhotoKitTests` | the tests | 0 → |

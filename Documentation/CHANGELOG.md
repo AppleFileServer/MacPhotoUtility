@@ -1,5 +1,19 @@
 # Changelog
 
+## D-0.0.5 (26 October 2026, not released)
+
+Phase 4: many photographs at once.
+- A queue: add photographs or folders (menu, buttons, dragging onto the
+  window or the Dock icon); thumbnails, print orientation and status for
+  each; anything that isn't a photograph is skipped and listed.
+- Each photograph keeps its own framing and screen settings; the PPI,
+  files and folder are shared.
+- Export All, one photograph at a time, with progress and Stop; a
+  photograph that fails doesn't stop the rest; a summary at the end.
+- Asked once about names already in the folder (Keep Both, Replace, Skip
+  Those Photographs, Cancel), and about photographs not looked at yet.
+- Asked before quitting with framing changed and not exported.
+
 ## D-0.0.4 (26 October 2026, not released)
 
 Phase 3: the app's window, for one photograph at a time.

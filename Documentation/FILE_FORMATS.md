@@ -1,6 +1,8 @@
 # File formats
 
 **Status: draft 0.3 (Phase 0, 26 October 2026). PROVISIONAL throughout.**
+**Approved by Jack on 26 October 2026 as the working contract** for both
+apps' writers and validators; still provisional in its details.
 Frozen as version 1.0 at the end of Phase 2, once the exporters and their
 validators agree and the files have been checked on the real Plus. After
 that, any change is a new format version recorded in `DECISIONS.md`, never

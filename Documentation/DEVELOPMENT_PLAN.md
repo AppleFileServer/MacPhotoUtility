@@ -9,8 +9,8 @@ both validated. The batch interface comes only after that works.
 | Phase | Status |
 |---|---|
 | 0 Inspect and specify | **Done, 26 Oct 2026.** PQ1–PQ3, PQ7, PQ8 answered; PQ4–PQ6 wait for Plus checks (`PHASE-0-REPORT.md`) |
-| 1 Conversion engine | Next |
-| 2 File exporters | — |
+| 1 Conversion engine | **Done, 26 Oct 2026** (D-0.0.2, `PHASE-1-REPORT.md`). Jack chose Atkinson (PH33) after seeing ten of his photographs |
+| 2 File exporters | Next |
 | 3 Single-image app | — |
 | 4 Batch processing | — |
 | 5 Saved projects | — |
@@ -31,18 +31,20 @@ evidence from the real machine.
 - [x] Technical-risk report (`PHASE-0-REPORT.md`)
 
 ### Phase 1: conversion engine
-- [ ] Import JPEG, HEIC/HEIF, PNG, TIFF; dimensions and metadata (§3)
-- [ ] EXIF orientation applied (all eight)
-- [ ] Greyscale working image from colour or grey sources (PH9)
-- [ ] Corrupt, unsupported and missing files reported clearly
-- [ ] Originals never written (checked by hash before and after)
-- [ ] Composition geometry: crop, zoom, position, 90° rotation, reset (§5), independent of the window
-- [ ] Composition unchanged by 300 ↔ 360 PPI; new photographs start at 360 PPI (PH19)
-- [ ] Print renderer: exact sizes, 8-bit, no stretching (§6)
-- [ ] Screen crop per photograph, forced to 512:342 (PH13); screen renderer from it, not from the print (§7)
-- [ ] Small-photograph warning (PH14)
-- [ ] Deterministic Atkinson (PH10), matched against a hand-checked case
-- [ ] `mpu convert`: one photograph to both canonical images
+- [x] Import JPEG, HEIC/HEIF, PNG, TIFF, by content; dimensions and orientation (§3; PH21)
+- [x] EXIF orientation applied (all eight; PH23)
+- [x] Greyscale working image from colour, 16-bit grey and transparent sources (PH9, PH22)
+- [x] Corrupt, truncated, unsupported, empty and missing files reported clearly
+- [x] Originals never written (checked by hash and date before and after)
+- [x] Composition geometry: crop, zoom, position, 90° rotation, reset (§5), independent of the window (PH24–PH27)
+- [x] Composition unchanged by 300 ↔ 360 PPI; new photographs start at 360 PPI (PH19)
+- [x] Print renderer: exact sizes, 8-bit, no stretching (§6; PH28)
+- [x] Screen crop per photograph, forced to 512:342 (PH13); screen renderer from it, not from the print (§7)
+- [x] Small-photograph warning (PH14, PH30)
+- [x] Deterministic Atkinson (PH10, PH29), matched against hand-worked cases and, exactly, against an independent integer version of `../image-tools/atkinson.py`
+- [x] Dither options and `mpu compare` (PH32)
+- [x] **Jack:** previews of ten of his own photographs; Atkinson chosen (PH33)
+- [x] `mpu convert`: one photograph to both canonical images
 
 ### Phase 2: exporters
 - [ ] 8-bit print PICT writer and validator (`FILE_FORMATS.md` §1)

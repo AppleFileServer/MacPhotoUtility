@@ -9,14 +9,17 @@ let package = Package(
     platforms: [.macOS("26.0")],
     products: [
         .library(name: "MacPhotoKit", targets: ["MacPhotoKit"]),
+        .library(name: "MacPhotoTestSupport", targets: ["MacPhotoTestSupport"]),
         .executable(name: "mpu", targets: ["mpu"]),
         .executable(name: "MacPhotoUtility", targets: ["MacPhotoUtility"]),
     ],
     targets: [
         .target(name: "MacPhotoKit"),
-        .executableTarget(name: "mpu", dependencies: ["MacPhotoKit"]),
+        // Draws the synthetic test images (PH31); used by the tests and mpu.
+        .target(name: "MacPhotoTestSupport"),
+        .executableTarget(name: "mpu", dependencies: ["MacPhotoKit", "MacPhotoTestSupport"]),
         // The window (Phase 3); nothing the engine needs.
         .executableTarget(name: "MacPhotoUtility", dependencies: ["MacPhotoKit"]),
-        .testTarget(name: "MacPhotoKitTests", dependencies: ["MacPhotoKit"]),
+        .testTarget(name: "MacPhotoKitTests", dependencies: ["MacPhotoKit", "MacPhotoTestSupport"]),
     ]
 )

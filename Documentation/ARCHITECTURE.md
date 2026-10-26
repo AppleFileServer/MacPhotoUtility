@@ -18,8 +18,10 @@
         ▼
     export folder (+ manifest.json)  →  Macintosh Transfer Utility  →  Plus
 
-The two renderers share only the photograph and its rotation: a change
-to the dithering can't touch the print (specification §10).
+The two renderers share only the photograph, its turns and the
+resampler: a change to the dithering can't touch the print
+(specification §10). Only the crop is turned, never the whole
+photograph, and turns are exact moves of pixels (PH23).
 
 ## Package
 
@@ -28,7 +30,12 @@ to the dithering can't touch the print (specification §10).
 | `MacPhotoKit/PrintProfile` | the four print sizes; nothing else expressible | 0 |
 | `MacPhotoKit/ScreenSpec` | the screen and MacPaint page sizes | 0 |
 | `MacPhotoKit/Version` | the version | 0 |
-| `MacPhotoKit` importer, composition, renderers, Atkinson | the engine | 1 |
+| `MacPhotoKit/Images` | `GreyImage` (0 black … 255 white), `BitImage` (1 = black) (PH20) | 1 |
+| `MacPhotoKit/Importer` | decode by content, grey, EXIF orientation; exact turns and mirrors; the errors (PH21–PH23) | 1 |
+| `MacPhotoKit/Composition` | the two crops, turns, orientation; pixel rectangles (PH24–PH27) | 1 |
+| `MacPhotoKit/Renderers` | `PrintRenderer`, `ScreenRenderer`, and `Resampler` (crop, turn, Lanczos), the one thing they share (PH28, PH30) | 1 |
+| `MacPhotoKit/Dither` | Atkinson and the comparison's options (PH29, PH32) | 1 |
+| `MacPhotoTestSupport` | the synthetic test images (PH31) | 1 |
 | `MacPhotoKit` writers and validators, manifest | the exporters | 2 |
 | `MacPhotoKit` project, queue | saving, batches | 4–5 |
 | `mpu` | the harness: runs the engine without the window | 0 → |

@@ -6,11 +6,11 @@ Plus edits) and a 512 × 342 1-bit Atkinson-dithered screen image (PICT,
 or MacPaint). The files reach the Plus through the Macintosh Transfer
 Utility.
 
-**Status: Phase 2 built** (D-0.0.3): the engine and the three file
-formats, run from the harness; waiting for the emulator and Plus checks
-before the formats are frozen.
+**Status: Phase 3 built** (D-0.0.4): the window, for one photograph at a
+time. Phase 2's formats wait for the Plus checks before they're frozen.
 
     tools/test.sh                                  # the tests
+    tools/build-app.sh                             # build/MacPhoto Utility.app
     swift build && .build/debug/mpu                # the harness's commands
     .build/debug/mpu convert PHOTO --preview DIR   # one photograph, both images
     .build/debug/mpu export PHOTO --to DIR         # the three files, checked
@@ -24,6 +24,7 @@ before the formats are frozen.
 | `Documentation/PHASE-0-REPORT.md` | what was found, the risks, the questions |
 | `Documentation/PHASE-1-PLAN.md`, `PHASE-1-REPORT.md` | the engine: plan and result |
 | `Documentation/PHASE-2-PLAN.md`, `PHASE-2-REPORT.md` | the exporters: plan and result |
+| `Documentation/PHASE-3-PLAN.md`, `PHASE-3-REPORT.md` | the window: plan and result |
 | `Fixtures/handoff/` | files for the Macintosh Transfer Utility's tests |
 | `Documentation/ARCHITECTURE.md` | modules and data flow |
 | `Documentation/FILE_FORMATS.md` | 8-bit and 1-bit PICT, MacPaint, manifest; the handoff contract |

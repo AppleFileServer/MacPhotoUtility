@@ -38,6 +38,17 @@ Phase 2 (70 tests in all):
 - `FixtureTests`: every file in `Fixtures/handoff/` is in its README with
   the right SHA-256; the good ones pass, the bad ones fail.
 
+Phase 3 (93 tests in all):
+- `ResizeTests` (PH58): the opposite corner stays, the larger movement
+  wins, the limits, the screen crop's shape, the session.
+- `ScreenToneTests` (PH57): the table by hand, always in order, the print
+  unchanged, saved with the composition, old manifests still read.
+- `EditorSessionTests`: opening (working copy, previews), an open error
+  as a message, editing the right crop and stopping at the edges, turning
+  and orientation, a PPI change keeping the crop, the live small-photo
+  warning, export with the conflict question (cancel, keep both), export
+  without a folder, remembered settings, the crop fractions for drawing.
+
 The harness: `swift build`, then `.build/debug/mpu profiles`, `convert`,
 `compare`, `export`, `validate`, `fixtures`, `testimages` (usage: `mpu`
 with no arguments).
@@ -79,3 +90,26 @@ appearance, portrait and landscape, the screensaver, and later the 8-bit
 print PICT in MacPhoto). The files go over with the Macintosh Transfer
 Utility. Each run is recorded in `COMPATIBILITY.md` with the date and what was seen.
 None has run yet.
+
+## 4. The window, by hand (Phase 3)
+
+`tools/build-app.sh`, then open `build/MacPhoto Utility.app`. Check:
+1. Empty window: the three areas, "No photograph open", Export disabled.
+2. Open a landscape and a portrait photograph (⌘O, drag onto the window,
+   drag onto the Dock icon): upright, details right, previews appear.
+3. Print crop: drag, zoom (slider, pinch, scroll wheel), Reset; the print
+   preview follows, the screen preview doesn't.
+4. Screen crop (Tab or the switch): the same; the print preview doesn't
+   change.
+5. Turn left and right; Portrait/Landscape.
+6. 300 ↔ 360 PPI: the print preview's size changes, its framing doesn't.
+7. A small photograph: the warning under the print preview at once.
+8. A damaged file: a message naming it; the open photograph stays.
+9. Export to a chosen folder; export again: Keep Both is the default,
+   Replace is red; Cancel leaves the folder alone.
+10. Quit and reopen: the folder, PPI and files are remembered.
+11. Brightness and contrast: the screen preview changes, the print
+    doesn't; Normal puts both back to 0.
+12. Drag each corner handle: the crop keeps its shape, the opposite
+    corner stays, the zoom slider follows; it stops at the edges.
+

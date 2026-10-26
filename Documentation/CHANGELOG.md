@@ -1,5 +1,19 @@
 # Changelog
 
+## D-0.0.4 (26 October 2026, not released)
+
+Phase 3: the app's window, for one photograph at a time.
+- Open a photograph from the File menu, by dragging it onto the window or
+  the Dock icon, or with Open With.
+- Frame the print and the screen image separately: drag, zoom, turn,
+  portrait or landscape, reset; what's left out is dimmed.
+- See the real print image and the real 1-bit screen image as you go,
+  with a warning when a photograph is too small.
+- Choose 360 or 300 PPI, the files and the folder; Export; asked before
+  anything is replaced.
+- Brightness and contrast for the screen image, never the print.
+- Resize a crop by dragging its corners; its shape stays the same.
+
 ## D-0.0.3 (26 October 2026, not released)
 
 Phase 2: the files for the Plus, made from the harness.

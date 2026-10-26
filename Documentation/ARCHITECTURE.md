@@ -42,5 +42,7 @@ photograph, and turns are exact moves of pixels (PH23).
 | `mpu` `export`, `validate`, `fixtures` | the harness's Phase 2 commands; `Fixtures/handoff/` (PH42) | 2 |
 | `MacPhotoKit` project, queue | saving, batches | 4–5 |
 | `mpu` | the harness: runs the engine without the window | 0 → |
-| `MacPhotoUtility` | the SwiftUI app; a placeholder until Phase 3 | 0, 3 → |
+| `MacPhotoKit/EditorSession` | the window's model: photograph, working copy, composition, settings, previews, export, conflict (PH46) | 3 |
+| `MacPhotoUtility` | the SwiftUI app: `MainWindow`, `PhotoPanel`, `CompositionEditor`, `PreviewsRow`, `OutputPanel`; drawing and gestures only (PH47–PH54) | 3 |
+| `tools/build-app.sh`, `Resources/Info.plist` | the app bundle (PH55) | 3 |
 | `MacPhotoKitTests` | the tests | 0 → |

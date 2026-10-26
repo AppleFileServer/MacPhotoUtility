@@ -22,6 +22,18 @@ public struct Crop: Sendable, Equatable, Hashable, Codable {
     public static let maxZoom = 8.0
 }
 
+/// Which of a photograph's two crops (PH13).
+public enum CropKind: String, Sendable, CaseIterable {
+    case print, screen
+}
+
+/// A corner of a crop, for resizing it.
+public enum Corner: Sendable, CaseIterable {
+    case topLeft, topRight, bottomLeft, bottomRight
+    var isLeft: Bool { self == .topLeft || self == .bottomLeft }
+    var isTop: Bool { self == .topLeft || self == .topRight }
+}
+
 /// A rectangle of whole pixels.
 public struct PixelRect: Sendable, Equatable, Hashable, CustomStringConvertible {
     public var x, y, width, height: Int
@@ -50,6 +62,8 @@ public struct Composition: Sendable, Equatable, Hashable, Codable {
     public private(set) var orientation: Orientation
     public var printCrop: Crop
     public var screenCrop: Crop
+    /// Brightness and contrast for the screen image only (PH57).
+    public var screenTone: ScreenTone = .neutral
 
     /// The defaults for a photograph whose upright size is `width` ×
     /// `height` (PH26): landscape if wider than tall, otherwise portrait;
@@ -59,6 +73,20 @@ public struct Composition: Sendable, Equatable, Hashable, Codable {
         orientation = width > height ? .landscape : .portrait
         printCrop = .centred
         screenCrop = .centred
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case quarterTurns, orientation, printCrop, screenCrop, screenTone
+    }
+
+    /// Reads manifests written before PH57, which have no screen tone.
+    public init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        quarterTurns = try c.decode(Int.self, forKey: .quarterTurns)
+        orientation = try c.decode(Orientation.self, forKey: .orientation)
+        printCrop = try c.decode(Crop.self, forKey: .printCrop)
+        screenCrop = try c.decode(Crop.self, forKey: .screenCrop)
+        screenTone = try c.decodeIfPresent(ScreenTone.self, forKey: .screenTone) ?? .neutral
     }
 
     /// The print's shape, width over height: 5:7 or 7:5, from the profile's
@@ -92,6 +120,84 @@ public struct Composition: Sendable, Equatable, Hashable, Codable {
     }
 
     public mutating func setOrientation(_ o: Orientation) { orientation = o }
+
+    // MARK: Editing (PH48): what the window does, as arithmetic it can't get wrong.
+
+    public func crop(_ kind: CropKind) -> Crop { kind == .print ? printCrop : screenCrop }
+
+    public func aspect(_ kind: CropKind) -> Double {
+        kind == .print ? Self.printAspect(orientation) : Self.screenAspect
+    }
+
+    mutating func set(_ kind: CropKind, _ c: Crop, uprightWidth w: Int, height h: Int) {
+        let t = turnedSize(uprightWidth: w, height: h)
+        let clamped = Self.clamped(c, aspect: aspect(kind), in: t.width, t.height)
+        if kind == .print { printCrop = clamped } else { screenCrop = clamped }
+    }
+
+    /// Moves a crop by fractions of the turned photograph's width and height,
+    /// stopping at the edges.
+    public mutating func move(_ kind: CropKind, dx: Double, dy: Double, uprightWidth w: Int, height h: Int) {
+        let c = crop(kind)
+        set(kind, Crop(centreX: c.centreX + dx, centreY: c.centreY + dy, zoom: c.zoom), uprightWidth: w, height: h)
+    }
+
+    /// Sets a crop's zoom about its centre, within 1–8, moving the centre
+    /// only as far as needed to keep the crop inside.
+    public mutating func setZoom(_ kind: CropKind, _ zoom: Double, uprightWidth w: Int, height h: Int) {
+        var c = crop(kind)
+        c.zoom = zoom
+        set(kind, c, uprightWidth: w, height: h)
+    }
+
+    /// Resizes a crop by dragging one of its corners to `point` (fractions
+    /// of the turned photograph), keeping its shape: the opposite corner
+    /// stays where it is, and the crop follows whichever way the corner
+    /// moved further. It stops at full size (zoom 1), at zoom 8 and at the
+    /// photograph's edges.
+    public mutating func resize(_ kind: CropKind, corner: Corner, to point: (x: Double, y: Double),
+                                uprightWidth w: Int, height h: Int) {
+        let t = turnedSize(uprightWidth: w, height: h)
+        let W = Double(t.width), H = Double(t.height), a = aspect(kind)
+        let f = fractions(kind, uprightWidth: w, height: h)
+        // The opposite corner, in pixels, and which way the crop grows from it.
+        let sx: Double = corner.isLeft ? -1 : 1, sy: Double = corner.isTop ? -1 : 1
+        let ax = (corner.isLeft ? f.x + f.width : f.x) * W
+        let ay = (corner.isTop ? f.y + f.height : f.y) * H
+        let px = point.x * W, py = point.y * H
+        let fit = Self.size(aspect: a, zoom: 1, in: t.width, t.height).width
+        var width = max((px - ax) * sx, (py - ay) * sy * a)
+        // Room from the anchor to the photograph's edge, both ways.
+        let roomX = sx > 0 ? W - ax : ax, roomY = sy > 0 ? H - ay : ay
+        width = min(width, fit, roomX, roomY * a)
+        width = max(width, fit / Crop.maxZoom)
+        let height = width / a
+        let centre = Crop(centreX: (ax + sx * width / 2) / W, centreY: (ay + sy * height / 2) / H,
+                          zoom: fit / width)
+        set(kind, centre, uprightWidth: w, height: h)
+    }
+
+    /// Back to centred at zoom 1.
+    public mutating func reset(_ kind: CropKind, uprightWidth w: Int, height h: Int) {
+        set(kind, .centred, uprightWidth: w, height: h)
+    }
+
+    /// Clamps both stored crops after a turn or an orientation change.
+    public mutating func clampCrops(uprightWidth w: Int, height h: Int) {
+        set(.print, printCrop, uprightWidth: w, height: h)
+        set(.screen, screenCrop, uprightWidth: w, height: h)
+    }
+
+    /// A crop as fractions of the turned photograph (x, y, width, height),
+    /// before rounding to pixels: for drawing it.
+    public func fractions(_ kind: CropKind, uprightWidth w: Int, height h: Int)
+        -> (x: Double, y: Double, width: Double, height: Double) {
+        let t = turnedSize(uprightWidth: w, height: h)
+        let c = Self.clamped(crop(kind), aspect: aspect(kind), in: t.width, t.height)
+        let s = Self.size(aspect: aspect(kind), zoom: c.zoom, in: t.width, t.height)
+        let fw = s.width / Double(t.width), fh = s.height / Double(t.height)
+        return (c.centreX - fw / 2, c.centreY - fh / 2, fw, fh)
+    }
 
     /// The print crop, in whole pixels of the turned image (PH25, PH27).
     public func printRect(uprightWidth w: Int, height h: Int) -> PixelRect {

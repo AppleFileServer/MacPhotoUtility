@@ -11,7 +11,7 @@ both validated. The batch interface comes only after that works.
 | 0 Inspect and specify | **Done, 26 Oct 2026.** PQ1–PQ3, PQ7, PQ8 answered; PQ4–PQ6 wait for Plus checks (`PHASE-0-REPORT.md`) |
 | 1 Conversion engine | **Done, 26 Oct 2026** (D-0.0.2, `PHASE-1-REPORT.md`). Jack chose Atkinson (PH33) after seeing ten of his photographs |
 | 2 File exporters | **Built and tested, 26 Oct 2026** (D-0.0.3, `PHASE-2-PLAN.md`, `PHASE-2-REPORT.md`). Emulator check passed. Waiting for: the Plus checks (PH44, PQ10), then the freeze (PH45) |
-| 3 Single-image app | — |
+| 3 Single-image app | **Built, 26 Oct 2026** (D-0.0.4, `PHASE-3-PLAN.md`, `PHASE-3-REPORT.md`). Waiting for Jack to use it on his own photographs (PH56) |
 | 4 Batch processing | — |
 | 5 Saved projects | — |
 | 6 Compatibility and release | — |
@@ -58,8 +58,21 @@ evidence from the real machine.
 - [ ] Plus: screen PICT and MacPaint files open (Jack); whether anything opens the 8-bit PICT (PQ6)
 - [ ] FILE_FORMATS.md frozen as 1.0
 
-### Phases 3–6
-- [ ] Window: import, composition controls, print and screen previews, output and destination, progress, errors (§4, §5)
+### Phase 3: the single-image app
+- [x] `EditorSession`: the window's model, tested without a window (PH46)
+- [x] The window: photograph, composition editor, previews, output and export (PH47)
+- [x] Opening by ⌘O, drag-and-drop onto the window or the Dock icon, and Open With; errors in words (PH52)
+- [x] Editor: dimmed outside the crop, Print/Screen crops, drag, zoom (slider, pinch, scroll), turns, orientation, reset, arrow keys (PH48)
+- [x] Previews from the real renderers, debounced and cancellable; small-photograph warnings live (PH50, PH52)
+- [x] Output: PPI, files, remembered folder; Export; Keep Both (default) / Replace / Cancel; what was written, Show in Finder (PH51, PH53)
+- [x] `tools/build-app.sh`: `build/MacPhoto Utility.app`, signed ad hoc (PH55)
+- [x] Screenshots of each state; timings (PHASE-3-REPORT.md)
+- [x] Brightness and contrast for the screen image (PH57, Jack's request)
+- [x] Resizing a crop by its corners (PH58, Jack's request)
+- [ ] Dark appearance seen (not yet: the window uses system colours)
+- [ ] **Jack:** exports one of his photographs without the command line and is happy with it (PH56)
+
+### Phases 4–6
 - [ ] Batch: folder import, thumbnails, per-photo crops kept, shared profile, carry on after a failure, conflict choice (§8)
 - [ ] Projects: save and reopen, relink missing sources, export history (§9)
 - [ ] Plus checks (§11 real-hardware tests 1–6); user guide; clean build from a fresh checkout (§12 Phase 6)

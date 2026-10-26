@@ -52,7 +52,7 @@ public enum PrintRenderer {
 /// never from the print image.
 public enum ScreenRenderer {
     public struct Result: Sendable {
-        /// The 512 × 342 grey image before dithering.
+        /// The 512 × 342 grey image that was dithered (after the screen tone).
         public let grey: GreyImage
         public let bits: BitImage
         public let source: PixelRect
@@ -62,8 +62,9 @@ public enum ScreenRenderer {
     public static func render(_ upright: GreyImage, _ c: Composition,
                               dither: DitherOptions = .standard) -> Result {
         let rect = c.screenRect(uprightWidth: upright.width, height: upright.height)
-        let grey = Resampler.region(upright, turns: c.quarterTurns, rect: rect,
-                                    to: ScreenImage.width, ScreenImage.height)
+        let resampled = Resampler.region(upright, turns: c.quarterTurns, rect: rect,
+                                         to: ScreenImage.width, ScreenImage.height)
+        let grey = c.screenTone.apply(resampled)                // PH57; neutral changes nothing
         let small = rect.width < ScreenImage.width || rect.height < ScreenImage.height
         return Result(grey: grey, bits: Dither.dither(grey, options: dither), source: rect,
                       warnings: small ? [.smallForScreen(source: rect)] : [])
@@ -81,6 +82,16 @@ public enum Resampler {
         let turned = turns % 2 == 0 ? (upright.width, upright.height) : (upright.height, upright.width)
         let back = rect.unturned(turns, turnedWidth: turned.0, turnedHeight: turned.1)
         return scaled(upright.cropped(back).turned(turns), to: w, h)
+    }
+
+    /// The editor's working copy (PH49): no more than `maxSide` pixels on
+    /// its long side, the shape kept. Never used for an output.
+    public static func reduced(_ image: GreyImage, maxSide: Int = 2000) -> GreyImage {
+        let long = max(image.width, image.height)
+        guard long > maxSide else { return image }
+        let w = max(1, (image.width * maxSide + long / 2) / long)
+        let h = max(1, (image.height * maxSide + long / 2) / long)
+        return scaled(image, to: w, h)
     }
 
     public static func scaled(_ image: GreyImage, to w: Int, _ h: Int) -> GreyImage {

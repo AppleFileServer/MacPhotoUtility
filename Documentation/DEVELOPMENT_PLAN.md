@@ -10,7 +10,7 @@ both validated. The batch interface comes only after that works.
 |---|---|
 | 0 Inspect and specify | **Done, 26 Oct 2026.** PQ1–PQ3, PQ7, PQ8 answered; PQ4–PQ6 wait for Plus checks (`PHASE-0-REPORT.md`) |
 | 1 Conversion engine | **Done, 26 Oct 2026** (D-0.0.2, `PHASE-1-REPORT.md`). Jack chose Atkinson (PH33) after seeing ten of his photographs |
-| 2 File exporters | Next |
+| 2 File exporters | **Built and tested, 26 Oct 2026** (D-0.0.3, `PHASE-2-PLAN.md`, `PHASE-2-REPORT.md`). Waiting for: the emulator check (PH43, Jack's go-ahead), the Plus checks (PH44, PQ10), then the freeze (PH45) |
 | 3 Single-image app | — |
 | 4 Batch processing | — |
 | 5 Saved projects | — |
@@ -47,12 +47,14 @@ evidence from the real machine.
 - [x] `mpu convert`: one photograph to both canonical images
 
 ### Phase 2: exporters
-- [ ] 8-bit print PICT writer and validator (`FILE_FORMATS.md` §1)
-- [ ] 1-bit screen PICT writer and validator (§2)
-- [ ] MacPaint writer and validator (§3)
-- [ ] Manifest (§4)
-- [ ] Safe names; never overwrite silently
-- [ ] Handoff fixtures for the Transfer Utility (§5)
+- [x] 8-bit print PICT writer and validator (`FILE_FORMATS.md` §1; PH35, PH36)
+- [x] 1-bit screen PICT writer and validator (§2)
+- [x] MacPaint writer and validator (§3)
+- [x] Manifest (§4; PH41)
+- [x] Safe names; never overwrite silently; write, check, rename (PH38–PH40)
+- [x] Handoff fixtures for the Transfer Utility (§5; PH42), checked by a test
+- [ ] Second reader: ImageIO can't read our PICTs (PH37, see the report); the emulator check (PH43)
+- [x] Transfer test pack from Jack's ten photographs, with `PLUS-CHECKS.md` (PH44)
 - [ ] Plus: screen PICT and MacPaint files open (Jack); whether anything opens the 8-bit PICT (PQ6)
 - [ ] FILE_FORMATS.md frozen as 1.0
 

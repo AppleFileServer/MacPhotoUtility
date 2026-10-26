@@ -24,8 +24,21 @@ Phase 1 (45 tests in all):
   independent of the print crop, the warnings. Not byte for byte (vImage
   may change between macOS versions); the ditherer underneath is.
 
+Phase 2 (70 tests in all):
+- `PackBitsTests`: Apple's example byte for byte (TN 1023); long runs;
+  random round trips; strict unpacking; CRC-32 against zlib.
+- `ScreenPICTTests`, `MacPaintTests`, `PrintPICTTests`: round trips
+  (all four print sizes), the layout byte by byte where it's fixed, the
+  MacPaint placement, a noisy 360 PPI print's size, and damage refused.
+- `ExporterTests`: the three files and the manifest; only some kinds;
+  stop, keep both and replace; a failed check leaving nothing; a damaged
+  manifest stopping the export; warnings per file; Mac-safe names.
+- `FixtureTests`: every file in `Fixtures/handoff/` is in its README with
+  the right SHA-256; the good ones pass, the bad ones fail.
+
 The harness: `swift build`, then `.build/debug/mpu profiles`, `convert`,
-`compare`, `testimages` (usage: `mpu` with no arguments).
+`compare`, `export`, `validate`, `fixtures`, `testimages` (usage: `mpu`
+with no arguments).
 
 **Cross-check (once, 26 Oct, recorded in `PHASE-1-REPORT.md`):** the
 Atkinson output on three photographs matched an integer version of

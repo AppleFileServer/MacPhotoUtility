@@ -6,6 +6,7 @@ import MacPhotoTestSupport
 // the engine without the window: Phase 1 converts one photograph.
 
 let args = Array(CommandLine.arguments.dropFirst())
+setvbuf(stdout, nil, _IOLBF, 0)        // messages and errors in the order they happen
 
 func usage() -> Never {
     print("""
@@ -13,8 +14,12 @@ func usage() -> Never {
            mpu convert PHOTO [--ppi 300|360] [--orientation portrait|landscape]
                        [--turns N] [--print-crop X,Y,ZOOM] [--screen-crop X,Y,ZOOM]
                        [--preview DIR]
+           mpu export PHOTO --to DIR [same options as convert, but --preview]
+                      [--only print,screen,macpaint] [--if-exists stop|replace|keep-both]
+           mpu validate FILE...
            mpu compare PHOTO --out DIR [--set all|pair] [--turns N] [--screen-crop X,Y,ZOOM]
            mpu testimages DIR
+           mpu fixtures DIR
            mpu version
     """)
     exit(2)
@@ -46,6 +51,33 @@ func crop(_ text: String?) -> Crop? {
 }
 
 /// Loads the photograph and builds its composition from the options.
+func resolution(_ o: [String: String]) -> PrintResolution {
+    guard let p = o["--ppi"] else { return .standard }
+    guard let n = Int(p), let r = PrintResolution(rawValue: n) else { fail("--ppi is 300 or 360") }
+    return r
+}
+
+/// Recognises a file by its content, as the Transfer Utility will, and checks it.
+func validate(_ bytes: [UInt8]) -> (kind: String, result: Result<String, FormatError>) {
+    func attempt(_ body: () throws -> String) -> Result<String, FormatError> {
+        do { return .success(try body()) } catch let e as FormatError { return .failure(e) }
+        catch { return .failure(FormatError("\(error)")) }
+    }
+    let version = bytes.count > 524 ? Array(bytes[522..<524]) : []
+    if version == [0x11, 0x01] {
+        return ("screen PICT", attempt { _ = try ScreenPICTValidator.validate(bytes); return "512 x 342, 1-bit" })
+    }
+    if version == [0x00, 0x11] {
+        return ("print PICT", attempt {
+            let r = try PrintPICTValidator.validate(bytes).record
+            let p = r.profile.pixels
+            return "\(p.width) x \(p.height), 8-bit, \(r.profile.resolution.ppi) PPI, \(r.profile.orientation.rawValue)"
+                + String(format: ", CRC-32 %08X", r.pixelChecksum)
+        })
+    }
+    return ("MacPaint", attempt { _ = try MacPaintValidator.validate(bytes); return "576 x 720 page, screen image centred" })
+}
+
 func prepare(_ path: String, _ o: [String: String]) -> (ImportedPhoto, Composition) {
     let photo: ImportedPhoto
     do { photo = try Importer.load(URL(fileURLWithPath: path)) } catch { fail("\(error)") }
@@ -84,11 +116,7 @@ do {
         guard args.count >= 2 else { usage() }
         let o = options(args.dropFirst(2), allowed: ["--ppi", "--orientation", "--turns",
                                                      "--print-crop", "--screen-crop", "--preview"])
-        var resolution = PrintResolution.standard
-        if let p = o["--ppi"] {
-            guard let n = Int(p), let r = PrintResolution(rawValue: n) else { fail("--ppi is 300 or 360") }
-            resolution = r
-        }
+        let resolution = resolution(o)
         let (photo, c) = prepare(args[1], o)
         describe(photo)
         print("Composition: \(c.quarterTurns) quarter turn(s), \(c.orientation.rawValue)")
@@ -106,6 +134,43 @@ do {
             try Preview.writePNG(Preview.cgImage(screen.bits), to: folder.appendingPathComponent("screen.png"))
             print("Previews (not the real outputs): \(folder.path)/print.png, screen.png")
         }
+
+    case "export":
+        guard args.count >= 2 else { usage() }
+        let o = options(args.dropFirst(2), allowed: ["--to", "--ppi", "--orientation", "--turns", "--print-crop",
+                                                     "--screen-crop", "--only", "--if-exists"])
+        guard let to = o["--to"] else { usage() }
+        var kinds = Set(OutputKind.allCases)
+        if let only = o["--only"] {
+            let names = ["print": OutputKind.print, "screen": .screen, "macpaint": .macPaint]
+            kinds = Set(try only.split(separator: ",").map { s -> OutputKind in
+                guard let k = names[String(s)] else { throw FormatError("--only takes print, screen, macpaint") }
+                return k
+            })
+        }
+        guard let ifExists = IfExists(rawValue: o["--if-exists"] ?? "stop") else { usage() }
+        let (photo, c) = prepare(args[1], o)
+        describe(photo)
+        let folder = URL(fileURLWithPath: to)
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        let result = try Exporter.export(photo, c, resolution: resolution(o), kinds: kinds, to: folder, ifExists: ifExists)
+        for f in result.files { print("Exported and checked: \(f.path) (\(f.bytes) bytes)") }
+        for w in result.warnings { print("Warning: \(w)") }
+        print("Manifest: \(folder.path)/manifest.json")
+
+    case "validate":
+        guard args.count >= 2 else { usage() }
+        var failures = 0
+        for path in args.dropFirst() {
+            let name = (path as NSString).lastPathComponent
+            guard let data = FileManager.default.contents(atPath: path) else { print("\(name): can't be read"); failures += 1; continue }
+            let (kind, result) = validate([UInt8](data))
+            switch result {
+            case .success(let what): print("\(name): valid \(kind), \(what)")
+            case .failure(let e): print("\(name): not a valid \(kind): \(e)"); failures += 1
+            }
+        }
+        if failures > 0 { exit(1) }
 
     case "compare":
         // PH32: the screen image dithered seven ways, for Jack to choose from.
@@ -145,6 +210,12 @@ do {
         try Preview.writePNG(Preview.sheet(panels, columns: pair ? 3 : 2), to: sheet)
         for w in base.warnings { print("Warning: \(w)") }
         print("Sheet: \(sheet.path)")
+
+    case "fixtures":
+        // The handoff fixtures (PH42), for Fixtures/handoff/.
+        guard args.count == 2 else { usage() }
+        let items = try HandoffFixtures.make(into: URL(fileURLWithPath: args[1]))
+        for i in items { print("\(i.name): \(i.valid ? "good" : "bad"), \(i.tests)") }
 
     case "testimages":
         // The synthetic test images (PH31), for looking at.

@@ -36,7 +36,10 @@ photograph, and turns are exact moves of pixels (PH23).
 | `MacPhotoKit/Renderers` | `PrintRenderer`, `ScreenRenderer`, and `Resampler` (crop, turn, Lanczos), the one thing they share (PH28, PH30) | 1 |
 | `MacPhotoKit/Dither` | Atkinson and the comparison's options (PH29, PH32) | 1 |
 | `MacPhotoTestSupport` | the synthetic test images (PH31) | 1 |
-| `MacPhotoKit` writers and validators, manifest | the exporters | 2 |
+| `MacPhotoKit/Bytes`, `PackBits` | big-endian fields, CRC-32; PackBits by row, strict unpacking (PH34) | 2 |
+| `MacPhotoKit/ScreenPICT`, `MacPaint`, `PrintPICT` | each format's writer and, separately, its validator (PH35, PH36) | 2 |
+| `MacPhotoKit/Exporter`, `MacNames` | folders, names, conflicts, write-check-rename, `manifest.json` (PH38–PH41) | 2 |
+| `mpu` `export`, `validate`, `fixtures` | the harness's Phase 2 commands; `Fixtures/handoff/` (PH42) | 2 |
 | `MacPhotoKit` project, queue | saving, batches | 4–5 |
 | `mpu` | the harness: runs the engine without the window | 0 → |
 | `MacPhotoUtility` | the SwiftUI app; a placeholder until Phase 3 | 0, 3 → |

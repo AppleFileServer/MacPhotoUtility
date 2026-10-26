@@ -1,5 +1,16 @@
 # Changelog
 
+## D-0.0.3 (26 October 2026, not released)
+
+Phase 2: the files for the Plus, made from the harness.
+- Writes the 8-bit print PICT, the 1-bit screen PICT and the MacPaint
+  document, each checked by reading it back before it counts.
+- Exports into `Print Files`, `PICT Files` and `MacPaint Files`, with
+  names that work on the Plus; never overwrites without being asked.
+- `manifest.json` records what was exported, from what, and how.
+- `mpu export`, `mpu validate`, `mpu fixtures`; handoff fixtures for the
+  Macintosh Transfer Utility in `Fixtures/handoff/`.
+
 ## D-0.0.2 (26 October 2026, not released)
 
 Phase 1: the conversion engine, run from the harness. No files for the

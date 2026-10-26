@@ -8,8 +8,8 @@ as such and confirm nothing.
 |---|---|---|---|
 | MacPaint `.MAC` | MacPaint (on the Applications disk) | **Not tested** | — |
 | Screen PICT `.pict` (1-bit, v1) | MacPhoto (creator); meanwhile SuperPaint 2.0 or Photoshop 1.0 via Open | **Not tested** | — |
-| Print PICT `.pict` (8-bit, v2) | MacPhoto (not yet written); anything else? (PQ6) | **Not tested** | — |
-| Screen images in a screensaver | to be named (PQ4) | **Not tested** | — |
+| Print PICT `.pict` (8-bit, v2) | MacPhoto (not yet written); maybe Photoshop 1.0 (PQ6) | **Not tested** | — |
+| Screen images in a screensaver | After Dark 2.0 (on the boot disk); which module, which format (PQ4) | **Not tested** | — |
 
 Found on the Plus's disks (from the 21 Oct backup of "Applications
 40 MB", read only): MacPaint (`MPNT`), SuperPaint 2.0 (`SPNT`), Adobe

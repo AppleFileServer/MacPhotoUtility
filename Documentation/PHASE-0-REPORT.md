@@ -48,4 +48,6 @@ PQ1–PQ7 in `DECISIONS.md`. Jack answered PQ1 (forced crop, PH13), PQ2
 on the Plus (PH15). That raised PQ8, what the 8-bit editable files are,
 which Jack then answered: the print image is an 8-bit PICT replacing
 `.mppi` (PH16), every PICT opens in MacPhoto (PH17), screen images stay
-1-bit (PH18). PQ4–PQ6 wait for the Plus checks.
+1-bit (PH18). Then: the screensaver is After Dark 2.0 (PQ4), prints go
+to an inkjet through a print bridge (PQ5), and Photoshop 1.0 may open
+the 8-bit PICT (PQ6); each still needs a Plus check or a test print.

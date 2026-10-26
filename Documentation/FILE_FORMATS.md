@@ -104,7 +104,9 @@ exactly rowBytes bytes; the CRC matches; the file ends at OpEndPic.
 | Picture | **version 1** (PH5), one 1-bit 512 × 342 bitmap; 1 = black |
 
 Version 1 so the Plus's own QuickDraw draws it: any application that
-opens PICTs can show it.
+opens PICTs can show it. This is also the screensaver format: After Dark
+2.0's Slide Show module shows PICT files from its Slide Show Folder
+(DECISIONS.md PQ4). An 8-bit print PICT must not go there.
 
 | Bytes | Content |
 |---|---|

@@ -30,6 +30,7 @@ Conventions for every format here:
 | Print image | Edited in MacPhoto on the Plus; printed | 8-bit grey PICT, version 2 | §1 |
 | Screen image | Shown on the Plus as it is | 1-bit PICT, version 1 | §2 |
 | Screen image (rarely) | Shown or touched up in MacPaint | MacPaint document | §3 |
+| Project (this Mac only) | Saving and reopening work | JSON | §6 |
 
 ## 1. Print image: 8-bit greyscale PICT (`.pict`)
 
@@ -185,3 +186,54 @@ landscape, 300 and 360 PPI), and deliberately bad ones (named
 `bad-<what>.<ext>`), with a `README.md` listing what each tests and its
 SHA-256. The Transfer Utility copies them into its own tests; it never
 writes here.
+
+## 6. Project (`.macphoto`)
+
+**Added in Phase 5 (PH70). For this Mac only: never sent to the Plus,
+and not part of the handoff contract.** UTI `local.macphoto.project`,
+conforming to `public.json`. UTF-8 JSON, keys sorted, written to a
+temporary name and renamed. It holds where the photographs are, never the
+photographs.
+
+```json
+{
+  "projectVersion": 1,
+  "appVersion": "D-0.0.6",
+  "created": "2026-10-27T09:12:44Z",
+  "modified": "2026-10-27T10:41:03Z",
+  "settings": { "ppi": 360, "outputs": ["print", "screen"], "destination": "/Users/…/MacPhoto Files" },
+  "photographs": [
+    {
+      "path": "/Users/…/IMG_8691.HEIC",
+      "bookmark": "<base64 Finder bookmark>",
+      "fingerprint": { "bytes": 1891788, "sha256": "…" },
+      "kind": "HEIC", "uprightWidth": 4032, "uprightHeight": 3024,
+      "composition": {
+        "quarterTurns": 0, "orientation": "landscape",
+        "printCrop": { "centreX": 0.5, "centreY": 0.5, "zoom": 1 },
+        "screenCrop": { "centreX": 0.5, "centreY": 0.42, "zoom": 1.6 },
+        "screenTone": { "brightness": 10, "contrast": 20 }
+      },
+      "seen": true, "exported": true, "changedSinceExport": false,
+      "problem": null, "acceptedDifferentFile": false,
+      "history": [
+        { "date": "…", "folder": "/Users/…/MacPhoto Files", "ppi": 360, "warnings": [],
+          "appVersion": "D-0.0.6",
+          "files": [ { "path": "Print Files/IMG_8691.pict", "bytes": 1135764, "sha256": "…" } ] }
+      ]
+    }
+  ]
+}
+```
+
+| Field | Meaning |
+|---|---|
+| `projectVersion` | 1. A reader refuses a higher number (PH79) and ignores fields it doesn't know. |
+| `settings` | The shared PPI (300 or 360), the files (`print`, `screen`, `macPaint`) and the export folder. |
+| `photographs` | In queue order. |
+| `path`, `bookmark` | Where the photograph was, and a Finder bookmark that follows it if moved or renamed (PH73). |
+| `fingerprint` | Its size and SHA-256 (lower-case hex), taken when it was added (PH75); a file is accepted as this photograph only if both match, unless `acceptedDifferentFile` (PH74), in which case the fingerprint is the accepted file's. |
+| `composition` | The framing (PH24) and screen tone (PH57); centres and zoom as fractions, so independent of PPI and window. |
+| `seen`, `exported`, `changedSinceExport` | For the unseen question (PH66) and the status shown. |
+| `problem` | Why it couldn't be read, if it couldn't (PH77). |
+| `history` | Each export: date, folder, PPI (none if no print image), warnings, app version, and each file's path (relative to the folder), size and SHA-256 (PH76). |

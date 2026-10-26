@@ -1,5 +1,21 @@
 # Changelog
 
+## D-0.0.6 (26 October 2026, not released)
+
+Phase 5: projects.
+- Save the queue as a project (`.macphoto`): every photograph's framing
+  and screen settings, the output settings and each photograph's export
+  history; never the photographs themselves.
+- New, Open, Open Recent, Save, Save As; double-click a project to open
+  it; asked to save before closing, quitting, New or Open.
+- Photographs moved or renamed since are found again by their content;
+  ones that can't be found stay in the project with their framing, to be
+  located (one at a time or a folder at once). A different file is only
+  used if you say so.
+- Adding photographs is now ⌘I (⇧⌘I for a folder); ⌘O opens a project.
+- Fixed: sending a file to the app while it was running (the Dock icon,
+  Open With) closed its window and quit it.
+
 ## D-0.0.5 (26 October 2026, not released)
 
 Phase 4: many photographs at once.

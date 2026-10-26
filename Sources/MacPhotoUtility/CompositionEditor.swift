@@ -70,7 +70,7 @@ struct CompositionEditor: View {
                 set: { session.setZoom(pow(2, $0)) }), in: 0...3)
                 .frame(minWidth: 90, maxWidth: 160)
                 .accessibilityLabel("Zoom")
-                .accessibilityValue(String(format: "%.1f times", session.composition?.crop(session.editing).zoom ?? 1))
+                .accessibilityValue("\((session.composition?.crop(session.editing).zoom ?? 1).formatted(.number.precision(.fractionLength(1)))) times")
             Image(systemName: "plus.magnifyingglass").foregroundStyle(.secondary)
             Button("Reset") { session.resetCrop() }
                 .fixedSize()

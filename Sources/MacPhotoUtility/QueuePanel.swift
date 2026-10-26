@@ -15,16 +15,16 @@ struct QueuePanel: View {
                 Text("Photographs").font(.headline)
                 Spacer()
                 Button { Panels.addPhotographs(queue) } label: { Image(systemName: "plus") }
-                    .help("Add photographs (⌘O)")
+                    .help("Add photographs (⌘I)")
                     .accessibilityLabel("Add photographs")
                 Button { Panels.addFolder(queue) } label: { Image(systemName: "folder.badge.plus") }
-                    .help("Add the photographs in a folder (⇧⌘O)")
+                    .help("Add the photographs in a folder (⇧⌘I)")
                     .accessibilityLabel("Add a folder")
             }
             .padding(.horizontal, 12).padding(.vertical, 10)
 
             if queue.entries.isEmpty {
-                Text("Add photographs with the + buttons, File ▸ Add Photographs… (⌘O), or by dragging photographs or a folder onto this window.")
+                Text("Add photographs with the + buttons, File ▸ Add Photographs… (⌘I), or by dragging photographs or a folder onto this window.")
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(12)
@@ -93,12 +93,22 @@ struct QueuePanel: View {
                 if let c = queue.editor.composition, c.quarterTurns != 0 {
                     detail("Turned", "\(c.quarterTurns * 90)° clockwise")
                 }
+                if let e = queue.entries.first(where: { $0.id == queue.editingID }) { history(e) }
             } else if queue.editor.isOpening {
                 ProgressView("Opening…").controlSize(.small)
-            } else if let id = selection.first, selection.count == 1,
-                      let e = queue.entries.first(where: { $0.id == id }), case .failed(let why) = e.state {
+            } else if let e = selectedEntry, case .failed(let why) = e.state {
                 Label(e.name, systemImage: "xmark.octagon.fill").foregroundStyle(.red).font(.callout)
                 Text("Can't be read: \(why)").font(.caption).fixedSize(horizontal: false, vertical: true)
+            } else if let e = selectedEntry, e.state == .missing {
+                // PH73, PH74: missing, its framing kept until it's found.
+                Label(e.name, systemImage: "questionmark.folder.fill").foregroundStyle(.orange).font(.callout)
+                Text("Not found. It was at \(e.url.deletingLastPathComponent().path). Its framing is kept.")
+                    .font(.caption).fixedSize(horizontal: false, vertical: true).textSelection(.enabled)
+                HStack {
+                    Button("Locate…") { Panels.locate(queue, e.id) }
+                    Button("Locate in Folder…") { Panels.locateInFolder(queue) }
+                }
+                .controlSize(.small)
             } else {
                 Text(selection.count > 1 ? "\(selection.count) selected" : "No photograph selected")
                     .font(.callout).foregroundStyle(.secondary)
@@ -108,6 +118,33 @@ struct QueuePanel: View {
         }
         .padding(12)
         .frame(maxWidth: .infinity, minHeight: 150, alignment: .topLeading)
+    }
+
+    private var selectedEntry: PhotoQueue.Entry? {
+        guard selection.count == 1, let id = selection.first else { return nil }
+        return queue.entries.first { $0.id == id }
+    }
+
+    /// The photograph's export history (PH76): exported and checked, never
+    /// "transferred" or "printed".
+    @ViewBuilder
+    private func history(_ e: PhotoQueue.Entry) -> some View {
+        if let last = e.history.last {
+            let when = (ISO8601DateFormatter().date(from: last.date)).map {
+                $0.formatted(date: .abbreviated, time: .shortened)
+            } ?? last.date
+            let n = e.history.count
+            Text("Exported and checked \(n == 1 ? "once" : "\(n) times"); last \(when) to \(URL(fileURLWithPath: last.folder).lastPathComponent)")
+                .font(.caption).foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+                .help(e.history.reversed().map { r in
+                    "\(r.date): " + r.files.map(\.path).joined(separator: ", ")
+                }.joined(separator: "\n"))
+        }
+        if e.acceptedDifferentFile {
+            Text("Linked to a different file than first added, on purpose.")
+                .font(.caption).foregroundStyle(.orange)
+        }
     }
 
     private func detail(_ label: String, _ value: String) -> some View {
@@ -171,6 +208,7 @@ struct QueueRow: View {
         switch entry.state {
         case .reading: return "Reading…"
         case .failed(let why): return "Can't be read: \(why)"
+        case .missing: return "Missing: not where it was"
         case .ready:
             if entry.exported && !entry.changedSinceExport { return "Exported" }
             if small { return "Small for its output" }
@@ -181,6 +219,7 @@ struct QueueRow: View {
     private var statusColour: Color {
         switch entry.state {
         case .failed: .red
+        case .missing: .orange
         case .reading: .secondary
         case .ready: small && !(entry.exported && !entry.changedSinceExport) ? .orange : .secondary
         }
@@ -191,6 +230,7 @@ struct QueueRow: View {
         switch entry.state {
         case .reading: ProgressView().controlSize(.mini)
         case .failed: Image(systemName: "xmark.octagon.fill").foregroundStyle(.red)
+        case .missing: Image(systemName: "questionmark.folder.fill").foregroundStyle(.orange)
         case .ready:
             if entry.exported && !entry.changedSinceExport {
                 Image(systemName: "checkmark.circle.fill").foregroundStyle(.green)

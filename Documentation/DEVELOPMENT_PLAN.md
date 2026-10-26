@@ -13,7 +13,7 @@ both validated. The batch interface comes only after that works.
 | 2 File exporters | **Built and tested, 26 Oct 2026** (D-0.0.3, `PHASE-2-PLAN.md`, `PHASE-2-REPORT.md`). Emulator check passed. Waiting for: the Plus checks (PH44, PQ10), then the freeze (PH45) |
 | 3 Single-image app | **Built, 26 Oct 2026** (D-0.0.4, `PHASE-3-PLAN.md`, `PHASE-3-REPORT.md`). Waiting for Jack to use it on his own photographs (PH56) |
 | 4 Batch processing | **Built, 26 Oct 2026** (D-0.0.5, `PHASE-4-PLAN.md`, `PHASE-4-REPORT.md`). Waiting for Jack to export a folder of his own (PH69) |
-| 5 Saved projects | — |
+| 5 Saved projects | **Built, 26 Oct 2026** (D-0.0.6, `PHASE-5-PLAN.md`, `PHASE-5-REPORT.md`). Waiting for Jack to save, quit, move a photograph and reopen (PH79) |
 | 6 Compatibility and release | — |
 
 ## Checklist from the specification
@@ -86,6 +86,16 @@ evidence from the real machine.
 - [x] Specification §11's batch tests; screenshots (PHASE-4-REPORT.md)
 - [ ] **Jack:** exports a folder of his own photographs (PH69)
 
-### Phases 5–6
+### Phase 5: saved projects
+- [x] The `.macphoto` project file, versioned, documented (FILE_FORMATS.md §6; PH70)
+- [x] File menu, title and edited mark, double-click to open, Open Recent (PH71)
+- [x] Save / Don't Save / Cancel on closing, quitting, New and Open (PH72)
+- [x] Moved photographs found by bookmark and fingerprint; missing ones kept with their framing (PH73)
+- [x] Locate… and Locate in Folder…; a different file only after asking (PH74)
+- [x] Fingerprints on adding (PH75); export history per photograph (PH76)
+- [x] Newer and damaged projects refused in words (PH79)
+- [ ] **Jack:** saves, quits, moves a photograph and reopens it (PH79)
+
+### Phase 6
 - [ ] Projects: save and reopen, relink missing sources, export history (§9)
 - [ ] Plus checks (§11 real-hardware tests 1–6); user guide; clean build from a fresh checkout (§12 Phase 6)

@@ -78,6 +78,16 @@ renumber or delete an entry; mark it **Superseded by PHn**.
 | PH67 | **Flat memory:** thumbnails, one selected photograph, at most one being exported; checked with 200 generated photographs. | Provisional, Phase 4 | 2026-10-26 |
 | PH68 | **Not saved yet:** quitting with changed, unexported framing asks first. | Provisional, Phase 4 | 2026-10-26 |
 | PH69 | **Checked** by tests (specification §11's batch list), a generated mixed test folder, screenshots, and Jack exporting a folder; D-0.0.5. | Firm (Jack) | 2026-10-26 |
+| PH70 | **Project file `Name.macphoto`:** JSON, versioned (`projectVersion` 1), written field by field, `FILE_FORMATS.md` §6; settings and the photographs in order (location, fingerprint, framing, screen tone, seen, export history); never the photographs themselves. | Provisional, Phase 5 | 2026-10-26 |
+| PH71 | **One project, one window.** New ⌘N, Open… ⌘O, Open Recent, Save ⌘S, Save As… ⇧⌘S; Add Photographs… ⌘I, Add Folder… ⇧⌘I; the title shows the project and the edited mark; double-clicking a project opens it. | Provisional, Phase 5 | 2026-10-26 |
+| PH72 | **Saving when you choose:** Save / Don't Save / Cancel on closing, quitting, New or Open with unsaved changes (replaces PH68's question); written to a temporary name then renamed; no autosave. | Provisional, Phase 5 | 2026-10-26 |
+| PH73 | **Finding photographs again:** a Finder bookmark first, then the saved path, accepted only when size and SHA-256 match; moved ones updated and listed; the rest kept as Missing with their framing. | Provisional, Phase 5 | 2026-10-26 |
+| PH74 | **Relinking, never substituting:** Locate… and Locate in Folder… (by name, then fingerprint); a different file only after an explicit question, recorded. | Provisional, Phase 5 | 2026-10-26 |
+| PH75 | **Fingerprints on adding,** in the background with the thumbnail. | Provisional, Phase 5 | 2026-10-26 |
+| PH76 | **Export history per photograph** (date, folder, files with SHA-256s, PPI, warnings); "exported and checked", never "transferred" or "printed". | Provisional, Phase 5 | 2026-10-26 |
+| PH77 | **Errors kept, warnings worked out again** on opening. | Provisional, Phase 5 | 2026-10-26 |
+| PH78 | **A project carries its own settings;** a new project starts from the last used; a missing folder is shown and asked for at export. | Provisional, Phase 5 | 2026-10-26 |
+| PH79 | **A newer project version is refused, unknown fields ignored, a damaged file reported;** checked by tests, screenshots and Jack; D-0.0.6. | Firm (Jack) | 2026-10-26 |
 
 ## Open questions
 

@@ -19,6 +19,10 @@ public final class EditorSession {
         public let id = UUID()
         public let title: String
         public let detail: String
+        public init(title: String, detail: String) {
+            self.title = title
+            self.detail = detail
+        }
         public static func == (a: Message, b: Message) -> Bool { a.title == b.title && a.detail == b.detail }
     }
 
@@ -34,6 +38,7 @@ public final class EditorSession {
         didSet {
             guard settings != oldValue else { return }
             saveSettings()
+            onSettingsChanged?()
             if settings.resolution != oldValue.resolution { schedulePreviews() }
         }
     }
@@ -66,8 +71,10 @@ public final class EditorSession {
     /// Called with the composition after every edit, so the queue can keep
     /// each photograph's own (PH59).
     public var onEdit: ((Composition) -> Void)?
-    /// Called after the photograph in hand has been exported.
-    public var onExported: (() -> Void)?
+    /// Called after the photograph in hand has been exported, with what was written.
+    public var onExported: ((_ files: [ExportedFile], _ warnings: [RenderWarning]) -> Void)?
+    /// Called when the shared settings change (a project's unsaved changes).
+    public var onSettingsChanged: (() -> Void)?
     private var openGeneration = 0
 
     /// Opens a photograph, framed as `composition` says, or with the
@@ -231,7 +238,7 @@ public final class EditorSession {
                                     to: folder, ifExists: ifExists)
             }.value
             lastExport = result
-            onExported?()
+            onExported?(result.files, result.warnings)
         } catch ExportError.exists(let names) {
             conflict = names
         } catch {

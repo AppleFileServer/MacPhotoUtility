@@ -4,18 +4,21 @@ import Observation
 /// The photographs being worked on, in order (Phase 4; PH59–PH68): each
 /// with its own framing, status and thumbnail, sharing one set of output
 /// settings. The editor edits the selected one; Export All exports them
-/// one at a time. Tested without a window.
+/// one at a time. Saved and reopened as a project (Phase 5; PH70–PH79).
+/// Tested without a window.
 @MainActor @Observable
 public final class PhotoQueue {
     public enum State: Equatable, Sendable {
         case reading
         case ready
         case failed(String)
+        /// Not found when the project was opened (PH73).
+        case missing
     }
 
     public struct Entry: Identifiable, Sendable {
         public let id = UUID()
-        public let url: URL
+        public var url: URL
         public var state: State = .reading
         public var kind: String?
         public var uprightWidth = 0, uprightHeight = 0
@@ -27,8 +30,17 @@ public final class PhotoQueue {
         /// Changed since it was last exported (PH68).
         public var changedSinceExport = false
         public var exported = false
+        /// Size and SHA-256, to know it again (PH73, PH75).
+        public var fingerprint: Fingerprint?
+        /// A Finder bookmark, which follows the file if it moves.
+        public var bookmark: Data?
+        /// Relinked to a file with different content, on purpose (PH74).
+        public var acceptedDifferentFile = false
+        public var history: [ExportRecord] = []
 
         public var name: String { url.lastPathComponent }
+
+        init(url: URL) { self.url = url }
     }
 
     /// What adding found (PH60).
@@ -37,6 +49,12 @@ public final class PhotoQueue {
         public var alreadyThere = 0
         /// Files that aren't photographs this app reads, with the reason.
         public var skipped: [String] = []
+    }
+
+    /// What opening a project found (PH73).
+    public struct OpenReport: Sendable, Equatable {
+        public var moved: [String] = []
+        public var missing: [String] = []
     }
 
     /// The questions Export All may ask (PH65, PH66).
@@ -63,6 +81,14 @@ public final class PhotoQueue {
         public var files = 0
     }
 
+    /// Relinking a photograph to a file (PH74).
+    public enum RelinkOutcome: Equatable, Sendable {
+        case linked
+        /// The file's content isn't the photograph's: not used unless confirmed.
+        case differs
+        case unreadable(String)
+    }
+
     public private(set) var entries: [Entry] = []
     /// The photograph in the editor.
     public private(set) var editingID: UUID?
@@ -73,13 +99,23 @@ public final class PhotoQueue {
     public private(set) var progress: Progress?
     public private(set) var summary: Summary?
 
+    /// The project's file, nil until it's saved (PH71).
+    public private(set) var projectURL: URL?
+    /// Changes since the project was last saved or opened (PH72).
+    public private(set) var isDirty = false
+    private var created = ISO8601DateFormatter().string(from: Date())
+
     private var plan: [(id: UUID, copy: Int)] = []
     private var stopRequested = false
 
     public init(editor: EditorSession = EditorSession()) {
         self.editor = editor
         editor.onEdit = { [weak self] c in self?.recordEdit(c) }
-        editor.onExported = { [weak self] in self?.markExported(self?.editingID) }
+        editor.onExported = { [weak self] files, warnings in
+            guard let self, let id = self.editingID, let folder = self.settings.destination else { return }
+            self.recordExport(id, folder: folder, files: files, warnings: warnings)
+        }
+        editor.onSettingsChanged = { [weak self] in self?.isDirty = true }
     }
 
     public var settings: EditorSession.Settings {
@@ -89,7 +125,10 @@ public final class PhotoQueue {
 
     public var isExporting: Bool { progress != nil }
 
-    // MARK: Adding (PH60, PH61)
+    /// The window's title: the project's name, or Untitled.
+    public var title: String { projectURL?.deletingPathExtension().lastPathComponent ?? "Untitled" }
+
+    // MARK: Adding (PH60, PH61, PH75)
 
     /// Adds files and the photographs directly inside folders.
     @discardableResult
@@ -122,45 +161,78 @@ public final class PhotoQueue {
 
         let newEntries = fresh.map { Entry(url: $0) }
         entries += newEntries
-
-        // Read each one's header and thumbnail, two at a time.
-        await withTaskGroup(of: (UUID, Result<Importer.Probe, Error>).self) { group in
-            var pending = newEntries[...]
-            func next() {
-                guard let e = pending.popFirst() else { return }
-                let url = e.url, id = e.id
-                group.addTask { (id, Result { try Importer.probe(url) }) }
-            }
-            next(); next()
-            for await (id, result) in group {
-                switch result {
-                case .success(let p): finishProbe(id, p)
-                case .failure(let error): report.skipped += failProbe(id, error)
-                }
-                next()
-            }
-        }
+        report.skipped = await readAll(newEntries.map(\.id), fingerprint: true)
         report.added = newEntries.count - report.skipped.count
+        if report.added > 0 { isDirty = true }
         lastAdd = report
         return report
     }
 
-    private func finishProbe(_ id: UUID, _ p: Importer.Probe) {
+    /// What reading one photograph on adding or reopening finds.
+    private struct Read: Sendable {
+        let probe: Importer.Probe
+        let fingerprint: Fingerprint?
+        let bookmark: Data?
+    }
+
+    /// Reads each one's header and thumbnail (and, when added, fingerprint
+    /// and bookmark), two at a time. Returns the files dropped as not
+    /// photographs.
+    private func readAll(_ ids: [UUID], fingerprint: Bool) async -> [String] {
+        var skipped = [String]()
+        let jobs = ids.compactMap { id in index(id).map { (id, entries[$0].url) } }
+        await withTaskGroup(of: (UUID, Result<Read, Error>).self) { group in
+            var pending = jobs[...]
+            func next() {
+                guard let (id, url) = pending.popFirst() else { return }
+                group.addTask {
+                    (id, Result {
+                        let p = try Importer.probe(url)
+                        return Read(probe: p,
+                                    fingerprint: fingerprint ? try Fingerprint.of(url) : nil,
+                                    bookmark: fingerprint ? try? url.bookmarkData() : nil)
+                    })
+                }
+            }
+            next(); next()
+            for await (id, result) in group {
+                switch result {
+                case .success(let r): finishRead(id, r)
+                case .failure(let error): skipped += failRead(id, error)
+                }
+                next()
+            }
+        }
+        return skipped
+    }
+
+    private func finishRead(_ id: UUID, _ r: Read) {
         guard let i = index(id) else { return }
+        let p = r.probe
         entries[i].state = .ready
         entries[i].kind = p.kind
         entries[i].uprightWidth = p.uprightWidth
         entries[i].uprightHeight = p.uprightHeight
         entries[i].thumbnail = p.thumbnail
-        entries[i].composition = Composition(uprightWidth: p.uprightWidth, height: p.uprightHeight)
+        if entries[i].composition == nil {
+            entries[i].composition = Composition(uprightWidth: p.uprightWidth, height: p.uprightHeight)
+        }
+        if let f = r.fingerprint { entries[i].fingerprint = f }
+        if let b = r.bookmark { entries[i].bookmark = b }
     }
 
     /// Not a photograph at all: dropped from the queue and listed. A damaged
     /// or too-large photograph stays, marked (PH61).
-    private func failProbe(_ id: UUID, _ error: Error) -> [String] {
+    private func failRead(_ id: UUID, _ error: Error) -> [String] {
         guard let i = index(id) else { return [] }
         switch error as? ImportError {
         case .notAnImage, .unsupported, .empty, .missing, .none:
+            // A photograph from a project that is no longer a picture stays,
+            // marked, rather than vanishing from the project.
+            if entries[i].fingerprint != nil && entries[i].composition != nil {
+                entries[i].state = .failed(Self.reason(error))
+                return []
+            }
             let e = entries.remove(at: i)
             return ["\(e.name): \(Self.reason(error))"]
         case .damaged, .tooLarge:
@@ -201,12 +273,19 @@ public final class PhotoQueue {
         guard let id = editingID, let i = index(id) else { return }
         entries[i].composition = c
         entries[i].changedSinceExport = true
+        isDirty = true
     }
 
-    private func markExported(_ id: UUID?) {
-        guard let id, let i = index(id) else { return }
+    /// Records an export in the photograph's history (PH76).
+    private func recordExport(_ id: UUID, folder: URL, files: [ExportedFile], warnings: [RenderWarning]) {
+        guard let i = index(id) else { return }
         entries[i].exported = true
         entries[i].changedSinceExport = false
+        entries[i].history.append(ExportRecord(
+            folder: folder, files: files,
+            ppi: files.contains { $0.kind == .print } ? settings.resolution.ppi : nil,
+            warnings: warnings.map(\.description)))
+        isDirty = true
     }
 
     /// Removes photographs from the queue, never from the disk.
@@ -215,7 +294,9 @@ public final class PhotoQueue {
             editingID = nil
             editor.close()
         }
+        let before = entries.count
         entries.removeAll { ids.contains($0.id) }
+        if entries.count != before { isDirty = true }
     }
 
     public func removeAll() { remove(Set(entries.map(\.id))) }
@@ -233,8 +314,194 @@ public final class PhotoQueue {
         return printSmall || screenSmall
     }
 
-    /// Photographs with framing changed and not exported (PH68).
+    /// Photographs with framing changed and not exported.
     public var unexportedChanges: Int { entries.filter(\.changedSinceExport).count }
+
+    // MARK: Projects (PH70–PH79)
+
+    /// The project as it would be saved.
+    public func projectFile() -> ProjectFile {
+        ProjectFile(
+            created: created,
+            modified: ISO8601DateFormatter().string(from: Date()),
+            settings: .init(ppi: settings.resolution.ppi,
+                            outputs: OutputKind.allCases.filter(settings.outputs.contains).map(\.rawValue),
+                            destination: settings.destination?.path),
+            photographs: entries.map { e in
+                var problem: String?
+                if case .failed(let why) = e.state { problem = why }
+                return .init(path: e.url.path, bookmark: e.bookmark, fingerprint: e.fingerprint, kind: e.kind,
+                             uprightWidth: e.uprightWidth, uprightHeight: e.uprightHeight,
+                             composition: e.composition, seen: e.seen, exported: e.exported,
+                             changedSinceExport: e.changedSinceExport, problem: problem,
+                             acceptedDifferentFile: e.acceptedDifferentFile, history: e.history)
+            })
+    }
+
+    /// Saves the project to `url` (PH72).
+    public func save(to url: URL) throws {
+        try projectFile().write(to: url)
+        projectURL = url
+        isDirty = false
+    }
+
+    /// Starts an empty project with the settings last used (PH78).
+    public func newProject() {
+        editingID = nil
+        editor.close()
+        entries = []
+        lastAdd = nil
+        summary = nil
+        projectURL = nil
+        created = ISO8601DateFormatter().string(from: Date())
+        isDirty = false
+    }
+
+    /// Opens a project: each photograph is found again by its bookmark or
+    /// its path, and accepted only if its fingerprint matches (PH73).
+    @discardableResult
+    public func openProject(_ url: URL) async throws -> OpenReport {
+        let data: Data
+        do { data = try Data(contentsOf: url) }
+        catch { throw ProjectFile.Problem.unreadable("the file can't be opened") }
+        let file = try ProjectFile.decode(data)
+
+        newProject()
+        created = file.created
+        var s = settings
+        s.resolution = PrintResolution(rawValue: file.settings.ppi) ?? .standard
+        s.outputs = Set(file.settings.outputs.compactMap(OutputKind.init))
+        s.destination = file.settings.destination.map { URL(fileURLWithPath: $0) }
+        settings = s
+
+        entries = file.photographs.map { p in
+            var e = Entry(url: URL(fileURLWithPath: p.path))
+            e.kind = p.kind
+            e.uprightWidth = p.uprightWidth
+            e.uprightHeight = p.uprightHeight
+            e.composition = p.composition
+            e.seen = p.seen
+            e.exported = p.exported
+            e.changedSinceExport = p.changedSinceExport
+            e.fingerprint = p.fingerprint
+            e.bookmark = p.bookmark
+            e.acceptedDifferentFile = p.acceptedDifferentFile
+            e.history = p.history
+            e.state = .missing
+            return e
+        }
+
+        // Find each one again, off the main actor (hashing reads the files).
+        var report = OpenReport()
+        let wanted = entries.map { ($0.id, $0.url, $0.bookmark, $0.fingerprint) }
+        let found = await withTaskGroup(of: (UUID, URL?).self) { group in
+            for (id, path, bookmark, fingerprint) in wanted {
+                group.addTask { (id, Self.locate(path: path, bookmark: bookmark, fingerprint: fingerprint)) }
+            }
+            var out = [UUID: URL]()
+            for await (id, u) in group { if let u { out[id] = u } }
+            return out
+        }
+        var toRead = [UUID]()
+        for i in entries.indices {
+            let id = entries[i].id
+            if let u = found[id] {
+                if u.standardizedFileURL.path != entries[i].url.standardizedFileURL.path {
+                    report.moved.append(entries[i].name)
+                    entries[i].url = u
+                    entries[i].bookmark = try? u.bookmarkData()
+                }
+                entries[i].state = .reading
+                toRead.append(id)
+            } else {
+                report.missing.append(entries[i].name)
+            }
+        }
+        _ = await readAll(toRead, fingerprint: false)
+        projectURL = url
+        isDirty = !report.moved.isEmpty            // new locations to save
+        return report
+    }
+
+    /// Where a saved photograph is now, if anywhere: its bookmark first, then
+    /// its path; only a file with the same fingerprint counts (PH73).
+    nonisolated static func locate(path: URL, bookmark: Data?, fingerprint: Fingerprint?) -> URL? {
+        var candidates = [URL]()
+        if let bookmark {
+            var stale = false
+            if let u = try? URL(resolvingBookmarkData: bookmark, options: [.withoutUI], bookmarkDataIsStale: &stale) {
+                candidates.append(u)
+            }
+        }
+        candidates.append(path)
+        for u in candidates where FileManager.default.fileExists(atPath: u.path) {
+            if matches(u, fingerprint) { return u }
+        }
+        return nil
+    }
+
+    /// The same photograph: same size, then same SHA-256. A project saved
+    /// without a fingerprint accepts the file as it is.
+    nonisolated static func matches(_ url: URL, _ fingerprint: Fingerprint?) -> Bool {
+        guard let fingerprint else { return FileManager.default.fileExists(atPath: url.path) }
+        guard Fingerprint.size(url) == fingerprint.bytes else { return false }
+        return (try? Fingerprint.of(url)) == fingerprint
+    }
+
+    // MARK: Relinking (PH74)
+
+    /// Links a missing photograph to `url`, if it's the same photograph.
+    public func relink(_ id: UUID, to url: URL) async -> RelinkOutcome {
+        guard let i = index(id) else { return .unreadable("it's no longer in the queue") }
+        let fp = entries[i].fingerprint
+        let same = await Task.detached { Self.matches(url, fp) }.value
+        guard same else { return .differs }
+        return await link(id, to: url, acceptingDifferent: false)
+    }
+
+    /// Links to a file with different content, because you said so.
+    public func relinkAcceptingDifferent(_ id: UUID, to url: URL) async -> RelinkOutcome {
+        await link(id, to: url, acceptingDifferent: true)
+    }
+
+    private func link(_ id: UUID, to url: URL, acceptingDifferent: Bool) async -> RelinkOutcome {
+        guard index(id) != nil else { return .unreadable("it's no longer in the queue") }
+        let fp = await Task.detached { try? Fingerprint.of(url) }.value
+        guard let fp, let i = index(id) else { return .unreadable("the file can't be read") }
+        entries[i].url = url
+        entries[i].bookmark = try? url.bookmarkData()
+        if acceptingDifferent {
+            entries[i].fingerprint = fp
+            entries[i].acceptedDifferentFile = true
+        }
+        entries[i].state = .reading
+        isDirty = true
+        _ = await readAll([id], fingerprint: false)
+        if let j = index(id), case .failed(let why) = entries[j].state { return .unreadable(why) }
+        // Selected while it was missing: show it now it's back.
+        if editingID == id {
+            editingID = nil
+            await select(id)
+        }
+        return .linked
+    }
+
+    /// Looks in one folder for every missing photograph: by name, then by
+    /// size and fingerprint. Returns how many were found.
+    @discardableResult
+    public func locate(inFolder folder: URL) async -> Int {
+        let files = (try? FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil,
+                                                                  options: [.skipsHiddenFiles])) ?? []
+        var found = 0
+        for e in entries where e.state == .missing {
+            let byName = files.filter { $0.lastPathComponent == e.name }
+            let bySize = files.filter { $0.lastPathComponent != e.name && Fingerprint.size($0) == e.fingerprint?.bytes }
+            let fp = e.fingerprint
+            let match = await Task.detached { (byName + bySize).first { Self.matches($0, fp) } }.value
+            if let match, await link(e.id, to: match, acceptingDifferent: false) == .linked { found += 1 }
+        }
+        return found
+    }
 
     // MARK: Export All (PH64–PH66)
 
@@ -323,7 +590,7 @@ public final class PhotoQueue {
                 s.files += result.files.count
                 s.warnings += result.warnings.count
                 if copy > 1 { s.renumbered.append(e.name) }
-                markExported(job.id)
+                recordExport(job.id, folder: folder, files: result.files, warnings: result.warnings)
             } catch {
                 s.failed.append((e.name, Self.reason(error)))
                 if let i = index(job.id), error is ImportError { entries[i].state = .failed(Self.reason(error)) }

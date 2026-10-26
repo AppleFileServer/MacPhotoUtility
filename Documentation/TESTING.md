@@ -62,6 +62,16 @@ Phase 4 (107 tests in all):
   own, as it's slow and other tests move the footprint:
   `MPU_MEMORY_TEST=1 tools/test.sh --filter memoryStaysFlat`.
 
+Phase 5 (115 tests in all):
+- `ProjectTests`: fingerprints on adding; a round trip of everything
+  (order, framing, seen, settings, history, nothing photographic in the
+  file); a photograph moved and one renamed found by bookmark; one
+  deleted, kept as missing with its framing, found in a backup folder and
+  shown in the editor; a different file of the same name refused unless
+  confirmed, and the choice remembered; damaged, newer and absent project
+  files refused with the open project untouched; unknown fields ignored;
+  what counts as unsaved.
+
 The harness: `swift build`, then `.build/debug/mpu profiles`, `convert`,
 `compare`, `export`, `validate`, `fixtures`, `testimages` (usage: `mpu`
 with no arguments).
@@ -134,4 +144,12 @@ None has run yet.
 16. Export All on a long queue and press Stop: it finishes the photograph
     in hand and says so.
 17. Change a photograph's framing and quit: asked first.
+18. (Phase 5) Add photographs, frame one, ⌘S: the title shows the name,
+    the edited mark goes. Quit: not asked.
+19. Move one photograph, delete another (keeping a copy), double-click the
+    project: told which moved and which is missing; the missing one keeps
+    its framing; Locate in Folder… finds the copy and shows it.
+20. Quit: Save / Don't Save / Cancel; Save keeps the new places.
+21. With the app running, drag a photograph onto its Dock icon: it's
+    added; the window stays.
 

@@ -6,6 +6,7 @@ import MacPhotoKit
 struct MainWindow: View {
     let queue: PhotoQueue
     @State private var dropTargeted = false
+    @State private var window: NSWindow?
 
     private var session: EditorSession { queue.editor }
 
@@ -26,6 +27,11 @@ struct MainWindow: View {
                 .frame(width: 290)
         }
         .frame(minHeight: 760)
+        // The project's name and the edited mark in the title bar (PH71).
+        .navigationTitle(queue.title)
+        .background(WindowFinder { window = $0; updateWindow() })
+        .onChange(of: queue.isDirty) { updateWindow() }
+        .onChange(of: queue.projectURL) { updateWindow() }
         .overlay {
             if dropTargeted {
                 RoundedRectangle(cornerRadius: 8)
@@ -86,6 +92,11 @@ struct MainWindow: View {
         .sheet(isPresented: Binding(get: { queue.summary != nil }, set: { if !$0 { queue.dismissSummary() } })) {
             if let s = queue.summary { SummarySheet(queue: queue, summary: s) }
         }
+    }
+
+    private func updateWindow() {
+        window?.isDocumentEdited = queue.isDirty
+        window?.representedURL = queue.projectURL
     }
 
     private var unseenNames: [String] { if case .unseen(let n) = queue.question { n } else { [] } }

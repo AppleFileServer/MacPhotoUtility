@@ -1,9 +1,8 @@
 # Phase 2 report (26 October 2026, in progress)
 
 **D-0.0.3.** The exporters, as planned in `PHASE-2-PLAN.md` (PH34–PH45).
-Steps 1–7 and 9 are done; the emulator check (step 8) waits for Jack's
-go-ahead, and the Plus checks (step 10) for a way to reach the Plus
-(PQ10). 70 tests pass.
+Steps 1–9 are done; the Plus checks (step 10) wait for a way to reach
+the Plus (PQ10). 72 tests pass (with netpbm installed).
 
 ## What was built
 
@@ -25,12 +24,18 @@ go-ahead, and the Plus checks (step 10) for a way to reach the Plus
   and the 8-bit PICT as blank white. It draws After Dark's own sample
   picture (a 1990 version 2 PICT, read from a copy of the boot disk) as
   solid black. macOS can't write PICT, so there's no round trip either.
-  As PH37 said, the comparison was dropped rather than faked. The
-  validators remain the only automatic check; the emulator (PH43) and the
-  Plus are the independent readers. A long-standing reader written outside
-  Apple, netpbm's `picttoppm`, could be installed with Homebrew if Jack
-  wants a second automatic opinion, especially on the 8-bit PICT, which
-  the Plus itself can't draw.
+  As PH37 said, the comparison was dropped rather than faked.
+- **netpbm is the second reader instead.** With Jack's go-ahead, netpbm
+  (Homebrew) was installed; its `picttoppm` draws After Dark's PICT
+  correctly and decodes every PICT fixture exactly as our validators do,
+  pixel for pixel, including the 8-bit print PICTs, which the Plus's own
+  QuickDraw can't draw (`NetpbmTests`, skipped where netpbm is missing).
+- **The emulator check (PH43) passed.** In Mini vMac: MacPaint opened the
+  `.MAC` with no beep, centred, the user's patterns untouched; SuperPaint
+  drew the screen PICT; and **Photoshop 1.0 runs on the emulated Plus and
+  opened the 8-bit print PICT as Gray Scale** (PQ6). Details in
+  COMPATIBILITY.md; it took about twelve minutes of emulator time, more
+  than planned, because of preference-file dialogs.
 - **After Dark's sample PICT has data in its 512-byte header.** Ours are
   zeros, as FILE_FORMATS.md says; other people's PICTs needn't be. Told
   the Transfer session, whose validators may meet both.
@@ -41,7 +46,6 @@ go-ahead, and the Plus checks (step 10) for a way to reach the Plus
 
 ## Still to do
 
-- Step 8: the emulator check, with Jack's go-ahead (PH43).
 - Step 10: the Plus checks (`PLUS-CHECKS.md`), then the freeze (PH45). The
   Macintosh Transfer Utility won't read pictures until after its rename
   and generic file kinds (its T1, T2), so PQ10 needs an answer.

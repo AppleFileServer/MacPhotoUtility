@@ -33,6 +33,8 @@ Phase 2 (70 tests in all):
 - `ExporterTests`: the three files and the manifest; only some kinds;
   stop, keep both and replace; a failed check leaving nothing; a damaged
   manifest stopping the export; warnings per file; Mac-safe names.
+- `NetpbmTests`: netpbm's `picttoppm` decodes every PICT fixture exactly as
+  our validators do (skipped without netpbm: `brew install netpbm`).
 - `FixtureTests`: every file in `Fixtures/handoff/` is in its README with
   the right SHA-256; the good ones pass, the bad ones fail.
 

@@ -47,6 +47,6 @@ the Plus (PQ10). 72 tests pass (with netpbm installed).
 ## Still to do
 
 - Step 10: the Plus checks (`PLUS-CHECKS.md`), then the freeze (PH45). The
-  Macintosh Transfer Utility won't read pictures until after its rename
-  and generic file kinds (its T1, T2), so PQ10 needs an answer.
+  test pack goes over on `Photo Test.hda` (PQ10), which Jack copies to the
+  card himself.
 - Tell the Transfer session about the fixtures once they're committed.

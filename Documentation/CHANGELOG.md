@@ -3,7 +3,8 @@
 ## D-0.0.7 (26 October 2026, not released)
 
 Phase 6, before the Plus checks.
-- An icon of its own.
+- An icon of its own, in the style of the MacMusic Converter, Macintosh
+  Transfer and Macintosh Backup Utilities.
 - A user guide (`USER-GUIDE.md`) and draft release notes.
 - `tools/check-fresh-checkout.sh` and `tools/make-release.sh`.
 - `-MPUAppearance dark` at launch shows the app alone in dark appearance,

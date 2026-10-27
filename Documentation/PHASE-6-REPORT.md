@@ -8,8 +8,11 @@ the Plus checks, the freeze and Jack's acceptance (PH89). 115 tests pass.
 
 - **Version names** (PH80): the release is 1.0; PH11's B- for beta
   withdrawn in favour of the programme's P22.
-- **The icon** (PH84): drawn by `tools/make-icon.swift`; `make-icon.sh`
-  makes `Resources/AppIcon.icns`, which the app bundle carries.
+- **The icon** (PH84): first drawn by a script; then, at Jack's request,
+  remade in the family's style (the Converter, Transfer and Backup
+  Utilities' compact computer, a 1-bit photograph on its screen, a red
+  crop badge): `Resources/Icon/AppIcon.svg`, made into
+  `Resources/AppIcon.icns` by `tools/make-icon.sh` with headless Chrome.
 - **`USER-GUIDE.md`** and draft **`RELEASE-NOTES.md`** (PH85).
 - **`tools/check-fresh-checkout.sh`** (PH87): a clone of the last commit
   built, passed every test and built the signed app in 66 s.

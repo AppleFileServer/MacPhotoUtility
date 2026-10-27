@@ -92,7 +92,7 @@ renumber or delete an entry; mark it **Superseded by PHn**.
 | PH81 | **Compatibility from evidence only:** Plus checks recorded with dates, apart from emulator and netpbm results; anything unchecked listed in the release notes. | Firm (Jack) | 2026-10-26 |
 | PH82 | **The freeze:** FILE_FORMATS.md §1–§5 become 1.0 when the Plus checks pass (§6 versioned on its own); problems fixed first; the Transfer session told at once. | Firm (Jack) | 2026-10-26 |
 | PH83 | **The MacPhoto importer check is outstanding** in 1.0 (MacPhoto doesn't exist); what does confirm the print PICT is listed. | Firm (Jack) | 2026-10-26 |
-| PH84 | **An icon of its own:** a print and a Mac Plus-style screen, drawn by a script in `tools/`, previewed for Jack. | Provisional, Phase 6 | 2026-10-26 |
+| PH84 | **An icon of its own, in the family's style** (Jack, 27 Oct): the MacMusic Converter, Macintosh Transfer and Macintosh Backup Utilities' compact computer, its screen showing a 1-bit framed photograph, with a crop badge in the manual's red. `Resources/Icon/AppIcon.svg`, made into `AppIcon.icns` by `tools/make-icon.sh` with headless Chrome, as the Transfer Utility does (the .icns is kept, so building doesn't need Chrome). Replaces the first, drawn icon. | Firm (Jack) | 2026-10-27 |
 | PH85 | **A user guide:** `USER-GUIDE.md` and the release notes (PQ11 (a)). | Firm (Jack) | 2026-10-26 |
 | PH86 | **Example files** from the fixtures and the generated test images, never Jack's photographs. | Firm (Jack) | 2026-10-26 |
 | PH87 | **`tools/check-fresh-checkout.sh`:** clone, build, test, build the app, keep the log. | Firm (Jack) | 2026-10-26 |

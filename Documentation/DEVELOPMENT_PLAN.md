@@ -98,7 +98,7 @@ evidence from the real machine.
 
 ### Phase 6: compatibility and release
 - [x] Version names put right: 1.0, no B- for beta (PH80)
-- [x] The icon (PH84): `tools/make-icon.swift`, `make-icon.sh`, in the bundle
+- [x] The icon (PH84): the family's style, `Resources/Icon/AppIcon.svg`, `make-icon.sh`, in the bundle
 - [x] `USER-GUIDE.md` and draft `RELEASE-NOTES.md` (PH85)
 - [x] `tools/check-fresh-checkout.sh` (PH87): a clone builds, tests and builds the app (66 s)
 - [x] `tools/make-release.sh` (PH88), with examples (PH86)

@@ -1,9 +1,20 @@
-# MacPhoto Utility B-0.9.0
+# MacPhoto Utility B-0.9.1
 
-**27 October 2026. A release for use before the Plus checks** (PH90):
-installable and complete, but not yet tried on the Macintosh Plus, and
-the Macintosh Transfer Utility can't carry its files there yet. B-1.0.0
-follows once both have been done.
+**27 October 2026. A release for use before the Plus checks** (PH90,
+PH92): installable and complete, but not yet tried on the Macintosh Plus,
+and the Macintosh Transfer Utility can't carry its files there yet.
+B-1.0.0 follows once both have been done.
+
+## New in B-0.9.1
+
+- **The User's Guide**, 62 pages, in `manual/`: the own-use edition
+  (`MacPhoto-Utility-Users-Guide.pdf`) and the plain one
+  (`…-plain.pdf`). What is still to be seen on the Plus is marked
+  CHECK; those parts are settled for B-1.0.0.
+- The crop switch reads **Print Crop** and **Screen Crop**, as the guide
+  names them (PH91).
+
+The app is otherwise B-0.9.0's; its files and projects are the same.
 
 A Mac app that prepares photographs for a Macintosh Plus: a 2.5 × 3.5-inch
 8-bit greyscale print image (a PICT, for MacPhoto on the Plus and for
@@ -13,7 +24,7 @@ saved as a project. See `USER-GUIDE.md`.
 
 ## Installing
 
-Unzip `MacPhoto-Utility-B-0.9.0.zip` and drag **MacPhoto Utility** to
+Unzip `MacPhoto-Utility-B-0.9.1.zip` and drag **MacPhoto Utility** to
 Applications. It needs an Apple silicon Mac with macOS 26. It's signed ad
 hoc for its owner's own use, not notarised: if macOS won't open it the
 first time, open System Settings ▸ Privacy & Security and click **Open
@@ -64,5 +75,5 @@ Anyway** beside its name.
 ## The file formats
 
 `FILE_FORMATS.md` is **draft 0.3**: the formats may still change before
-B-1.0.0 if the Plus finds a problem. Files made by B-0.9.0 can then be
+B-1.0.0 if the Plus finds a problem. Files made by B-0.9.x can then be
 made again from their project.

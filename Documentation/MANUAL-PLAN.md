@@ -1,6 +1,6 @@
 # Plan: the MacPhoto Utility User's Guide
 
-**Status: proposed, 27 October 2026. Waiting for Jack's approval.**
+**Status: steps 1–5 done; released in B-0.9.1 before Jack's review (PH92), 27 October 2026. Step 6 waits for the Plus checks.**
 
 A printed-style user's guide (PDF) for MacPhoto Utility, in the series'
 own style: the *MacMusic User's Guide*'s style guide

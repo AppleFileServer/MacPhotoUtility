@@ -35,7 +35,7 @@ OWN_USE = all(os.path.exists(os.path.join(PRIVATE, f))
               for f in ("cover-macphoto.jpg", "rainbow-logo.png"))
 PDF = os.path.join(ROOT, "build-manual", "MacPhoto-Utility-Users-Guide%s.pdf"
                    % ("" if OWN_USE else "-plain"))
-EDITION = "MacPhoto Utility B-0.9.0 &middot; Draft edition, October 2026"
+EDITION = "MacPhoto Utility B-0.9.1 &middot; Before the Plus checks, October 2026"
 
 
 def part(name):
@@ -159,7 +159,7 @@ ABOUT = "".join([
     '<p class="step">A step tells you what to do.</p>',
     '<p class="grey">Grey text adds a remark you can skip.</p>',
     '<p><span class="check">CHECK</span> marks what is still to be seen on the '
-    'Macintosh Plus in this draft.</p>',
+    'Macintosh Plus in this edition.</p>',
     "</div></div>\n",
 ])
 

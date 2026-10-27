@@ -6,8 +6,8 @@ Plus edits) and a 512 × 342 1-bit Atkinson-dithered screen image (PICT,
 or MacPaint). The files reach the Plus through the Macintosh Transfer
 Utility.
 
-**Status: B-0.9.0 released** (27 October 2026): installable, before the
-Plus checks. B-1.0.0 follows the Transfer Utility's picture support, the
+**Status: B-0.9.1 released** (27 October 2026), with the User's Guide:
+installable, before the Plus checks. B-1.0.0 follows the Transfer Utility's picture support, the
 Plus checks and the freeze of the file formats.
 
     tools/test.sh                                  # the tests

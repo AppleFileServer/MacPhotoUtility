@@ -14,7 +14,7 @@ both validated. The batch interface comes only after that works.
 | 3 Single-image app | **Built, 26 Oct 2026** (D-0.0.4, `PHASE-3-PLAN.md`, `PHASE-3-REPORT.md`). Waiting for Jack to use it on his own photographs (PH56) |
 | 4 Batch processing | **Built, 26 Oct 2026** (D-0.0.5, `PHASE-4-PLAN.md`, `PHASE-4-REPORT.md`). Waiting for Jack to export a folder of his own (PH69) |
 | 5 Saved projects | **Built, 26 Oct 2026** (D-0.0.6, `PHASE-5-PLAN.md`, `PHASE-5-REPORT.md`). Waiting for Jack to save, quit, move a photograph and reopen (PH79) |
-| 6 Compatibility and release | **B-0.9.0 released, 27 Oct 2026** (PH90). B-1.0.0 waits for the Transfer Utility's picture support, the Plus checks, the freeze and Jack's acceptance (PH89) |
+| 6 Compatibility and release | **B-0.9.0 released, 27 Oct 2026** (PH90); **B-0.9.1 with the User's Guide** (PH92). B-1.0.0 waits for the Transfer Utility's picture support, the Plus checks, the freeze and Jack's acceptance (PH89) |
 
 ## Checklist from the specification
 
@@ -109,5 +109,6 @@ evidence from the real machine.
 - [ ] **Jack:** acceptance of Phases 3–5
 - [x] **B-0.9.0** released into `releases/MacPhoto-Utility-B-0.9.0/`, tagged `vB-0.9.0` (PH90)
 - [x] The crop switch's labels: "Print Crop", "Screen Crop" (PH91), before the manual's figures are retaken
-- [ ] The User's Guide (MANUAL-PLAN.md), its PDFs in the B-1.0.0 release
+- [x] The User's Guide (MANUAL-PLAN.md) in **B-0.9.1**, tagged `vB-0.9.1` (PH92), the Plus-side parts marked CHECK
+- [ ] The User's Guide proofed after the Plus checks, CHECK items settled, its PDFs in the B-1.0.0 release
 - [ ] B-1.0.0: the release candidate tried, the tag, the release, the catalogue (PH89, PH90)

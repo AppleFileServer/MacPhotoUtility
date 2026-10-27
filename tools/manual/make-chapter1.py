@@ -141,7 +141,7 @@ CONTENTS
   <p>The plain text after it tells you what happens.</p>
 
 LESSON_1
-  <p>MacPhoto Utility comes as a single file, MacPhoto-Utility-B-0.9.0.zip
+  <p>MacPhoto Utility comes as a single file, MacPhoto-Utility-B-0.9.1.zip
   (or the version you have).</p>
   <p class="step">Double-click the zip file.</p>
   <p>The Finder unpacks it beside the zip: the MacPhoto Utility

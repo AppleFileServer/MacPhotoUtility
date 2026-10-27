@@ -5,6 +5,8 @@
 # holding:
 #   MacPhoto-Utility-<version>.zip   the app (unzip, drag to Applications)
 #   RELEASE-NOTES.md, USER-GUIDE.md, SHA256SUMS
+#   manual/                          the User's Guide, both editions (PH92), as
+#                                    built by tools/manual/make-book.py
 #   examples/                        files made from the generated test images (PH86)
 #   source/MacPhotoUtility.bundle    the whole repository (git bundle, with tags)
 #   checks/tests.txt                 the tests, run for this release
@@ -41,6 +43,13 @@ fi
 
 [ -z "$(git status --porcelain)" ] || { echo "commit (or stash) your changes first: a release is made from committed source" >&2; exit 1; }
 [ -e "$OUT" ] && { echo "$OUT already exists: remove it, or change the version" >&2; exit 1; }
+# The User's Guide isn't committed (build-manual/): built first, and newer than its sources
+# (book.html is make-book.py's own output, rewritten by each edition's build).
+GUIDES="MacPhoto-Utility-Users-Guide.pdf MacPhoto-Utility-Users-Guide-plain.pdf"
+for f in $GUIDES; do
+    [ -f "build-manual/$f" ] && [ -z "$(find tools/manual Documentation/manual -type f ! -name book.html ! -path "*/__pycache__/*" -newer "build-manual/$f" | head -1)" ] || {
+        echo "build the User's Guide first: tools/manual/make-book.py, and again with MANUAL_ASSETS=/nonexistent" >&2; exit 1; }
+done
 mkdir -p "$OUT/source" "$OUT/checks" "$OUT/examples"
 
 echo "tests…"
@@ -81,6 +90,8 @@ a centre square and an "F"; nobody's photographs):
 EOT
 
 cp Documentation/RELEASE-NOTES.md Documentation/USER-GUIDE.md "$OUT/"
+mkdir -p "$OUT/manual"
+for f in $GUIDES; do cp "build-manual/$f" "$OUT/manual/"; done
 git bundle create "$OUT/source/MacPhotoUtility.bundle" --all 2> /dev/null
 git bundle verify "$OUT/source/MacPhotoUtility.bundle" > /dev/null 2>&1
 {

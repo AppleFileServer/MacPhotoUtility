@@ -14,7 +14,7 @@ Macintosh Transfer Utility does that), and it doesn't print.
 
 ## Installing
 
-Unzip `MacPhoto-Utility-B-0.9.0.zip` (or the version you have) and drag **MacPhoto Utility** to
+Unzip `MacPhoto-Utility-B-0.9.1.zip` (or the version you have) and drag **MacPhoto Utility** to
 Applications. It needs an Apple silicon Mac with macOS 26.
 
 It's signed for its owner's own use, not notarised. If macOS won't open it

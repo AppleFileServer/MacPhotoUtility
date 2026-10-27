@@ -1,7 +1,10 @@
 # Changelog
 
-## Since B-0.9.0
+## B-0.9.1 (27 October 2026)
 
+Before the Plus checks, as B-0.9.0 (PH92).
+- The User's Guide, both editions, in the release's `manual/` folder;
+  the Plus-side parts marked CHECK.
 - The crop switch reads Print Crop and Screen Crop, as the User's Guide
   names them (PH91).
 

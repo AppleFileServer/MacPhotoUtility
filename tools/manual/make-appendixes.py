@@ -226,7 +226,7 @@ D = "".join([
     table([("To run it", "An Apple silicon Mac with macOS 26"),
            ("To carry the files", "The Macintosh Transfer Utility %s" % CHECK),
            ("To use them", "A Macintosh Plus with System 6.0.7 and a BlueSCSI")]),
-    "<p>The file formats are set out in full in the MacPhoto Utility&rsquo;s "
+    "<p>The file formats are set out in full in MacPhoto Utility&rsquo;s "
     "FILE_FORMATS document.</p>",
 ])
 D = re.sub(r'(<h3 class="ref-head loose"[^>]*>.*?</h3>)(<table.*?</table>)',

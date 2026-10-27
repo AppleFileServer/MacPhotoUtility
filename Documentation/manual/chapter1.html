@@ -1,0 +1,212 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>MacPhoto Utility User&rsquo;s Guide: Chapter 1</title>
+<link rel="stylesheet" href="manual.css">
+<script>window.PagedConfig = { after: () => { window.__pagedDone = true; } };</script>
+<script src="paged.polyfill.js"></script>
+</head><body>
+<div class="draft-title">
+ <p class="draft-book">MacPhoto Utility User&rsquo;s Guide</p>
+ <p class="draft-what">Chapter 1: Learning MacPhoto Utility</p>
+ <p class="draft-note">A draft for review, 27 October 2026, written against MacPhoto Utility B-0.9.0. In the finished book this chapter follows About This Manual, and its pages are numbered on from there. CHECK marks what is still to be seen on the Macintosh Plus, or isn&rsquo;t built yet (the Transfer Utility&rsquo;s picture support).</p>
+</div>
+
+<div class="opener opener-left"><img src="figures/c1-opener-l.png"></div>
+<div class="opener opener-right"><img src="figures/c1-opener-r.png">
+ <div class="opener-title" data-foot="Chapter 1: Learning MacPhoto Utility"><p class="ch">Chapter 1</p><p class="name">Learning MacPhoto Utility</p></div>
+</div>
+
+
+<div class="chapter chapter-contents">
+ <div class="flow">
+  <div class="margin"><h2 class="contents-head">Contents</h2></div>
+  <ul class="toc">
+<li class="part"><a href="#intro">Introduction: What MacPhoto Utility Does</a></li>
+<li class="part"><a href="#lessons">Lessons</a></li>
+<li class="lesson"><span class="n">1</span><a href="#l1">Installing MacPhoto Utility</a></li>
+<li class="lesson"><span class="n">2</span><a href="#l2">Adding a Photograph</a></li>
+<li class="lesson"><span class="n">3</span><a href="#l3">Framing the Print</a></li>
+<li class="lesson"><span class="n">4</span><a href="#l4">Framing the Screen Image</a></li>
+<li class="lesson"><span class="n">5</span><a href="#l5">Exporting</a></li>
+<li class="lesson"><span class="n">6</span><a href="#l6">Seeing It on the Macintosh Plus</a></li>
+<li class="part"><a href="#whatnow">What Now?</a></li>
+  </ul>
+ </div>
+</div>
+
+<div class="chapter page-break">
+ <div class="flow">
+
+  <div class="keep"><div class="margin"><h2 class="margin-head" id="intro">What MacPhoto Utility Does</h2></div>
+  <p>A photograph on your Mac holds millions of colours. The Macintosh
+  Plus shows two: black and white, on a screen 512 dots wide and 342
+  high. MacPhoto Utility bridges the gap. From each photograph it makes
+  two pictures:</p></div>
+  <ul class="boxes">
+   <li>a <b class="term">print image</b>, the size of a playing card
+   (2.5 by 3.5 inches) in 256 shades of grey, for MacPhoto on the Plus to
+   edit, and for printing;</li>
+   <li>a <b class="term">screen image</b>, the Plus&rsquo;s whole screen
+   in black and white, to look at on the Plus as it is, or to show in
+   After Dark&rsquo;s slide show.</li>
+  </ul>
+  <p>Your photograph itself is never changed. MacPhoto Utility only reads
+  it.</p>
+
+  <div class="keep"><div class="margin"><h3 class="margin-sub">Two frames</h3></div>
+  <p>The print and the screen are different shapes. A print standing
+  upright is tall and narrow; the screen is wide. No single frame suits
+  both, so each photograph has two: a <b class="term">print crop</b> and
+  a <b class="term">screen crop</b>, which you set separately.</p>
+  <figure class="wide"><svg width="370pt" height="215pt" viewBox="0 0 370 215"><rect x="20" y="10" width="240" height="180" fill="#e6e6e6" stroke="#111" stroke-width="0.8"/><rect x="20" y="19.8438" width="240" height="160.312" fill="none" stroke="#111" stroke-width="1" stroke-dasharray="4 3"/><rect x="75.7143" y="10" width="128.571" height="180" fill="none" stroke="#e0442b" stroke-width="1.6"/><text x="268" y="20" font-family="Helvetica" font-size="8" fill="#e0442b" text-anchor="start">Print, portrait:</text><text x="268" y="30" font-family="Helvetica" font-size="8" fill="#e0442b" text-anchor="start">2.5 &#215; 3.5 in, 5:7</text><text x="268" y="168.156" font-family="Helvetica" font-size="8" fill="#111" text-anchor="start">Mac Plus screen:</text><text x="268" y="178.156" font-family="Helvetica" font-size="8" fill="#111" text-anchor="start">512 &#215; 342, about 3:2</text><text x="20" y="204" font-family="Helvetica" font-size="8" fill="#555" text-anchor="start">The photograph, 4:3</text></svg></figure></div>
+
+  <div class="keep"><div class="margin"><h3 class="margin-sub">From your Mac to the Plus</h3></div>
+  <p>MacPhoto Utility works on your Mac, a modern one. The files it makes
+  travel to the Plus on a disk made by the Macintosh Transfer Utility,
+  its companion:</p></div>
+  <div class="wide"><div class="stages"><div class="stage"><span class="number">1</span><b>Your photograph</b><span>JPEG, HEIC, PNG or TIFF, on your Mac</span></div><div class="stage"><span class="number">2</span><b>MacPhoto Utility</b><span>framed twice: a print image and a screen image</span></div><div class="stage"><span class="number">3</span><b>Macintosh Transfer Utility</b><span>puts the files on a disk for the Plus</span></div><div class="stage"><span class="number">4</span><b>The Macintosh Plus</b><span>MacPhoto, SuperPaint, MacPaint, After Dark</span></div></div></div>
+
+  <div class="keep"><div class="margin"><h3 class="margin-sub">What you&rsquo;ll learn</h3></div>
+  <p>The lessons that follow take about a quarter of an hour, with one
+  of your own photographs. You&rsquo;ll install MacPhoto Utility, add a
+  photograph, frame it twice, export it, and see it on the Plus.</p></div>
+  <p>You should already know your way round your Mac and the Finder. For
+  the Plus, the <i>Macintosh Owner&rsquo;s Guide</i> covers the
+  basics.</p>
+
+  <div class="keep"><div class="margin"><h2 class="margin-head" id="lessons">Lessons</h2></div>
+  <p class="lessons-intro">Do the lessons in order; each one picks up
+  where the last one left off. Each step is shown like this:</p></div>
+  <p class="step">A step tells you what to do.</p>
+  <p>The plain text after it tells you what happens.</p>
+
+<div class="keep"><div class="margin"><div class="lesson-head" id="l1"><span class="number">1</span><span class="title">Installing MacPhoto Utility</span></div></div>
+  <p>MacPhoto Utility comes as a single file, MacPhoto-Utility-B-0.9.0.zip
+  (or the version you have).</p></div>
+  <p class="step">Double-click the zip file.</p>
+  <p>The Finder unpacks it beside the zip: the MacPhoto Utility
+  program.</p>
+  <p class="step">Drag MacPhoto Utility to the Applications folder, in
+  the sidebar of a Finder window.</p>
+  <p class="step">Open the Applications folder, and double-click
+  MacPhoto Utility.</p>
+  <p>Its window opens, empty for now. It needs an Apple silicon Mac with
+  macOS 26.</p>
+  <p class="grey">If macOS won&rsquo;t open it the first time, open
+  System Settings, click Privacy &amp; Security, and click Open Anyway
+  beside its name. It&rsquo;s signed for its owner&rsquo;s own use, not
+  by Apple.</p>
+
+<div class="keep"><div class="margin"><div class="lesson-head" id="l2"><span class="number">2</span><span class="title">Adding a Photograph</span></div></div>
+  <p class="step">Choose Add Photographs from the File menu (or press
+  Command-I), select a photograph, and click Open.</p></div>
+  <p class="or">OR</p>
+  <p>Drag a photograph from the Finder onto the window.</p>
+  <p>MacPhoto Utility reads JPEG, HEIC, PNG and TIFF photographs: the
+  kinds a phone or a camera makes. The photograph appears in the list on
+  the left, with a small picture of it.</p>
+  <p class="step">Click the photograph in the list.</p>
+  <p>It opens in the middle of the window, the right way up whichever way
+  the camera was held. Underneath are two previews: the print, and the
+  Plus&rsquo;s screen.</p>
+  <figure class="window wide"><svg class="callouts" width="448pt" height="316pt" viewBox="0 0 448 316"><rect x="0" y="0" width="448" height="315.9" fill="white"/><image href="figures/w-main.png" x="0" y="44" width="448" height="271.9" style="image-rendering: auto"/><text x="38.3" y="12" text-anchor="middle">The queue</text><polyline class="leader" points="38.3,16 38.3,149.4"/><text x="215.7" y="12" text-anchor="middle">The picture and its frame</text><polyline class="leader" points="215.7,16 215.7,107.9"/><text x="399.4" y="12" text-anchor="middle">Output and export</text><polyline class="leader" points="399.4,16 399.4,139.9"/><text x="121.4" y="28" text-anchor="middle">The print</text><polyline class="leader" points="121.4,32 121.4,210.2"/><text x="287.6" y="28" text-anchor="middle">The Mac Plus screen</text><polyline class="leader" points="287.6,32 287.6,210.2"/></svg></figure>
+  <p>The panel at the bottom left gives the photograph&rsquo;s details:
+  what kind of file it is, its size, and whether it was turned to stand
+  upright.</p>
+
+<div class="keep"><div class="margin"><div class="lesson-head" id="l3"><span class="number">3</span><span class="title">Framing the Print</span></div></div>
+  <p>The print is 2.5 by 3.5 inches, so it can&rsquo;t always show the
+  whole photograph. You choose the part it shows, and everything else is
+  left out of the print, but never out of your photograph.</p></div>
+  <p class="step">Click Print Crop, above the picture, if it isn&rsquo;t
+  already chosen.</p>
+  <p>A white frame shows what will be printed. Everything outside it is
+  dimmed. The frame keeps the print&rsquo;s shape however you change
+  it.</p>
+  <figure class="window wide"><img class="screen modern" src="figures/p-editor.png" style="width:448pt; height:188.4pt"></figure>
+  <p class="step">Drag inside the frame to move it.</p>
+  <p>The print preview, below the picture, follows a moment later.
+  It&rsquo;s the print itself, made from the whole photograph, not a
+  sketch.</p>
+  <p class="step">Drag the zoom slider to the right, or drag one of the
+  frame&rsquo;s corners towards the middle.</p>
+  <p>The frame gets smaller, so the print shows less of the photograph,
+  larger. To start again, click Reset.</p>
+  <p class="margin margin-note grey">A frame that&rsquo;s too small for
+  the print gets a warning: see &ldquo;Small Photographs&rdquo; in
+  Chapter 2.</p>
+  <p class="step">Click Portrait or Landscape to turn the print the other
+  way.</p>
+  <p>The frame changes shape, and keeps its place on the picture.</p>
+
+<div class="keep"><div class="margin"><div class="lesson-head" id="l4"><span class="number">4</span><span class="title">Framing the Screen Image</span></div></div>
+  <p class="step">Click Screen Crop (or press the Tab key).</p></div>
+  <p>Now the frame is the Plus&rsquo;s screen: wide, and always filled
+  edge to edge. The print&rsquo;s frame stays, as a thin dashed line, so
+  you can see both.</p>
+  <figure class="window wide"><img class="screen modern" src="figures/p-editor-screen.png" style="width:448pt; height:188.4pt"></figure>
+  <p class="step">Move and size the frame as you did the print&rsquo;s.</p>
+  <p>The Mac Plus screen preview shows the screen image exactly as it
+  will look on the Plus: one dot of the Plus&rsquo;s screen for each dot
+  here, in black and white.</p>
+  <figure class="window"><img class="screen modern" src="figures/p-screen-preview.png" style="width:300pt; height:244.4pt"></figure>
+  <p>Shades of grey become patterns of black and white dots, in the
+  way Bill Atkinson devised for the first Macintosh. If a photograph looks
+  too dark or too flat, drag Brightness or Contrast under the preview;
+  they change the screen image, never the print. Normal puts them
+  back.</p>
+  <p class="step">Click Larger to see the screen image twice the size.</p>
+  <p>Click Done to put it away.</p>
+
+<div class="keep"><div class="margin"><div class="lesson-head" id="l5"><span class="number">5</span><span class="title">Exporting</span></div></div>
+  <p>The files go into a folder you choose, on your Mac.</p></div>
+  <p class="step">Under Output, click Choose, select a folder (or make a
+  new one), and click Choose.</p>
+  <p>MacPhoto Utility remembers it for next time. Leave the other
+  settings as they are: a print at 360 dots an inch, and two files, the
+  print PICT and the screen PICT.</p>
+  <figure class="beside"><img class="screen modern" src="figures/p-output.png" style="width:150pt; height:229.6pt"></figure>
+  <p class="step">Click Export This Photograph (or press Command-E).</p>
+  <p>MacPhoto Utility makes the two files, checks each one by reading it
+  back, and lists them: the print image in a folder called Print Files,
+  the screen image in PICT Files.</p>
+  <figure class="beside"><img class="screen modern" src="figures/p-exported.png" style="width:150pt; height:89.4pt"></figure>
+  <p class="step">Click Show in Finder to see them.</p>
+  <p>They&rsquo;re ready for the Plus, but not on it yet.</p>
+
+<div class="keep"><div class="margin"><div class="lesson-head" id="l6"><span class="number">6</span><span class="title">Seeing It on the Macintosh Plus</span></div></div>
+  <p>The Macintosh Transfer Utility puts the files on a disk for the
+  Plus, in folders of the same names, with each file marked as a picture
+  for the Plus to recognise. <span class="check">CHECK</span></p></div>
+  <p class="step">On the Plus, open the PICT Files folder, then open the
+  screen image in SuperPaint (or another program that opens PICT
+  files).</p>
+  <p>Your photograph fills the Plus&rsquo;s screen, just as the preview
+  showed it.</p>
+  <figure class="plus"><img class="screen" src="figures/plus-superpaint.png" style="width:300pt; height:200.4pt"></figure>
+  <p class="grey">This picture, and the MacPaint one below, are from an
+  emulated Macintosh Plus. <span class="check">CHECK</span></p>
+  <p class="step">To use the screen image in After Dark&rsquo;s slide
+  show, copy it into the Slide Show Folder in the After Dark Files folder,
+  in the System Folder. <span class="check">CHECK</span></p>
+  <p>Only screen images belong there. The print images are in 256 greys,
+  which the Plus&rsquo;s own drawing can&rsquo;t show.</p>
+  <p>The print image waits in Print Files for MacPhoto, the Plus&rsquo;s
+  photograph editor. Photoshop 1.0 can open it too. <span class="check">CHECK</span></p>
+  <figure class="plus"><img class="screen" src="figures/plus-macpaint-page.png" style="width:300pt; height:200.4pt"></figure>
+  <p class="grey">If you also export a MacPaint document, MacPaint shows
+  the screen image in the middle of its page. Your patterns are left as
+  they were.</p>
+
+  <div class="keep"><div class="margin"><h2 class="margin-head" id="whatnow">What Now?</h2></div>
+  <p>That&rsquo;s the whole journey: add, frame twice, export, and carry
+  the files to the Plus.</p></div>
+  <p>Chapter 2, &ldquo;Using MacPhoto Utility,&rdquo; covers each task in
+  turn: a folder of photographs at once, the queue, the screen
+  image&rsquo;s brightness, small photographs, and saving your work as a
+  project to come back to. Chapter 3 describes every part of the window
+  and every menu command.</p>
+ </div>
+</div>
+
+</body></html>

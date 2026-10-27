@@ -320,7 +320,8 @@ figure.dialog { margin: 4pt 0 10pt 0; break-inside: avoid; }
 figure.row { display: flex; gap: 10pt; margin: 4pt 0 10pt 0; }
 figure.wide { break-inside: avoid; }
 /* A picture across both columns covers the column rule. */
-figure.wide img { position: relative; z-index: 1; }
+figure.wide img, figure.wide svg, .wide > .stages, .wide > svg { position: relative; z-index: 1; }
+.wide > .stages { background: white; }
 figure.beside { clear: right; }
 
 /* Important (§7.6): the word in the margin, the note in bold between
@@ -504,3 +505,14 @@ h3.task-head { font: bold 10.5pt/12.5pt var(--sans); margin: 9pt 0 0 0; }
 p.or { font: bold 9pt var(--sans); margin: 4pt 0; }
 .topic-block { margin-top: 18pt; }
 .topic-block:first-of-type { margin-top: 0; }
+
+/* A Plus screen in the text column, 1-bit, with a thin rule round it. */
+figure.plus { margin: 6pt 0 10pt 0; break-inside: avoid; }
+figure.plus img { display: block; border: 0.5pt solid #9a9a9a; image-rendering: pixelated; }
+
+/* Chapter 3: each section starts clear of the last one's floats. */
+.flow .section { clear: both; margin-top: 14pt; }
+/* Chapter 3's tables run on across pages, a row at a time, so a section's
+   head is never left at the foot of a page with its table overleaf. */
+.flow .section table.ref { break-inside: auto; }
+.flow .section table.ref tr { break-inside: avoid; }

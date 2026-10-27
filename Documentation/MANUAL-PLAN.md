@@ -41,7 +41,9 @@ read (programme P20).
   spread needs it** (the 15 × 9 in spread wants about 570 × 342). From a
   shortlist of twelve, **Jack chose** the horses on the steppe
   (Chapter 1), the road to the mesa (Chapter 2) and the Flame Towers in
-  Baku (Chapter 3), 27 October 2026.
+  Baku (Chapter 3), 27 October 2026. **For this manual only, the
+  openers' dots are black, not the series' pale grey** (Jack, 27 October
+  2026); the series' style guide is unchanged.
 - **MQ3: now**, against B-0.9.0, the Plus-side parts marked CHECK,
   finished for B-1.0.0.
 

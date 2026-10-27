@@ -83,7 +83,8 @@ OPENERS = {
     "c3-opener": ("IMG_6406.jpeg", 570, None),      # the Flame Towers, Baku
 }
 OPENER_DOT = 4          # pixels per dot: 342 dots make 1368, the page's 9 in at 152 per inch
-OPENER_GREY = 196       # a black dot's tone (the series' openers)
+OPENER_GREY = 0         # a black dot's tone: black, for this manual only (Jack, 27 Oct
+                        # 2026); the series' openers are pale grey (196)
 
 
 def capture(name):

@@ -27,7 +27,8 @@ NAME="MacPhoto Utility"
 SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
 export SDKROOT
 
-sums() { (cd "$OUT" && find . -type f ! -name SHA256SUMS | sort | xargs shasum -a 256 > SHA256SUMS); }
+# Names have spaces in them (Print Files): passed with NULs, not split.
+sums() { (cd "$OUT" && find . -type f ! -name SHA256SUMS -print0 | sort -z | xargs -0 shasum -a 256 > SHA256SUMS); }
 
 if [ "${1:-}" = "--bundle" ]; then
     [ -d "$OUT" ] || { echo "no release at $OUT" >&2; exit 1; }

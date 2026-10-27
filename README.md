@@ -6,11 +6,13 @@ Plus edits) and a 512 × 342 1-bit Atkinson-dithered screen image (PICT,
 or MacPaint). The files reach the Plus through the Macintosh Transfer
 Utility.
 
-**Status: Phase 6 under way** (D-0.0.7): the app is complete; 1.0 waits
-for the Plus checks, the freeze of the file formats and Jack's acceptance.
+**Status: B-0.9.0 released** (27 October 2026): installable, before the
+Plus checks. B-1.0.0 follows the Transfer Utility's picture support, the
+Plus checks and the freeze of the file formats.
 
     tools/test.sh                                  # the tests
     tools/build-app.sh                             # build/MacPhoto Utility.app
+    tools/make-release.sh                          # releases/MacPhoto-Utility-<version>/
     swift build && .build/debug/mpu                # the harness's commands
     .build/debug/mpu convert PHOTO --preview DIR   # one photograph, both images
     .build/debug/mpu export PHOTO --to DIR         # the three files, checked

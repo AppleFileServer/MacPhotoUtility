@@ -1,5 +1,11 @@
 # Changelog
 
+## B-0.9.0 (27 October 2026)
+
+The first release: installable, for use before the Plus checks (PH90).
+Everything in D-0.0.2 to D-0.0.7, and the icon in the family's style.
+The file formats are draft 0.3 and may still change before B-1.0.0.
+
 ## D-0.0.7 (26 October 2026, not released)
 
 Phase 6, before the Plus checks.

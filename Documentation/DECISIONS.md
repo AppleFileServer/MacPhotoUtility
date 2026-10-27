@@ -88,7 +88,7 @@ renumber or delete an entry; mark it **Superseded by PHn**.
 | PH77 | **Errors kept, warnings worked out again** on opening. | Provisional, Phase 5 | 2026-10-26 |
 | PH78 | **A project carries its own settings;** a new project starts from the last used; a missing folder is shown and asked for at export. | Provisional, Phase 5 | 2026-10-26 |
 | PH79 | **A newer project version is refused, unknown fields ignored, a damaged file reported;** checked by tests, screenshots and Jack; D-0.0.6. | Firm (Jack) | 2026-10-26 |
-| PH80 | **The release is 1.0;** builds before it stay D-0.0.x; no B- for beta (P22 uses B- for the British edition). | Firm (Jack) | 2026-10-26 |
+| PH80 | **Superseded by PH90.** The release is 1.0; builds before it stay D-0.0.x; no B- for beta (P22 uses B- for the British edition). | Firm (Jack) | 2026-10-26 |
 | PH81 | **Compatibility from evidence only:** Plus checks recorded with dates, apart from emulator and netpbm results; anything unchecked listed in the release notes. | Firm (Jack) | 2026-10-26 |
 | PH82 | **The freeze:** FILE_FORMATS.md §1–§5 become 1.0 when the Plus checks pass (§6 versioned on its own); problems fixed first; the Transfer session told at once. | Firm (Jack) | 2026-10-26 |
 | PH83 | **The MacPhoto importer check is outstanding** in 1.0 (MacPhoto doesn't exist); what does confirm the print PICT is listed. | Firm (Jack) | 2026-10-26 |
@@ -98,6 +98,7 @@ renumber or delete an entry; mark it **Superseded by PHn**.
 | PH87 | **`tools/check-fresh-checkout.sh`:** clone, build, test, build the app, keep the log. | Firm (Jack) | 2026-10-26 |
 | PH88 | **`tools/make-release.sh`** as the Transfer Utility's, into `releases/MacPhoto-Utility-1.0/`; ad hoc signed; for Jack's own use, not published. | Firm (Jack) | 2026-10-26 |
 | PH89 | **1.0 needs:** Plus checks and the freeze, Jack's acceptance of Phases 3–5, dark appearance and VoiceOver looked at, the release candidate tried; then the tag, the release, the catalogue, the Transfer session. | Firm (Jack) | 2026-10-26 |
+| PH90 | **Versions B-x.y.z, the British edition (P22)** (Jack, 27 Oct): **B-0.9.0** is a released, installable build made now, before the Transfer Utility's picture support exists and before anything has been tested on the Plus; **B-1.0.0** follows those tests. Supersedes PH80. PH89's list is what B-1.0.0 needs; B-0.9.0 needed only the tests, the fresh-checkout check and the release script. | Firm (Jack) | 2026-10-27 |
 
 ## Open questions
 

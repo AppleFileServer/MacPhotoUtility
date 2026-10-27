@@ -18,6 +18,7 @@ func usage() -> Never {
                       [--only print,screen,macpaint] [--if-exists stop|replace|keep-both]
            mpu validate FILE...
            mpu compare PHOTO --out DIR [--set all|pair] [--turns N] [--screen-crop X,Y,ZOOM]
+           mpu dither PHOTO --out PNG [--width N] [--centre X,Y]
            mpu testimages DIR
            mpu fixtures DIR
            mpu version
@@ -216,6 +217,32 @@ do {
         guard args.count == 2 else { usage() }
         let items = try HandoffFixtures.make(into: URL(fileURLWithPath: args[1]))
         for i in items { print("\(i.name): \(i.valid ? "good" : "bad"), \(i.tests)") }
+
+    case "dither":
+        // The manual's chapter openers (MANUAL-PLAN.md, MG4): a photograph
+        // as MacPhoto's own screen image, 342 dots high like the Plus's
+        // screen but as wide as asked, centred (or at X,Y), plain Atkinson.
+        guard args.count >= 2 else { usage() }
+        let o = options(args.dropFirst(2), allowed: ["--out", "--width", "--centre"])
+        guard let out = o["--out"] else { usage() }
+        let w = Int(o["--width"] ?? "512") ?? 512, h = ScreenImage.height
+        let photo: ImportedPhoto
+        do { photo = try Importer.load(URL(fileURLWithPath: args[1])) } catch { fail("\(error)") }
+        let img = photo.image, aspect = Double(w) / Double(h)
+        var cx = 0.5, cy = 0.5
+        if let c = o["--centre"] {
+            let v = c.split(separator: ",").compactMap { Double($0) }
+            guard v.count == 2 else { fail("--centre is X,Y, fractions of the photograph") }
+            cx = v[0]; cy = v[1]
+        }
+        let wide = Double(img.width) / Double(img.height) > aspect
+        let cw = wide ? Int((Double(img.height) * aspect).rounded()) : img.width
+        let ch = wide ? img.height : Int((Double(img.width) / aspect).rounded())
+        let x = min(max(Int(cx * Double(img.width)) - cw / 2, 0), img.width - cw)
+        let y = min(max(Int(cy * Double(img.height)) - ch / 2, 0), img.height - ch)
+        let grey = Resampler.region(img, turns: 0, rect: PixelRect(x: x, y: y, width: cw, height: ch), to: w, h)
+        try Preview.writePNG(Preview.cgImage(Dither.dither(grey)), to: URL(fileURLWithPath: out))
+        print("\(photo.url.lastPathComponent): \(cw) x \(ch) at (\(x), \(y)) -> \(w) x \(h), Atkinson: \(out)")
 
     case "testimages":
         // The synthetic test images (PH31), for looking at.

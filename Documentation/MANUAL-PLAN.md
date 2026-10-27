@@ -38,8 +38,10 @@ read (programme P20).
   openers: **landscape** photographs **from the last six months**
   (since late April 2026), **visually appealing**; dithered at **342
   pixels high**, as the Plus's screen, and **wider than 512 where the
-  spread needs it** (the 15 × 9 in spread wants about 570 × 342). I
-  shortlist candidates and Jack chooses (he offered to help).
+  spread needs it** (the 15 × 9 in spread wants about 570 × 342). From a
+  shortlist of twelve, **Jack chose** the horses on the steppe
+  (Chapter 1), the road to the mesa (Chapter 2) and the Flame Towers in
+  Baku (Chapter 3), 27 October 2026.
 - **MQ3: now**, against B-0.9.0, the Plus-side parts marked CHECK,
   finished for B-1.0.0.
 

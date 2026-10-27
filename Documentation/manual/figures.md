@@ -26,7 +26,7 @@ photographs (MQ1); the openers' photographs too (`macphoto/openers/`).
 | f-larger, f-summary | the screen image at 2×; the Export All summary | made (s09, s12) |
 | m-file, m-photograph | the menus | made |
 | plus-macpaint, plus-macpaint-page | MacPaint on the Plus (Mini vMac): the .MAC opened; Show Page, centred | made, exact 512 × 342 |
-| plus-superpaint | SuperPaint with a screen PICT | **retake** in Mini vMac at 1× (the check's capture was scaled) |
+| plus-superpaint | SuperPaint 2.0 with a screen PICT (IMG_5474) | made: Mini vMac, exact 512 × 342 (27 Oct 2026) |
 | f-zip, f-open-anyway | installing | dropped: described in words (a built app on this Mac doesn't show Open Anyway) |
 | d-journey, d-two-shapes | drawings: the journey in four red-ruled stages; a portrait print's frame and the screen's on one 4:3 photograph | made (`drawings.py`) |
 | cover-screen, icon | the cover's screen; MacPhoto's icon | to make |

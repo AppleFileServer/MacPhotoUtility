@@ -71,7 +71,8 @@ DIALOGS = {
 }
 # Screens of the Plus, exact 512 x 342 from the Mini vMac check (private):
 # code -> file in MacPhotoUtility-Samples/emulator-check-2026-10-26.
-PLUS = {"plus-macpaint": "16-open", "plus-macpaint-page": "18-showpage"}
+PLUS = {"plus-macpaint": "16-open", "plus-macpaint-page": "18-showpage",
+        "plus-superpaint": "40-superpaint-1x"}      # taken 27 Oct 2026, exact 1x
 PLUS_DIR = os.path.expanduser("~/MacPlusProjects/MacPhotoUtility-Samples/emulator-check-2026-10-26")
 
 # Openers: code -> (photograph, width in dots, centre or None), Jack's

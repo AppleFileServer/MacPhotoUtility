@@ -16,14 +16,17 @@ photographs (MQ1); the openers' photographs too (`macphoto/openers/`).
 | c2-opener | Chapter 2's: the road to the mesa (IMG_8179) | made; Jack's choice |
 | c3-opener | Chapter 3's: the Flame Towers, Baku (IMG_6406) | made; Jack's choice |
 | w-main | the whole window, IMG_8691 framed | made (s01) |
-| p-editor | the editor and its toolbar, the print crop | made (s01) |
-| p-output | the output panel | made (s01) |
-| p-queue, p-queue-marks | the queue: rows and their marks | to capture |
-| p-editor-screen, p-screen-preview, p-tone, p-handles | the screen crop; the Mac Plus preview; Brightness and Contrast; a corner being dragged | to capture |
-| p-small-warning, p-cant-read, p-missing, p-exported | the warnings and states | to capture |
-| a-skipped, a-unseen, a-taken, a-save, a-opened | the questions and messages | to capture |
-| f-zip, f-open-anyway, f-larger, f-summary | installing; the larger screen; the Export All summary | to capture |
-| m-file, m-photograph | the menus | to capture |
-| plus-superpaint, plus-macpaint | the Plus: SuperPaint with a screen PICT; MacPaint with a .MAC | from the Mini vMac check (private), redone at 1× |
-| d-journey, d-two-shapes | drawings: the photograph's journey; the print's and the screen's shapes | to draw |
+| p-editor, p-editor-screen | the editor with the print crop; with the screen crop | made (s01, s04) |
+| p-output, p-exported | the output panel; after Export This Photograph | made (s01, s06) |
+| p-queue, p-skipped | the queue with every mark (small, can't be read, not looked at, P and L); the skipped list | made (s02, s03) |
+| p-screen-preview | the Mac Plus preview with Brightness at +38 | made (s05) |
+| p-small-warning, p-cant-read | the print preview's warning; a damaged photograph's details | made (s07, s08) |
+| p-missing | a missing photograph's row (unselected) | made (s15, retaken) |
+| a-unseen, a-taken, a-opened, a-save | the two Export All questions; a project opened with moved and missing photographs; the Save panel | made (s10, s11, s14, a-save) |
+| f-larger, f-summary | the screen image at 2×; the Export All summary | made (s09, s12) |
+| m-file, m-photograph | the menus | made |
+| plus-macpaint, plus-macpaint-page | MacPaint on the Plus (Mini vMac): the .MAC opened; Show Page, centred | made, exact 512 × 342 |
+| plus-superpaint | SuperPaint with a screen PICT | **retake** in Mini vMac at 1× (the check's capture was scaled) |
+| f-zip, f-open-anyway | installing | dropped: described in words (a built app on this Mac doesn't show Open Anyway) |
+| d-journey, d-two-shapes | drawings: the journey in four red-ruled stages; a portrait print's frame and the screen's on one 4:3 photograph | made (`drawings.py`) |
 | cover-screen, icon | the cover's screen; MacPhoto's icon | to make |

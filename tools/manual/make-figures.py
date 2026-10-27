@@ -35,12 +35,44 @@ GREY = 150      # and its tone
 RULE = 2        # a part's rule
 SCALE = 2       # capture pixels per point (a Retina screen)
 
-# Windows: code -> capture. Parts: code -> (capture, (left, top, right, bottom) in points).
-WINDOWS = {"w-main": "s01-window"}
+# Captures of windows of their own (with their own rounded corners):
+# code -> capture.
+WINDOWS = {
+    "w-main": "s01-window",
+    "a-save": "a-save",
+    "m-file": "m-file",
+    "m-photograph": "m-photograph",
+}
+# Parts of the main window, cut square: code -> (capture, (left, top,
+# right, bottom) in points from the capture's corner). The details panel
+# and the output panel's folder show scratch paths in the later captures,
+# so those crops leave them out.
 PARTS = {
     "p-editor": ("s01-window", (241, 31, 1109, 396)),
     "p-output": ("s01-window", (1110, 31, 1402, 478)),
+    "p-queue": ("s02-queue", (0, 31, 240, 700)),
+    "p-editor-screen": ("s04-screen", (241, 31, 1109, 396)),
+    "p-screen-preview": ("s05-tone", (515, 405, 1055, 845)),
+    "p-exported": ("s06-exported", (1110, 438, 1402, 612)),
+    "p-small-warning": ("s07-small", (241, 405, 515, 849)),
+    "p-cant-read": ("s08-cant-read", (0, 700, 240, 800)),
+    "p-missing": ("s15-missing", (0, 290, 240, 346)),
+    "p-skipped": ("s03-skipped", (0, 586, 254, 700)),
 }
+# Alerts, questions and sheets, cut from their window's capture by the
+# bounds macOS reported, rounded as they are on screen: code ->
+# (capture, (left, top, right, bottom) in points, corner radius in points).
+DIALOGS = {
+    "a-unseen": ("s10-unseen", (571, 305, 831, 545), 26),
+    "a-taken": ("s11-taken", (571, 270, 831, 580), 26),
+    "f-summary": ("s12-summary", (471, 337, 931, 513), 16),
+    "a-opened": ("s14-opened-missing", (571, 305, 831, 545), 26),
+    "f-larger": ("s09-larger", (173, 49, 1229, 801), 16),
+}
+# Screens of the Plus, exact 512 x 342 from the Mini vMac check (private):
+# code -> file in MacPhotoUtility-Samples/emulator-check-2026-10-26.
+PLUS = {"plus-macpaint": "16-open", "plus-macpaint-page": "18-showpage"}
+PLUS_DIR = os.path.expanduser("~/MacPlusProjects/MacPhotoUtility-Samples/emulator-check-2026-10-26")
 
 # Openers: code -> (photograph, width in dots, centre or None), Jack's
 # choices (27 October 2026) from his photographs of this summer.
@@ -79,6 +111,23 @@ def part(im, box):
     return cut
 
 
+def dialog(im, box, radius):
+    """A dialog cut from its window, its rounded corners on the page's
+    white, a grey outline just inside."""
+    l, t, r, b = (v * SCALE for v in box)
+    cut = Image.alpha_composite(Image.new("RGBA", im.size, "white"), im).convert("L").crop((l, t, r, b))
+    w, h = cut.size
+    big = Image.new("L", (w * 4, h * 4), 0)
+    ImageDraw.Draw(big).rounded_rectangle((0, 0, w * 4 - 1, h * 4 - 1), radius * SCALE * 4, fill=255)
+    mask = big.resize((w, h), Image.LANCZOS)
+    page = Image.new("L", (w, h), 255)
+    page.paste(cut, mask=mask)
+    ring = ImageChops.subtract(mask.point(lambda a: 255 if a > 128 else 0),
+                               mask.point(lambda a: 255 if a > 128 else 0).filter(ImageFilter.MinFilter(2 * OUTLINE + 1)))
+    page.paste(GREY, mask=ring)
+    return page
+
+
 def opener(code, photo, width, centre):
     with tempfile.TemporaryDirectory() as tmp:
         dots = os.path.join(tmp, "dots.png")
@@ -100,6 +149,10 @@ def main():
         on_white(capture(name)).save(os.path.join(OUT, code + ".png"))
     for code, (name, box) in PARTS.items():
         part(capture(name), box).save(os.path.join(OUT, code + ".png"))
+    for code, (name, box, radius) in DIALOGS.items():
+        dialog(capture(name), box, radius).save(os.path.join(OUT, code + ".png"))
+    for code, name in PLUS.items():
+        Image.open(os.path.join(PLUS_DIR, name + ".png")).convert("1").save(os.path.join(OUT, code + ".png"))
     for code, (photo, width, centre) in OPENERS.items():
         opener(code, photo, width, centre)
     print("figures:", ", ".join(sorted(os.listdir(OUT))))

@@ -161,4 +161,12 @@ None has run yet.
 
     tools/check-fresh-checkout.sh     # a clone builds, tests, builds the app
     tools/make-release.sh             # refuses uncommitted changes
+23. (Phase 6) Launching by a file, cold and warm, each leaves one window
+    with the file in it: a folder dropped on the icon with the app not
+    running, a photograph with it running, a double-clicked project with
+    it not running and with it running, and a plain launch.
+24. Accessibility, silently: every control's VoiceOver label read through
+    the accessibility interface (checked 27 Oct 2026: 26 of the app's
+    controls, all labelled; the window's own title-bar buttons are named
+    by their role).
 

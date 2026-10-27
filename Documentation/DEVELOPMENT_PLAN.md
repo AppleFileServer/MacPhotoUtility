@@ -103,7 +103,7 @@ evidence from the real machine.
 - [x] `tools/check-fresh-checkout.sh` (PH87): a clone builds, tests and builds the app (66 s)
 - [x] `tools/make-release.sh` (PH88), with examples (PH86)
 - [x] Dark appearance looked at (the app alone, `-MPUAppearance dark`)
-- [ ] VoiceOver listened to (needs Jack's permission to switch it on, or Jack)
+- [x] VoiceOver labels read silently through the accessibility interface (Jack can't play sound at the office): every control of the app's own labelled
 - [ ] **Jack:** the Plus checks (`PLUS-CHECKS.md` on `Photo Test.hda`), recorded in COMPATIBILITY.md (PH81)
 - [ ] FILE_FORMATS.md 1.0 (PH82); the Transfer session told
 - [ ] **Jack:** acceptance of Phases 3–5

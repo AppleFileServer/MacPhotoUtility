@@ -8,6 +8,9 @@ Phase 6, before the Plus checks.
 - `tools/check-fresh-checkout.sh` and `tools/make-release.sh`.
 - `-MPUAppearance dark` at launch shows the app alone in dark appearance,
   for checking it.
+- Fixed: launched by a file (a folder or photograph dropped on the icon,
+  Open With, a double-clicked project), the app could start with no
+  window; and a project sent to the running app could still quit it.
 
 ## D-0.0.6 (26 October 2026, not released)
 

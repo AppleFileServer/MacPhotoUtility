@@ -22,6 +22,7 @@ struct MacPhotoUtilityApp: App {
         .defaultSize(width: 1380, height: 860)
         .windowResizability(.contentMinSize)
         .commands {
+            WindowOpener()
             CommandGroup(replacing: .newItem) {
                 Button("New Project") { Panels.newProject(queue) }
                     .keyboardShortcut("n")
@@ -95,18 +96,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if !photos.isEmpty { Task { await queue.add(photos) } }
     }
 
-    /// Files sent to the app while it's starting come through SwiftUI, which
-    /// then makes the window (it doesn't make one if the event is taken
-    /// from it at launch).
-    func application(_ application: NSApplication, open urls: [URL]) {
-        waiting += urls
-        openWaiting()
+    /// Every file sent to the app (the Dock icon, Open With, a double-clicked
+    /// project, at launch or later) is taken here, before SwiftUI sees it:
+    /// SwiftUI's own handling closes this window to "activate" one for the
+    /// file, and with no window left the app quits (found in Phase 5); at
+    /// launch it can leave no window at all (found in Phase 6). The window
+    /// is always presented at launch instead (defaultLaunchBehavior).
+    func applicationWillFinishLaunching(_ notification: Notification) {
+        takeOpenEvents()
     }
 
-    /// Files sent once it's running (the Dock icon, Open With, a double-
-    /// clicked project) are taken here, before SwiftUI sees them: SwiftUI's
-    /// own handling closes this window to "activate" one for the file, and
-    /// with no window left the app quits (found in Phase 5).
     private func takeOpenEvents() {
         NSAppleEventManager.shared().setEventHandler(
             self, andSelector: #selector(openDocuments(_:withReply:)),
@@ -126,6 +125,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
         waiting += urls
         openWaiting()
+        showWindowIfNone()
+    }
+
+    /// Launched by a file, SwiftUI doesn't present the window by itself.
+    private func showWindowIfNone() {
+        DispatchQueue.main.async {
+            guard !NSApp.windows.contains(where: { $0.isVisible && $0.canBecomeMain }) else { return }
+            WindowOpener.open?(id: "main")
+        }
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -137,8 +145,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             NSApp.appearance = NSAppearance(named: a == "dark" ? .darkAqua : .aqua)
         }
         NSApp.activate()
-        // After any launch-time file has gone through SwiftUI.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { self.takeOpenEvents() }
+        showWindowIfNone()
     }
 
     /// Quits when the project's window has closed, and only then: when a
@@ -160,6 +167,19 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             self.leaving = true
             return true
         }
+    }
+}
+
+/// Keeps SwiftUI's openWindow action, so the app can show its window when
+/// it has none (launched by a file). Menus are built at launch, so this is
+/// set before any file arrives.
+struct WindowOpener: Commands {
+    @MainActor static var open: OpenWindowAction?
+    @Environment(\.openWindow) private var openWindow
+
+    var body: some Commands {
+        let _ = { WindowOpener.open = openWindow }()
+        CommandGroup(after: .windowList) {}
     }
 }
 

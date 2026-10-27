@@ -257,6 +257,9 @@ DRAFT = draft_title(
     "B-0.9.0. Every task, topic by topic; Chapter 1 is the tutorial, "
     "Chapter 3 the reference.")
 
+PART = body()
+TOPICS_TOC = [(anchor(h), h) for h, _, _ in TOPICS]
+
 if __name__ == "__main__":
-    open(OUT, "w").write(page("MacPhoto Utility User&rsquo;s Guide: Chapter 2", DRAFT + body()))
+    open(OUT, "w").write(page("MacPhoto Utility User&rsquo;s Guide: Chapter 2", DRAFT + PART))
     print("wrote", os.path.normpath(OUT))

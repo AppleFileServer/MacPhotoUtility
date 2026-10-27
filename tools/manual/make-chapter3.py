@@ -157,10 +157,10 @@ SECTIONS = [
 def body():
     toc, parts = [], []
     for head, html in SECTIONS:
-        toc.append('<li class="part"><a href="#%s">%s</a></li>' % (anchor(head), head))
+        toc.append('<li class="part"><a href="#r-%s">%s</a></li>' % (anchor(head), head))
         # The heading stays with the section's opening paragraph.
         end = html.index("</p>") + 4
-        parts.append('<div class="section"><div class="keep"><div class="margin"><h2 class="margin-head" id="%s">%s</h2>'
+        parts.append('<div class="section"><div class="keep"><div class="margin"><h2 class="margin-head" id="r-%s">%s</h2>'
                      '</div>%s</div>%s</div>' % (anchor(head), head, html[:end], html[end:]))
     contents = ('<div class="chapter chapter-contents"><div class="flow">'
                 '<div class="margin"><h2 class="contents-head">Contents</h2></div>'
@@ -175,6 +175,9 @@ DRAFT = draft_title(
     "B-0.9.0: every part of the window, every menu command, the files it "
     "makes, and its limits.")
 
+PART = body()
+SECTIONS_TOC = [("r-" + anchor(h), h) for h, _ in SECTIONS]
+
 if __name__ == "__main__":
-    open(OUT, "w").write(page("MacPhoto Utility User&rsquo;s Guide: Chapter 3", DRAFT + body()))
+    open(OUT, "w").write(page("MacPhoto Utility User&rsquo;s Guide: Chapter 3", DRAFT + PART))
     print("wrote", os.path.normpath(OUT))

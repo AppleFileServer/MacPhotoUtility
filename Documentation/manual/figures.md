@@ -29,4 +29,4 @@ photographs (MQ1); the openers' photographs too (`macphoto/openers/`).
 | plus-superpaint | SuperPaint 2.0 with a screen PICT (IMG_5474) | made: Mini vMac, exact 512 × 342 (27 Oct 2026) |
 | f-zip, f-open-anyway | installing | dropped: described in words (a built app on this Mac doesn't show Open Anyway) |
 | d-journey, d-two-shapes | drawings: the journey in four red-ruled stages; a portrait print's frame and the screen's on one 4:3 photograph | made (`drawings.py`) |
-| cover-screen, icon | the cover's screen; MacPhoto's icon | to make |
+| c0-cover-screen, mp-icon | the cover's screen (IMG_2973, as the app dithers it, in the cover's pale blue); MacPhoto Utility's icon | made (`make-cover.py`); the own-use cover itself is private |

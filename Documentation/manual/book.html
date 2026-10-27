@@ -1,0 +1,717 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>MacPhoto Utility User&rsquo;s Guide</title>
+<link rel="stylesheet" href="manual.css">
+<script>window.PagedConfig = { after: () => { window.__pagedDone = true; } };</script>
+<script src="paged.polyfill.js"></script>
+<style>.pagedjs_page[data-page-number="3"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "i" !important; }
+.pagedjs_page[data-page-number="3"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "i" !important; }
+.pagedjs_page[data-page-number="4"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "ii" !important; }
+.pagedjs_page[data-page-number="4"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "ii" !important; }
+.pagedjs_page[data-page-number="5"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "iii" !important; }
+.pagedjs_page[data-page-number="5"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "iii" !important; }
+.pagedjs_page[data-page-number="6"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "iv" !important; }
+.pagedjs_page[data-page-number="6"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "iv" !important; }
+.pagedjs_page[data-page-number="7"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "v" !important; }
+.pagedjs_page[data-page-number="7"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "v" !important; }
+.pagedjs_page[data-page-number="8"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "2\2003\2003 Chapter 1: Learning MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="8"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "2" !important; }
+.pagedjs_page[data-page-number="9"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "3\2003\2003 Chapter 1: Learning MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="9"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "3" !important; }
+.pagedjs_page[data-page-number="10"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "4\2003\2003 Chapter 1: Learning MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="10"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "4" !important; }
+.pagedjs_page[data-page-number="11"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "5\2003\2003 Chapter 1: Learning MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="11"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "5" !important; }
+.pagedjs_page[data-page-number="12"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "6\2003\2003 Chapter 1: Learning MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="12"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "6" !important; }
+.pagedjs_page[data-page-number="13"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "7\2003\2003 Chapter 1: Learning MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="13"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "7" !important; }
+.pagedjs_page[data-page-number="14"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "8\2003\2003 Chapter 1: Learning MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="14"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "8" !important; }
+.pagedjs_page[data-page-number="15"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "9\2003\2003 Chapter 1: Learning MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="15"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "9" !important; }
+.pagedjs_page[data-page-number="16"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "10\2003\2003 Chapter 1: Learning MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="16"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "10" !important; }
+.pagedjs_page[data-page-number="17"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "11\2003\2003 Chapter 1: Learning MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="17"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "11" !important; }
+.pagedjs_page[data-page-number="18"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "12\2003\2003 Chapter 1: Learning MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="18"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "12" !important; }
+.pagedjs_page[data-page-number="19"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "13\2003\2003 Chapter 1: Learning MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="19"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "13" !important; }
+.pagedjs_page[data-page-number="20"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "14\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="20"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "14" !important; }
+.pagedjs_page[data-page-number="21"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "15\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="21"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "15" !important; }
+.pagedjs_page[data-page-number="22"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "16\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="22"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "16" !important; }
+.pagedjs_page[data-page-number="23"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "17\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="23"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "17" !important; }
+.pagedjs_page[data-page-number="24"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "18\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="24"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "18" !important; }
+.pagedjs_page[data-page-number="25"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "19\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="25"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "19" !important; }
+.pagedjs_page[data-page-number="26"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "20\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="26"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "20" !important; }
+.pagedjs_page[data-page-number="27"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "21\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="27"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "21" !important; }
+.pagedjs_page[data-page-number="28"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "22\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="28"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "22" !important; }
+.pagedjs_page[data-page-number="29"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "23\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="29"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "23" !important; }
+.pagedjs_page[data-page-number="30"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "24\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="30"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "24" !important; }
+.pagedjs_page[data-page-number="31"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "25\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="31"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "25" !important; }
+.pagedjs_page[data-page-number="32"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "26\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="32"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "26" !important; }
+.pagedjs_page[data-page-number="33"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "27\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="33"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "27" !important; }
+.pagedjs_page[data-page-number="34"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "28\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="34"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "28" !important; }
+.pagedjs_page[data-page-number="35"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "29\2003\2003 Chapter 2: Using MacPhoto Utility" !important; }
+.pagedjs_page[data-page-number="35"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "29" !important; }
+.pagedjs_page[data-page-number="36"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "30\2003\2003 Chapter 3: Reference" !important; }
+.pagedjs_page[data-page-number="36"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "30" !important; }
+.pagedjs_page[data-page-number="37"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "31\2003\2003 Chapter 3: Reference" !important; }
+.pagedjs_page[data-page-number="37"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "31" !important; }
+.pagedjs_page[data-page-number="38"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "32\2003\2003 Chapter 3: Reference" !important; }
+.pagedjs_page[data-page-number="38"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "32" !important; }
+.pagedjs_page[data-page-number="39"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "33\2003\2003 Chapter 3: Reference" !important; }
+.pagedjs_page[data-page-number="39"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "33" !important; }
+.pagedjs_page[data-page-number="40"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "34\2003\2003 Chapter 3: Reference" !important; }
+.pagedjs_page[data-page-number="40"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "34" !important; }
+.pagedjs_page[data-page-number="41"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "35\2003\2003 Chapter 3: Reference" !important; }
+.pagedjs_page[data-page-number="41"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "35" !important; }
+.pagedjs_page[data-page-number="42"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "36\2003\2003 Chapter 3: Reference" !important; }
+.pagedjs_page[data-page-number="42"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "36" !important; }
+.pagedjs_page[data-page-number="43"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "37\2003\2003 Chapter 3: Reference" !important; }
+.pagedjs_page[data-page-number="43"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "37" !important; }
+.pagedjs_page[data-page-number="44"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "38\2003\2003 Chapter 3: Reference" !important; }
+.pagedjs_page[data-page-number="44"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "38" !important; }
+.pagedjs_page[data-page-number="45"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "39\2003\2003 Chapter 3: Reference" !important; }
+.pagedjs_page[data-page-number="45"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "39" !important; }
+.pagedjs_page[data-page-number="46"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "40\2003\2003 Chapter 3: Reference" !important; }
+.pagedjs_page[data-page-number="46"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "40" !important; }
+.pagedjs_page[data-page-number="47"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "41\2003\2003 Appendix A: Messages" !important; }
+.pagedjs_page[data-page-number="47"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "41" !important; }
+.pagedjs_page[data-page-number="48"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "42\2003\2003 Appendix A: Messages" !important; }
+.pagedjs_page[data-page-number="48"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "42" !important; }
+.pagedjs_page[data-page-number="49"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "43\2003\2003 Appendix A: Messages" !important; }
+.pagedjs_page[data-page-number="49"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "43" !important; }
+.pagedjs_page[data-page-number="50"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "44\2003\2003 Appendix B: The Files on the Macintosh Plus" !important; }
+.pagedjs_page[data-page-number="50"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "44" !important; }
+.pagedjs_page[data-page-number="51"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "45\2003\2003 Appendix B: The Files on the Macintosh Plus" !important; }
+.pagedjs_page[data-page-number="51"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "45" !important; }
+.pagedjs_page[data-page-number="52"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "46\2003\2003 Appendix C: Troubleshooting" !important; }
+.pagedjs_page[data-page-number="52"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "46" !important; }
+.pagedjs_page[data-page-number="53"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "47\2003\2003 Appendix D: Specifications" !important; }
+.pagedjs_page[data-page-number="53"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "47" !important; }
+.pagedjs_page[data-page-number="54"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "48\2003\2003 Appendix D: Specifications" !important; }
+.pagedjs_page[data-page-number="54"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "48" !important; }
+.pagedjs_page[data-page-number="55"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "49\2003\2003 Glossary" !important; }
+.pagedjs_page[data-page-number="55"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "49" !important; }
+.pagedjs_page[data-page-number="56"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "50\2003\2003 Glossary" !important; }
+.pagedjs_page[data-page-number="56"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "50" !important; }
+.pagedjs_page[data-page-number="57"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "51\2003\2003 Glossary" !important; }
+.pagedjs_page[data-page-number="57"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "51" !important; }
+.pagedjs_page[data-page-number="58"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "52\2003\2003 Index" !important; }
+.pagedjs_page[data-page-number="58"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "52" !important; }
+.pagedjs_page[data-page-number="59"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "53\2003\2003 Index" !important; }
+.pagedjs_page[data-page-number="59"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "53" !important; }
+.pagedjs_page[data-page-number="60"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "54\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="60"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "54" !important; }
+.pagedjs_page[data-page-number="61"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "55\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="61"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "55" !important; }
+.pagedjs_page[data-page-number="62"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "56\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="62"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "56" !important; }
+.pagedjs_page[data-page-number="63"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "57\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="63"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "57" !important; }
+.pagedjs_page[data-page-number="64"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "58\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="64"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "58" !important; }
+.pagedjs_page[data-page-number="65"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "59\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="65"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "59" !important; }
+.pagedjs_page[data-page-number="66"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "60\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="66"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "60" !important; }
+.pagedjs_page[data-page-number="67"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "61\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="67"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "61" !important; }
+.pagedjs_page[data-page-number="68"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "62\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="68"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "62" !important; }
+.pagedjs_page[data-page-number="69"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "63\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="69"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "63" !important; }
+.pagedjs_page[data-page-number="70"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "64\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="70"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "64" !important; }
+.pagedjs_page[data-page-number="71"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "65\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="71"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "65" !important; }
+.pagedjs_page[data-page-number="72"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "66\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="72"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "66" !important; }
+.pagedjs_page[data-page-number="73"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "67\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="73"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "67" !important; }
+.pagedjs_page[data-page-number="74"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "68\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="74"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "68" !important; }
+.pagedjs_page[data-page-number="75"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "69\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="75"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "69" !important; }
+.pagedjs_page[data-page-number="76"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "70\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="76"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "70" !important; }
+.pagedjs_page[data-page-number="77"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "71\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="77"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "71" !important; }
+.pagedjs_page[data-page-number="78"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "72\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="78"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "72" !important; }
+.pagedjs_page[data-page-number="79"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "73\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="79"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "73" !important; }
+.pagedjs_page[data-page-number="80"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "74\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="80"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "74" !important; }
+.pagedjs_page[data-page-number="81"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "75\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="81"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "75" !important; }
+.pagedjs_page[data-page-number="82"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "76\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="82"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "76" !important; }
+.pagedjs_page[data-page-number="83"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "77\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="83"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "77" !important; }
+.pagedjs_page[data-page-number="84"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "78\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="84"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "78" !important; }
+.pagedjs_page[data-page-number="85"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "79\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="85"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "79" !important; }
+.pagedjs_page[data-page-number="86"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "80\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="86"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "80" !important; }
+.pagedjs_page[data-page-number="87"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "81\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="87"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "81" !important; }
+.pagedjs_page[data-page-number="88"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "82\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="88"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "82" !important; }
+.pagedjs_page[data-page-number="89"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "83\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="89"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "83" !important; }
+.pagedjs_page[data-page-number="90"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "84\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="90"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "84" !important; }
+.pagedjs_page[data-page-number="91"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "85\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="91"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "85" !important; }
+.pagedjs_page[data-page-number="92"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "86\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="92"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "86" !important; }
+.pagedjs_page[data-page-number="93"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "87\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="93"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "87" !important; }
+.pagedjs_page[data-page-number="94"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "88\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="94"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "88" !important; }
+.pagedjs_page[data-page-number="95"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "89\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="95"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "89" !important; }
+.pagedjs_page[data-page-number="96"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "90\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="96"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "90" !important; }
+.pagedjs_page[data-page-number="97"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "91\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="97"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "91" !important; }
+.pagedjs_page[data-page-number="98"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "92\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="98"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "92" !important; }
+.pagedjs_page[data-page-number="99"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "93\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="99"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "93" !important; }
+.pagedjs_page[data-page-number="100"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "94\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="100"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "94" !important; }
+.pagedjs_page[data-page-number="101"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "95\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="101"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "95" !important; }
+.pagedjs_page[data-page-number="102"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "96\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="102"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "96" !important; }
+.pagedjs_page[data-page-number="103"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "97\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="103"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "97" !important; }
+.pagedjs_page[data-page-number="104"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "98\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="104"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "98" !important; }
+.pagedjs_page[data-page-number="105"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "99\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="105"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "99" !important; }
+.pagedjs_page[data-page-number="106"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "100\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="106"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "100" !important; }
+.pagedjs_page[data-page-number="107"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "101\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="107"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "101" !important; }
+.pagedjs_page[data-page-number="108"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "102\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="108"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "102" !important; }
+.pagedjs_page[data-page-number="109"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "103\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="109"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "103" !important; }
+.pagedjs_page[data-page-number="110"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "104\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="110"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "104" !important; }
+.pagedjs_page[data-page-number="111"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "105\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="111"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "105" !important; }
+.pagedjs_page[data-page-number="112"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "106\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="112"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "106" !important; }
+.pagedjs_page[data-page-number="113"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "107\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="113"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "107" !important; }
+.pagedjs_page[data-page-number="114"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "108\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="114"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "108" !important; }
+.pagedjs_page[data-page-number="115"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "109\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="115"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "109" !important; }
+.pagedjs_page[data-page-number="116"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "110\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="116"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "110" !important; }
+.pagedjs_page[data-page-number="117"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "111\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="117"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "111" !important; }
+.pagedjs_page[data-page-number="118"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "112\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="118"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "112" !important; }
+.pagedjs_page[data-page-number="119"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "113\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="119"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "113" !important; }
+.pagedjs_page[data-page-number="120"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "114\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="120"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "114" !important; }
+.pagedjs_page[data-page-number="121"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "115\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="121"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "115" !important; }
+.pagedjs_page[data-page-number="122"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "116\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="122"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "116" !important; }
+.pagedjs_page[data-page-number="123"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "117\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="123"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "117" !important; }
+.pagedjs_page[data-page-number="124"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "118\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="124"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "118" !important; }
+.pagedjs_page[data-page-number="125"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "119\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="125"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "119" !important; }
+.pagedjs_page[data-page-number="126"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "120\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="126"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "120" !important; }
+.pagedjs_page[data-page-number="127"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "121\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="127"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "121" !important; }
+.pagedjs_page[data-page-number="128"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "122\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="128"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "122" !important; }
+.pagedjs_page[data-page-number="129"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "123\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="129"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "123" !important; }
+.pagedjs_page[data-page-number="130"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "124\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="130"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "124" !important; }
+.pagedjs_page[data-page-number="131"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "125\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="131"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "125" !important; }
+.pagedjs_page[data-page-number="132"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "126\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="132"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "126" !important; }
+.pagedjs_page[data-page-number="133"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "127\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="133"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "127" !important; }
+.pagedjs_page[data-page-number="134"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "128\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="134"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "128" !important; }
+.pagedjs_page[data-page-number="135"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "129\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="135"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "129" !important; }
+.pagedjs_page[data-page-number="136"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "130\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="136"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "130" !important; }
+.pagedjs_page[data-page-number="137"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "131\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="137"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "131" !important; }
+.pagedjs_page[data-page-number="138"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "132\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="138"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "132" !important; }
+.pagedjs_page[data-page-number="139"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "133\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="139"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "133" !important; }
+.pagedjs_page[data-page-number="140"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "134\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="140"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "134" !important; }
+.pagedjs_page[data-page-number="141"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "135\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="141"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "135" !important; }
+.pagedjs_page[data-page-number="142"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "136\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="142"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "136" !important; }
+.pagedjs_page[data-page-number="143"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "137\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="143"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "137" !important; }
+.pagedjs_page[data-page-number="144"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "138\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="144"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "138" !important; }
+.pagedjs_page[data-page-number="145"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "139\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="145"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "139" !important; }
+.pagedjs_page[data-page-number="146"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "140\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="146"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "140" !important; }
+.pagedjs_page[data-page-number="147"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "141\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="147"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "141" !important; }
+.pagedjs_page[data-page-number="148"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "142\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="148"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "142" !important; }
+.pagedjs_page[data-page-number="149"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "143\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="149"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "143" !important; }
+.pagedjs_page[data-page-number="150"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "144\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="150"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "144" !important; }
+.pagedjs_page[data-page-number="151"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "145\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="151"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "145" !important; }
+.pagedjs_page[data-page-number="152"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "146\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="152"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "146" !important; }
+.pagedjs_page[data-page-number="153"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "147\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="153"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "147" !important; }
+.pagedjs_page[data-page-number="154"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "148\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="154"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "148" !important; }
+.pagedjs_page[data-page-number="155"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "149\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="155"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "149" !important; }
+.pagedjs_page[data-page-number="156"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "150\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="156"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "150" !important; }
+.pagedjs_page[data-page-number="157"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "151\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="157"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "151" !important; }
+.pagedjs_page[data-page-number="158"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "152\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="158"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "152" !important; }
+.pagedjs_page[data-page-number="159"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "153\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="159"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "153" !important; }
+.pagedjs_page[data-page-number="160"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "154\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="160"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "154" !important; }
+.pagedjs_page[data-page-number="161"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "155\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="161"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "155" !important; }
+.pagedjs_page[data-page-number="162"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "156\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="162"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "156" !important; }
+.pagedjs_page[data-page-number="163"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "157\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="163"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "157" !important; }
+.pagedjs_page[data-page-number="164"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "158\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="164"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "158" !important; }
+.pagedjs_page[data-page-number="165"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "159\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="165"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "159" !important; }
+.pagedjs_page[data-page-number="166"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "160\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="166"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "160" !important; }
+.pagedjs_page[data-page-number="167"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "161\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="167"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "161" !important; }
+.pagedjs_page[data-page-number="168"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "162\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="168"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "162" !important; }
+.pagedjs_page[data-page-number="169"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "163\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="169"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "163" !important; }
+.pagedjs_page[data-page-number="170"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "164\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="170"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "164" !important; }
+.pagedjs_page[data-page-number="171"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "165\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="171"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "165" !important; }
+.pagedjs_page[data-page-number="172"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "166\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="172"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "166" !important; }
+.pagedjs_page[data-page-number="173"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "167\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="173"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "167" !important; }
+.pagedjs_page[data-page-number="174"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "168\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="174"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "168" !important; }
+.pagedjs_page[data-page-number="175"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "169\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="175"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "169" !important; }
+.pagedjs_page[data-page-number="176"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "170\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="176"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "170" !important; }
+.pagedjs_page[data-page-number="177"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "171\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="177"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "171" !important; }
+.pagedjs_page[data-page-number="178"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "172\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="178"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "172" !important; }
+.pagedjs_page[data-page-number="179"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "173\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="179"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "173" !important; }
+.pagedjs_page[data-page-number="180"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "174\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="180"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "174" !important; }
+.pagedjs_page[data-page-number="181"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "175\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="181"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "175" !important; }
+.pagedjs_page[data-page-number="182"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "176\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="182"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "176" !important; }
+.pagedjs_page[data-page-number="183"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "177\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="183"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "177" !important; }
+.pagedjs_page[data-page-number="184"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "178\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="184"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "178" !important; }
+.pagedjs_page[data-page-number="185"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "179\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="185"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "179" !important; }
+.pagedjs_page[data-page-number="186"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "180\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="186"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "180" !important; }
+.pagedjs_page[data-page-number="187"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "181\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="187"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "181" !important; }
+.pagedjs_page[data-page-number="188"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "182\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="188"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "182" !important; }
+.pagedjs_page[data-page-number="189"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "183\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="189"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "183" !important; }
+.pagedjs_page[data-page-number="190"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "184\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="190"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "184" !important; }
+.pagedjs_page[data-page-number="191"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "185\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="191"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "185" !important; }
+.pagedjs_page[data-page-number="192"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "186\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="192"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "186" !important; }
+.pagedjs_page[data-page-number="193"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "187\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="193"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "187" !important; }
+.pagedjs_page[data-page-number="194"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "188\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="194"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "188" !important; }
+.pagedjs_page[data-page-number="195"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "189\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="195"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "189" !important; }
+.pagedjs_page[data-page-number="196"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "190\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="196"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "190" !important; }
+.pagedjs_page[data-page-number="197"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "191\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="197"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "191" !important; }
+.pagedjs_page[data-page-number="198"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "192\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="198"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "192" !important; }
+.pagedjs_page[data-page-number="199"] .pagedjs_margin-bottom-left > .pagedjs_margin-content::after { content: "193\2003\2003 Tell Us What You Think" !important; }
+.pagedjs_page[data-page-number="199"] .pagedjs_margin-bottom-right > .pagedjs_margin-content::after { content: "193" !important; }</style>
+</head><body>
+<div class="cover plain"><div class="cover-logo"><img class="screen" src="figures/mp-icon.png" style="width:40pt; height:40.0pt"></div><p class="cover-title">MacPhoto Utility User&rsquo;s Guide</p><img class="screen" src="figures/c0-cover-screen.png" style="width:400pt; height:267.2pt"></div>
+
+<div class="copyright"><div class="copy-columns">
+ <div class="copy-left">
+  <p class="copy-head">Copyright</p>
+  <p>This manual and the software it describes are copyrighted, with all
+  rights reserved.</p>
+  <p>&copy; 2026 Jack McAteer.</p>
+  <p>MacPhoto Utility is an independent project, and is not affiliated
+  with, endorsed by, sponsored by or produced by Apple Inc.</p>
+  <p>Apple, Macintosh, Mac, macOS and Finder are trademarks of Apple Inc.
+  Other names and trademarks belong to their respective owners.</p>
+  <p>Program and manual by Jack McAteer.<br>
+  The photographs are the author&rsquo;s own, from a summer on the road:
+  horses on the steppe, a road to a mesa, and Baku&rsquo;s Flame Towers,
+  in 342 lines of black and white.</p>
+  <p>MacPhoto Utility B-0.9.0 &middot; Draft edition, October 2026</p>
+ </div>
+ <div class="copy-right">
+  <p class="copy-head">Disclaimer</p>
+  <p>MacPhoto Utility is provided without any representation that it is
+  suitable for a particular purpose.</p>
+  <p>MacPhoto Utility only reads your photographs; it never changes them.
+  A file you choose to replace when exporting is gone, so keep copies of
+  anything you want to keep.</p>
+  <p class="caps">The developer accepts no responsibility for loss or
+  corruption of data, photographs or equipment arising from the use of the
+  software, except to the extent that such liability cannot lawfully be
+  excluded or limited.</p>
+ </div>
+</div></div>
+<div class="title-page" id="title-page"><div class="title-logo"><img class="logo" src="figures/mp-icon.png" style="width:36pt; height:36.0pt"></div><p class="title-name">MacPhoto Utility User&rsquo;s Guide</p></div>
+<div class="front"><div class="flow"><div class="margin"><h2 class="contents-head" id="book-contents">Contents</h2></div><ul class="toc book-toc"><li class="toc-part"><span class="t">About This Manual</span><span class="pg">iii</span></li><li class="toc-ch"><span class="t">Chapter 1: Learning MacPhoto Utility</span><span class="pg">2</span></li><li class="toc-sec"><span class="t">Introduction: What MacPhoto Utility Does</span><span class="pg">5</span></li><li class="toc-sec"><span class="t">Lessons</span><span class="pg">6</span></li><li class="toc-sec"><span class="t">What Now?</span><span class="pg">13</span></li><li class="toc-ch"><span class="t">Chapter 2: Using MacPhoto Utility</span><span class="pg">14</span></li><li class="toc-sec"><span class="t">Adding Photographs</span><span class="pg">18</span></li><li class="toc-sec"><span class="t">The Queue</span><span class="pg">20</span></li><li class="toc-sec"><span class="t">Framing</span><span class="pg">21</span></li><li class="toc-sec"><span class="t">The Screen Image</span><span class="pg">22</span></li><li class="toc-sec"><span class="t">Small Photographs</span><span class="pg">23</span></li><li class="toc-sec"><span class="t">The Output</span><span class="pg">24</span></li><li class="toc-sec"><span class="t">Exporting</span><span class="pg">25</span></li><li class="toc-sec"><span class="t">Projects</span><span class="pg">27</span></li><li class="toc-ch"><span class="t">Chapter 3: Reference</span><span class="pg">30</span></li><li class="toc-sec"><span class="t">The Window</span><span class="pg">33</span></li><li class="toc-sec"><span class="t">The Queue</span><span class="pg">33</span></li><li class="toc-sec"><span class="t">The Picture and Its Frame</span><span class="pg">35</span></li><li class="toc-sec"><span class="t">The Previews</span><span class="pg">37</span></li><li class="toc-sec"><span class="t">Output and Export</span><span class="pg">37</span></li><li class="toc-sec"><span class="t">The Menus</span><span class="pg">38</span></li><li class="toc-sec"><span class="t">The Files It Makes</span><span class="pg">39</span></li><li class="toc-sec"><span class="t">Limits and Settings</span><span class="pg">40</span></li><li class="toc-part"><span class="t">Appendix A: Messages</span><span class="pg">41</span></li><li class="toc-part"><span class="t">Appendix B: The Files on the Macintosh Plus</span><span class="pg">44</span></li><li class="toc-part"><span class="t">Appendix C: Troubleshooting</span><span class="pg">46</span></li><li class="toc-part"><span class="t">Appendix D: Specifications</span><span class="pg">47</span></li><li class="toc-part"><span class="t">Glossary</span><span class="pg">49</span></li><li class="toc-part"><span class="t">Index</span><span class="pg">52</span></li><li class="toc-part"><span class="t">Tell Us What You Think</span><span class="pg">54</span></li></ul></div></div>
+<div class="front"><div class="flow"><div class="margin"><h2 class="margin-head" id="about">About This Manual</h2></div><p>MacPhoto Utility turns your photographs into pictures for a Macintosh Plus: from each one, a print image, the size of a playing card in 256 greys, for MacPhoto on the Plus to edit and for printing; and a screen image, the Plus&rsquo;s whole screen in black and white. This manual shows you how.</p><div class="margin"><h3 class="margin-sub">Two computers</h3></div><p>MacPhoto Utility runs on a modern Mac: this manual calls it &ldquo;your Mac.&rdquo; The pictures it makes are for the Macintosh Plus (&ldquo;the Plus&rdquo;), and travel there on a disk made by its companion, the Macintosh Transfer Utility.</p><div class="margin"><h3 class="margin-sub">What you need</h3></div><ul class="boxes"><li>an Apple silicon Mac with macOS 26;</li><li>your photographs: JPEG, HEIC, PNG or TIFF;</li><li>the Macintosh Transfer Utility, to carry the files to the Plus;</li><li>a Macintosh Plus with System 6.0.7 and a BlueSCSI.</li></ul><div class="margin"><h3 class="margin-sub">What you should know</h3></div><p>This manual assumes you know your way round your Mac and the Finder. For the Plus, the <i>Macintosh Owner&rsquo;s Guide</i> covers the basics.</p><div class="margin"><h3 class="margin-sub">How to use this manual</h3></div><ul class="boxes"><li><b>Learn it:</b> Chapter 1, &ldquo;Learning MacPhoto Utility,&rdquo; takes one photograph from your Mac to the Plus, in six short lessons.</li><li><b>Look it up:</b> Chapter 2, &ldquo;Using MacPhoto Utility,&rdquo; shows how to do each task. Chapter 3 is the reference. The appendixes list the messages, the files on the Plus, what to do when something goes wrong, and the specifications.</li><li><b>Just start:</b> add a photograph and try it.</li></ul><div class="important"><p class="margin important-head">Important</p><p>MacPhoto Utility never changes your photographs. But if you choose to replace files when exporting, the old ones are gone.</p></div><div class="margin"><h3 class="margin-sub">Conventions</h3></div><p class="step">A step tells you what to do.</p><p class="grey">Grey text adds a remark you can skip.</p><p><span class="check">CHECK</span> marks what is still to be seen on the Macintosh Plus in this draft.</p></div></div>
+
+<div class="opener opener-left" id="chapter-1"><img src="figures/c1-opener-l.png"></div>
+<div class="opener opener-right"><img src="figures/c1-opener-r.png">
+ <div class="opener-title" data-foot="Chapter 1: Learning MacPhoto Utility"><p class="ch">Chapter 1</p><p class="name">Learning MacPhoto Utility</p></div>
+</div>
+
+
+<div class="chapter chapter-contents">
+ <div class="flow">
+  <div class="margin"><h2 class="contents-head">Contents</h2></div>
+  <ul class="toc">
+<li class="part"><span class="toc-t">Introduction: What MacPhoto Utility Does</span><span class="toc-pg">5</span></li>
+<li class="part"><span class="toc-t">Lessons</span><span class="toc-pg">6</span></li>
+<li class="lesson"><span class="n">1</span><span class="toc-t">Installing MacPhoto Utility</span><span class="toc-pg">6</span></li>
+<li class="lesson"><span class="n">2</span><span class="toc-t">Adding a Photograph</span><span class="toc-pg">7</span></li>
+<li class="lesson"><span class="n">3</span><span class="toc-t">Framing the Print</span><span class="toc-pg">8</span></li>
+<li class="lesson"><span class="n">4</span><span class="toc-t">Framing the Screen Image</span><span class="toc-pg">9</span></li>
+<li class="lesson"><span class="n">5</span><span class="toc-t">Exporting</span><span class="toc-pg">11</span></li>
+<li class="lesson"><span class="n">6</span><span class="toc-t">Seeing It on the Macintosh Plus</span><span class="toc-pg">12</span></li>
+<li class="part"><span class="toc-t">What Now?</span><span class="toc-pg">13</span></li>
+  </ul>
+ </div>
+</div>
+
+<div class="chapter page-break">
+ <div class="flow">
+
+  <div class="keep"><div class="margin"><h2 class="margin-head" id="intro">What MacPhoto Utility Does</h2></div>
+  <p>A photograph on your Mac holds millions of colours. The Macintosh
+  Plus shows two: black and white, on a screen 512 dots wide and 342
+  high. MacPhoto Utility bridges the gap. From each photograph it makes
+  two pictures:</p></div>
+  <ul class="boxes">
+   <li>a <b class="term">print image</b>, the size of a playing card
+   (2.5 by 3.5 inches) in 256 shades of grey, for MacPhoto on the Plus to
+   edit, and for printing;</li>
+   <li>a <b class="term">screen image</b>, the Plus&rsquo;s whole screen
+   in black and white, to look at on the Plus as it is, or to show in
+   After Dark&rsquo;s slide show.</li>
+  </ul>
+  <p>Your photograph itself is never changed. MacPhoto Utility only reads
+  it.</p>
+
+  <div class="keep"><div class="margin"><h3 class="margin-sub">Two frames</h3></div>
+  <p>The print and the screen are different shapes. A print standing
+  upright is tall and narrow; the screen is wide. No single frame suits
+  both, so each photograph has two: a <b class="term">print crop</b> and
+  a <b class="term">screen crop</b>, which you set separately.</p>
+  <figure class="wide"><svg width="370pt" height="215pt" viewBox="0 0 370 215"><rect x="20" y="10" width="240" height="180" fill="#e6e6e6" stroke="#111" stroke-width="0.8"/><rect x="20" y="19.8438" width="240" height="160.312" fill="none" stroke="#111" stroke-width="1" stroke-dasharray="4 3"/><rect x="75.7143" y="10" width="128.571" height="180" fill="none" stroke="#e0442b" stroke-width="1.6"/><text x="268" y="20" font-family="Helvetica" font-size="8" fill="#e0442b" text-anchor="start">Print, portrait:</text><text x="268" y="30" font-family="Helvetica" font-size="8" fill="#e0442b" text-anchor="start">2.5 &#215; 3.5 in, 5:7</text><text x="268" y="168.156" font-family="Helvetica" font-size="8" fill="#111" text-anchor="start">Mac Plus screen:</text><text x="268" y="178.156" font-family="Helvetica" font-size="8" fill="#111" text-anchor="start">512 &#215; 342, about 3:2</text><text x="20" y="204" font-family="Helvetica" font-size="8" fill="#555" text-anchor="start">The photograph, 4:3</text></svg></figure></div>
+
+  <div class="keep"><div class="margin"><h3 class="margin-sub">From your Mac to the Plus</h3></div>
+  <p>MacPhoto Utility works on your Mac, a modern one. The files it makes
+  travel to the Plus on a disk made by the Macintosh Transfer Utility,
+  its companion:</p></div>
+  <div class="wide"><div class="stages"><div class="stage"><span class="number">1</span><b>Your photograph</b><span>JPEG, HEIC, PNG or TIFF, on your Mac</span></div><div class="stage"><span class="number">2</span><b>MacPhoto Utility</b><span>framed twice: a print image and a screen image</span></div><div class="stage"><span class="number">3</span><b>Macintosh Transfer Utility</b><span>puts the files on a disk for the Plus</span></div><div class="stage"><span class="number">4</span><b>The Macintosh Plus</b><span>MacPhoto, SuperPaint, MacPaint, After Dark</span></div></div></div>
+
+  <div class="keep"><div class="margin"><h3 class="margin-sub">What you&rsquo;ll learn</h3></div>
+  <p>The lessons that follow take about a quarter of an hour, with one
+  of your own photographs. You&rsquo;ll install MacPhoto Utility, add a
+  photograph, frame it twice, export it, and see it on the Plus.</p></div>
+  <p>You should already know your way round your Mac and the Finder. For
+  the Plus, the <i>Macintosh Owner&rsquo;s Guide</i> covers the
+  basics.</p>
+
+  <div class="keep"><div class="margin"><h2 class="margin-head" id="lessons">Lessons</h2></div>
+  <p class="lessons-intro">Do the lessons in order; each one picks up
+  where the last one left off. Each step is shown like this:</p></div>
+  <p class="step">A step tells you what to do.</p>
+  <p>The plain text after it tells you what happens.</p>
+
+<div class="keep"><div class="margin"><div class="lesson-head" id="l1"><span class="number">1</span><span class="title">Installing MacPhoto Utility</span></div></div>
+  <p>MacPhoto Utility comes as a single file, MacPhoto-Utility-B-0.9.0.zip
+  (or the version you have).</p></div>
+  <p class="step">Double-click the zip file.</p>
+  <p>The Finder unpacks it beside the zip: the MacPhoto Utility
+  program.</p>
+  <p class="step">Drag MacPhoto Utility to the Applications folder, in
+  the sidebar of a Finder window.</p>
+  <p class="step">Open the Applications folder, and double-click
+  MacPhoto Utility.</p>
+  <p>Its window opens, empty for now. It needs an Apple silicon Mac with
+  macOS 26.</p>
+  <p class="grey">If macOS won&rsquo;t open it the first time, open
+  System Settings, click Privacy &amp; Security, and click Open Anyway
+  beside its name. It&rsquo;s signed for its owner&rsquo;s own use, not
+  by Apple.</p>
+
+<div class="keep"><div class="margin"><div class="lesson-head" id="l2"><span class="number">2</span><span class="title">Adding a Photograph</span></div></div>
+  <p class="step">Choose Add Photographs from the File menu (or press
+  Command-I), select a photograph, and click Open.</p></div>
+  <p class="or">OR</p>
+  <p>Drag a photograph from the Finder onto the window.</p>
+  <p>MacPhoto Utility reads JPEG, HEIC, PNG and TIFF photographs: the
+  kinds a phone or a camera makes. The photograph appears in the list on
+  the left, with a small picture of it.</p>
+  <p class="step">Click the photograph in the list.</p>
+  <p>It opens in the middle of the window, the right way up whichever way
+  the camera was held. Underneath are two previews: the print, and the
+  Plus&rsquo;s screen.</p>
+  <figure class="window wide"><svg class="callouts" width="448pt" height="316pt" viewBox="0 0 448 316"><rect x="0" y="0" width="448" height="315.9" fill="white"/><image href="figures/w-main.png" x="0" y="44" width="448" height="271.9" style="image-rendering: auto"/><text x="38.3" y="12" text-anchor="middle">The queue</text><polyline class="leader" points="38.3,16 38.3,149.4"/><text x="215.7" y="12" text-anchor="middle">The picture and its frame</text><polyline class="leader" points="215.7,16 215.7,107.9"/><text x="399.4" y="12" text-anchor="middle">Output and export</text><polyline class="leader" points="399.4,16 399.4,139.9"/><text x="121.4" y="28" text-anchor="middle">The print</text><polyline class="leader" points="121.4,32 121.4,210.2"/><text x="287.6" y="28" text-anchor="middle">The Mac Plus screen</text><polyline class="leader" points="287.6,32 287.6,210.2"/></svg></figure>
+  <p>The panel at the bottom left gives the photograph&rsquo;s details:
+  what kind of file it is, its size, and whether it was turned to stand
+  upright.</p>
+
+<div class="keep"><div class="margin"><div class="lesson-head" id="l3"><span class="number">3</span><span class="title">Framing the Print</span></div></div>
+  <p>The print is 2.5 by 3.5 inches, so it can&rsquo;t always show the
+  whole photograph. You choose the part it shows, and everything else is
+  left out of the print, but never out of your photograph.</p></div>
+  <p class="step">Click Print Crop, above the picture, if it isn&rsquo;t
+  already chosen.</p>
+  <p>A white frame shows what will be printed. Everything outside it is
+  dimmed. The frame keeps the print&rsquo;s shape however you change
+  it.</p>
+  <figure class="window wide"><img class="screen modern" src="figures/p-editor.png" style="width:448pt; height:188.4pt"></figure>
+  <p class="step">Drag inside the frame to move it.</p>
+  <p>The print preview, below the picture, follows a moment later.
+  It&rsquo;s the print itself, made from the whole photograph, not a
+  sketch.</p>
+  <p class="step">Drag the zoom slider to the right, or drag one of the
+  frame&rsquo;s corners towards the middle.</p>
+  <p>The frame gets smaller, so the print shows less of the photograph,
+  larger. To start again, click Reset.</p>
+  <p class="margin margin-note grey">A frame that&rsquo;s too small for
+  the print gets a warning: see &ldquo;Small Photographs&rdquo; in
+  Chapter 2.</p>
+  <p class="step">Click Portrait or Landscape to turn the print the other
+  way.</p>
+  <p>The frame changes shape, and keeps its place on the picture.</p>
+
+<div class="keep"><div class="margin"><div class="lesson-head" id="l4"><span class="number">4</span><span class="title">Framing the Screen Image</span></div></div>
+  <p class="step">Click Screen Crop (or press the Tab key).</p></div>
+  <p>Now the frame is the Plus&rsquo;s screen: wide, and always filled
+  edge to edge. The print&rsquo;s frame stays, as a thin dashed line, so
+  you can see both.</p>
+  <figure class="window wide"><img class="screen modern" src="figures/p-editor-screen.png" style="width:448pt; height:188.4pt"></figure>
+  <p class="step">Move and size the frame as you did the print&rsquo;s.</p>
+  <p>The Mac Plus screen preview shows the screen image exactly as it
+  will look on the Plus: one dot of the Plus&rsquo;s screen for each dot
+  here, in black and white.</p>
+  <figure class="window"><img class="screen modern" src="figures/p-screen-preview.png" style="width:300pt; height:244.4pt"></figure>
+  <p>Shades of grey become patterns of black and white dots, in the
+  way Bill Atkinson devised for the first Macintosh. If a photograph looks
+  too dark or too flat, drag Brightness or Contrast under the preview;
+  they change the screen image, never the print. Normal puts them
+  back.</p>
+  <p class="step">Click Larger to see the screen image twice the size.</p>
+  <p>Click Done to put it away.</p>
+
+<div class="keep"><div class="margin"><div class="lesson-head" id="l5"><span class="number">5</span><span class="title">Exporting</span></div></div>
+  <p>The files go into a folder you choose, on your Mac.</p></div>
+  <p class="step">Under Output, click Choose, select a folder (or make a
+  new one), and click Choose.</p>
+  <p>MacPhoto Utility remembers it for next time. Leave the other
+  settings as they are: a print at 360 dots an inch, and two files, the
+  print PICT and the screen PICT.</p>
+  <figure class="beside"><img class="screen modern" src="figures/p-output.png" style="width:150pt; height:229.6pt"></figure>
+  <p class="step">Click Export This Photograph (or press Command-E).</p>
+  <p>MacPhoto Utility makes the two files, checks each one by reading it
+  back, and lists them: the print image in a folder called Print Files,
+  the screen image in PICT Files.</p>
+  <figure class="beside"><img class="screen modern" src="figures/p-exported.png" style="width:150pt; height:89.4pt"></figure>
+  <p class="step">Click Show in Finder to see them.</p>
+  <p>They&rsquo;re ready for the Plus, but not on it yet.</p>
+
+<div class="keep"><div class="margin"><div class="lesson-head" id="l6"><span class="number">6</span><span class="title">Seeing It on the Macintosh Plus</span></div></div>
+  <p>The Macintosh Transfer Utility puts the files on a disk for the
+  Plus, in folders of the same names, with each file marked as a picture
+  for the Plus to recognise. <span class="check">CHECK</span></p></div>
+  <p class="step">On the Plus, open the PICT Files folder, then open the
+  screen image in SuperPaint (or another program that opens PICT
+  files).</p>
+  <p>Your photograph fills the Plus&rsquo;s screen, just as the preview
+  showed it.</p>
+  <figure class="plus"><img class="screen" src="figures/plus-superpaint.png" style="width:300pt; height:200.4pt"></figure>
+  <p class="grey">This picture, and the MacPaint one below, are from an
+  emulated Macintosh Plus. <span class="check">CHECK</span></p>
+  <p class="step">To use the screen image in After Dark&rsquo;s slide
+  show, copy it into the Slide Show Folder in the After Dark Files folder,
+  in the System Folder. <span class="check">CHECK</span></p>
+  <p>Only screen images belong there. The print images are in 256 greys,
+  which the Plus&rsquo;s own drawing can&rsquo;t show.</p>
+  <p>The print image waits in Print Files for MacPhoto, the Plus&rsquo;s
+  photograph editor. Photoshop 1.0 can open it too. <span class="check">CHECK</span></p>
+  <figure class="plus"><img class="screen" src="figures/plus-macpaint-page.png" style="width:300pt; height:200.4pt"></figure>
+  <p class="grey">If you also export a MacPaint document, MacPaint shows
+  the screen image in the middle of its page. Your patterns are left as
+  they were.</p>
+
+  <div class="keep"><div class="margin"><h2 class="margin-head" id="whatnow">What Now?</h2></div>
+  <p>That&rsquo;s the whole journey: add, frame twice, export, and carry
+  the files to the Plus.</p></div>
+  <p>Chapter 2, &ldquo;Using MacPhoto Utility,&rdquo; covers each task in
+  turn: a folder of photographs at once, the queue, the screen
+  image&rsquo;s brightness, small photographs, and saving your work as a
+  project to come back to. Chapter 3 describes every part of the window
+  and every menu command.</p>
+ </div>
+</div>
+<div class="opener opener-left" id="chapter-2"><img src="figures/c2-opener-l.png"></div>
+<div class="opener opener-right"><img src="figures/c2-opener-r.png">
+ <div class="opener-title" data-foot="Chapter 2: Using MacPhoto Utility"><p class="ch">Chapter 2</p><p class="name">Using MacPhoto Utility</p></div>
+</div>
+<div class="chapter chapter-contents"><div class="flow"><div class="margin"><h2 class="contents-head">Contents</h2></div><ul class="toc"><li class="part"><span class="toc-t">Adding Photographs</span><span class="toc-pg">18</span></li>
+<li class="lesson"><span class="toc-t">To Add Photographs</span><span class="toc-pg">18</span></li>
+<li class="lesson"><span class="toc-t">To Add a Folder of Photographs</span><span class="toc-pg">18</span></li>
+<li class="lesson"><span class="toc-t">To Add by Dragging</span><span class="toc-pg">18</span></li>
+<li class="lesson"><span class="toc-t">If Some Files Are Skipped</span><span class="toc-pg">18</span></li>
+<li class="lesson"><span class="toc-t">If a Photograph Can&rsquo;t Be Read</span><span class="toc-pg">19</span></li>
+<li class="part"><span class="toc-t">The Queue</span><span class="toc-pg">20</span></li>
+<li class="lesson"><span class="toc-t">What the Marks Mean</span><span class="toc-pg">20</span></li>
+<li class="lesson"><span class="toc-t">To Work on a Photograph</span><span class="toc-pg">20</span></li>
+<li class="lesson"><span class="toc-t">To Take Photographs Out of the Queue</span><span class="toc-pg">20</span></li>
+<li class="part"><span class="toc-t">Framing</span><span class="toc-pg">21</span></li>
+<li class="lesson"><span class="toc-t">To Move a Frame</span><span class="toc-pg">21</span></li>
+<li class="lesson"><span class="toc-t">To Make a Frame Smaller or Larger</span><span class="toc-pg">21</span></li>
+<li class="lesson"><span class="toc-t">To Turn a Photograph</span><span class="toc-pg">21</span></li>
+<li class="lesson"><span class="toc-t">To Turn the Print</span><span class="toc-pg">21</span></li>
+<li class="lesson"><span class="toc-t">To Start Again</span><span class="toc-pg">21</span></li>
+<li class="part"><span class="toc-t">The Screen Image</span><span class="toc-pg">22</span></li>
+<li class="lesson"><span class="toc-t">To Make It Lighter, Darker or Crisper</span><span class="toc-pg">22</span></li>
+<li class="lesson"><span class="toc-t">To See It Larger</span><span class="toc-pg">22</span></li>
+<li class="part"><span class="toc-t">Small Photographs</span><span class="toc-pg">23</span></li>
+<li class="lesson"><span class="toc-t">If a Photograph Is Small for Its Output</span><span class="toc-pg">23</span></li>
+<li class="part"><span class="toc-t">The Output</span><span class="toc-pg">24</span></li>
+<li class="lesson"><span class="toc-t">To Choose the Print&rsquo;s Resolution</span><span class="toc-pg">24</span></li>
+<li class="lesson"><span class="toc-t">To Choose Which Files Are Made</span><span class="toc-pg">24</span></li>
+<li class="lesson"><span class="toc-t">To Choose the Folder</span><span class="toc-pg">24</span></li>
+<li class="part"><span class="toc-t">Exporting</span><span class="toc-pg">25</span></li>
+<li class="lesson"><span class="toc-t">To Export One Photograph</span><span class="toc-pg">25</span></li>
+<li class="lesson"><span class="toc-t">To Export Every Photograph</span><span class="toc-pg">25</span></li>
+<li class="lesson"><span class="toc-t">If Some Haven&rsquo;t Been Looked At</span><span class="toc-pg">25</span></li>
+<li class="lesson"><span class="toc-t">If Files Are Already There</span><span class="toc-pg">26</span></li>
+<li class="lesson"><span class="toc-t">To Stop</span><span class="toc-pg">26</span></li>
+<li class="lesson"><span class="toc-t">When It&rsquo;s Finished</span><span class="toc-pg">26</span></li>
+<li class="part"><span class="toc-t">Projects</span><span class="toc-pg">27</span></li>
+<li class="lesson"><span class="toc-t">To Save Your Work</span><span class="toc-pg">27</span></li>
+<li class="lesson"><span class="toc-t">To Open a Project</span><span class="toc-pg">27</span></li>
+<li class="lesson"><span class="toc-t">If Photographs Have Moved</span><span class="toc-pg">28</span></li>
+<li class="lesson"><span class="toc-t">If a Photograph Is Missing</span><span class="toc-pg">28</span></li>
+<li class="lesson"><span class="toc-t">To Start a New Project</span><span class="toc-pg">28</span></li></ul></div></div><div class="chapter tasks-wide page-break"><div class="flow"><div class="topic-block"><div class="entry task"><div class="keep"><div class="margin"><h2 class="margin-head" id="adding-photographs">Adding Photographs</h2></div><p>MacPhoto Utility works on a list of photographs, the <b>queue</b>. Photographs stay where they are on your Mac; the queue only lists them.</p><div class="margin"><h3 class="task-head" id="to-add-photographs">To Add Photographs</h3></div><p class="step">Choose Add Photographs from the File menu (or press Command-I), select one or more photographs, and click Open.</p></div><p class="or">OR</p><p>Click the + button above the list.</p><p>JPEG, HEIC, PNG and TIFF photographs are added, in the order the Finder shows them. A photograph already in the queue isn&rsquo;t added twice.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="to-add-a-folder-of-photographs">To Add a Folder of Photographs</h3></div><p class="step">Choose Add Folder from the File menu (or press Shift-Command-I), select the folder, and click Add.</p></div><p>The photographs directly inside it are added; folders inside it are left alone.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="to-add-by-dragging">To Add by Dragging</h3></div><p class="step">Drag photographs, or a folder, from the Finder onto the window, or onto MacPhoto Utility&rsquo;s icon in the Dock.</p></div></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="if-some-files-are-skipped">If Some Files Are Skipped</h3></div><p>Anything that isn&rsquo;t a photograph MacPhoto Utility reads is left out, and the foot of the list says how many.</p></div><p class="step">Click &ldquo;skipped: not photographs&rdquo; to see which, and why.</p><figure class="window"><img class="screen modern" src="figures/p-skipped.png" style="width:200pt; height:89.8pt"></figure></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="if-a-photograph-cant-be-read">If a Photograph Can&rsquo;t Be Read</h3></div><p>A photograph that&rsquo;s damaged, or too large (more than 250 megapixels), stays in the list with a red ✕. Click it to see why.</p></div><figure class="window"><img class="screen modern" src="figures/p-cant-read.png" style="width:200pt; height:83.3pt"></figure><p class="grey">Try another copy of the photograph: from your Photos library, say, exported again.</p></div></div><div class="topic-block"><div class="entry task"><div class="keep"><div class="margin"><h2 class="margin-head" id="the-queue">The Queue</h2></div><p>Each photograph in the list shows a small picture of itself, its name, how its print will stand, and how far you&rsquo;ve got with it.</p><div class="margin"><h3 class="task-head" id="what-the-marks-mean">What the Marks Mean</h3></div><p>Beside each name, on the right:</p></div><figure class="beside"><img class="screen modern" src="figures/p-queue.png" style="width:118pt; height:328.9pt"></figure><ul class="boxes"><li><b>P</b> or <b>L</b>: its print is portrait or landscape.</li><li><b>○ Not looked at yet</b>: it hasn&rsquo;t been opened, so its frames are as they started, in the middle at full size.</li><li><b>⚠ Small for its output</b>: see &ldquo;Small Photographs.&rdquo;</li><li><b>✕ Can&rsquo;t be read</b>: damaged, or not a photograph.</li><li><b>✓ Exported</b>: exported since it was last changed.</li><li><b>Missing</b>: a project&rsquo;s photograph that isn&rsquo;t where it was (see &ldquo;Projects&rdquo;).</li></ul></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="to-work-on-a-photograph">To Work on a Photograph</h3></div><p class="step">Click it in the list, or move to it with the Up and Down Arrow keys.</p></div><p>It opens with its frames just as you left them. Every photograph keeps its own.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="to-take-photographs-out-of-the-queue">To Take Photographs Out of the Queue</h3></div><p class="step">Select them, and click Remove (or press Delete).</p></div><p>Remove All empties the queue. Either way, the photographs themselves stay on your Mac: nothing is deleted.</p></div></div><div class="topic-block"><div class="entry task"><div class="keep"><div class="margin"><h2 class="margin-head" id="framing">Framing</h2></div><p>Each photograph has two frames: the print&rsquo;s and the screen&rsquo;s. Print Crop and Screen Crop, above the picture, choose which you&rsquo;re setting; the other shows as a dashed line.</p><div class="margin"><h3 class="task-head" id="to-move-a-frame">To Move a Frame</h3></div><p class="step">Drag inside it.</p></div><p>It stops at the edges of the photograph: a frame never goes beyond it. The arrow keys move it a little at a time.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="to-make-a-frame-smaller-or-larger">To Make a Frame Smaller or Larger</h3></div><p class="step">Drag one of its corners.</p></div><p class="or">OR</p><p>Drag the zoom slider; or pinch on a trackpad, or turn the scroll wheel, over the picture.</p><p>The frame keeps its shape. It can be as large as the photograph allows, and as small as an eighth of that.</p><figure class="window"><img class="screen modern" src="figures/p-editor.png" style="width:300pt; height:126.2pt"></figure></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="to-turn-a-photograph">To Turn a Photograph</h3></div><p class="step">Click a turn button, above the picture (or press Command-[ or Command-]).</p></div><p>It turns a quarter at a time, frames and all.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="to-turn-the-print">To Turn the Print</h3></div><p class="step">With Print Crop chosen, click Portrait or Landscape.</p></div><p>A new photograph starts as landscape if it&rsquo;s wider than it is tall, and as portrait otherwise.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="to-start-again">To Start Again</h3></div><p class="step">Click Reset (or press Command-0).</p></div><p>The frame you&rsquo;re setting goes back to the middle, at full size. The other is left as it is.</p></div></div><div class="topic-block"><div class="entry task"><div class="keep"><div class="margin"><h2 class="margin-head" id="the-screen-image">The Screen Image</h2></div><p>The screen image is the Plus&rsquo;s whole screen, 512 dots by 342, in black and white. The Mac Plus screen preview shows it dot for dot.</p><div class="margin"><h3 class="task-head" id="to-make-it-lighter-darker-or-crisper">To Make It Lighter, Darker or Crisper</h3></div><p class="step">Drag Brightness or Contrast, under the preview.</p></div><p>Each goes from &minus;100 to +100. They change the screen image only, never the print, and each photograph keeps its own. Normal puts both back to 0.</p><figure class="window"><img class="screen modern" src="figures/p-screen-preview.png" style="width:300pt; height:244.4pt"></figure><p class="grey">Greys become patterns of black and white dots, in the way Bill Atkinson devised for the first Macintosh. It keeps edges crisp but can lose detail in the lightest and darkest parts; a little more contrast or brightness often helps.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="to-see-it-larger">To See It Larger</h3></div><p class="step">Click Larger, above the preview.</p></div><p>It&rsquo;s shown twice the size. Click Done to put it away.</p></div></div><div class="topic-block"><div class="entry task"><div class="keep"><div class="margin"><h2 class="margin-head" id="small-photographs">Small Photographs</h2></div><p>A frame needs enough of the photograph to fill its picture. When it hasn&rsquo;t, MacPhoto Utility still makes the picture, enlarged, but says so.</p><div class="margin"><h3 class="task-head" id="if-a-photograph-is-small-for-its-output">If a Photograph Is Small for Its Output</h3></div><p>A warning appears under the preview it affects, and the photograph is marked ⚠ in the list.</p></div><figure class="window"><img class="screen modern" src="figures/p-small-warning.png" style="width:160pt; height:259.3pt"></figure><p>A print at 360 dots an inch needs a frame of at least 900 by 1260 of the photograph&rsquo;s own pixels (750 by 1050 at 300). The screen image needs 512 by 342.</p><p class="step">Make the frame larger, or choose 300 PPI for the print.</p><p class="grey">A photograph from any recent phone is large enough unless you zoom in a long way.</p></div></div><div class="topic-block"><div class="entry task"><div class="keep"><div class="margin"><h2 class="margin-head" id="the-output">The Output</h2></div><p>The settings under Output are shared by every photograph in the queue, and remembered.</p><div class="margin"><h3 class="task-head" id="to-choose-the-prints-resolution">To Choose the Print&rsquo;s Resolution</h3></div><p class="step">Click 360 PPI or 300 PPI.</p></div><p>360 dots an inch gives more detail; the framing is the same either way.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="to-choose-which-files-are-made">To Choose Which Files Are Made</h3></div><p class="step">Turn on Print PICT, Screen PICT or MacPaint.</p></div><p>The first two are on to start with. A MacPaint document holds the screen image too, in the middle of a MacPaint page.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="to-choose-the-folder">To Choose the Folder</h3></div><p class="step">Click Choose, select a folder (or make a new one), and click Choose.</p></div><p>The files go into folders inside it, named as they&rsquo;ll be on the Plus: Print Files, PICT Files and MacPaint Files.</p><figure class="window"><img class="screen modern" src="figures/p-output.png" style="width:170pt; height:260.2pt"></figure></div></div><div class="topic-block"><div class="entry task"><div class="keep"><div class="margin"><h2 class="margin-head" id="exporting">Exporting</h2></div><p>Exporting makes the files. Each one is read back and checked after it&rsquo;s written; a file that fails isn&rsquo;t kept.</p><div class="margin"><h3 class="task-head" id="to-export-one-photograph">To Export One Photograph</h3></div><p class="step">Click Export This Photograph (or press Command-E).</p></div><p>The files made are listed under the button. Click Show in Finder to see them.</p><figure class="window"><img class="screen modern" src="figures/p-exported.png" style="width:170pt; height:101.3pt"></figure></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="to-export-every-photograph">To Export Every Photograph</h3></div><p class="step">Click Export All (or press Shift-Command-E).</p></div><p>The photographs are exported one at a time, in the order of the list. The panel shows which one it&rsquo;s on. A photograph that fails is marked, and the rest carry on.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="if-some-havent-been-looked-at">If Some Haven&rsquo;t Been Looked At</h3></div><p>Export All asks first, and lists them: they&rsquo;d be exported with the frames they started with, in the middle at full size.</p></div><figure class="window"><img class="screen modern" src="figures/a-unseen.png" style="width:140pt; height:129.2pt"></figure><p class="step">Click Export All to go ahead, or Cancel to look at them first.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="if-files-are-already-there">If Files Are Already There</h3></div><p>When the folder already has files of the same names, MacPhoto Utility asks once, for all of them:</p></div><ul class="boxes"><li><b>Keep Both</b> saves the new files under the next free name: IMG_8691 2.pict, say.</li><li><b>Replace</b> puts the new files in place of the old ones.</li><li><b>Skip Those Photographs</b> leaves them out.</li><li><b>Cancel</b> exports nothing.</li></ul><figure class="window"><img class="screen modern" src="figures/a-taken.png" style="width:140pt; height:166.9pt"></figure><p class="grey">Two photographs in the queue with the same name (from different folders) are numbered automatically.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="to-stop">To Stop</h3></div><p class="step">Click Stop, under the progress bar.</p></div><p>The photograph in hand is finished, so every file written is complete and checked; the rest are left for another time.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="when-its-finished">When It&rsquo;s Finished</h3></div><p>A summary says how many photographs were exported, any warnings, and any that couldn&rsquo;t be, with the reason.</p></div><figure class="window"><img class="screen modern" src="figures/f-summary.png" style="width:240pt; height:91.8pt"></figure></div></div><div class="topic-block"><div class="entry task"><div class="keep"><div class="margin"><h2 class="margin-head" id="projects">Projects</h2></div><p>A <b>project</b> keeps your work: the queue, every photograph&rsquo;s frames and screen settings, the output settings, and what was exported when. It doesn&rsquo;t copy the photographs; it remembers where they are.</p><div class="margin"><h3 class="task-head" id="to-save-your-work">To Save Your Work</h3></div><p class="step">Choose Save from the File menu (or press Command-S), name the project, and click Save.</p></div><p>The window&rsquo;s title becomes the project&rsquo;s name. Save As saves a copy under another name.</p><figure class="window"><img class="screen modern" src="figures/a-save.png" style="width:200pt; height:142.7pt"></figure><p class="grey">If you close the window or quit with changes unsaved, MacPhoto Utility asks whether to save them.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="to-open-a-project">To Open a Project</h3></div><p class="step">Choose Open Project from the File menu (or press Command-O), or choose one from Open Recent.</p></div><p class="or">OR</p><p>Double-click the project in the Finder.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="if-photographs-have-moved">If Photographs Have Moved</h3></div><p>MacPhoto Utility finds them again by their content, even moved to another folder or renamed, and says so. Save the project to remember the new places.</p></div><figure class="window"><img class="screen modern" src="figures/a-opened.png" style="width:140pt; height:129.2pt"></figure></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="if-a-photograph-is-missing">If a Photograph Is Missing</h3></div><p>It stays in the list, marked Missing, with its frames kept.</p></div><figure class="window"><img class="screen modern" src="figures/p-missing.png" style="width:170pt; height:39.7pt"></figure><p class="step">Select it, and click Locate in the panel below the list; find the photograph and click Open.</p><p class="or">OR</p><p>Click Locate in Folder to look in one folder for every missing photograph at once.</p><p class="grey">If the file you choose isn&rsquo;t the same photograph (its content is different), MacPhoto Utility asks before using it.</p></div><div class="entry task"><div class="keep"><div class="margin"><h3 class="task-head" id="to-start-a-new-project">To Start a New Project</h3></div><p class="step">Choose New Project from the File menu (or press Command-N).</p></div><p>The queue is emptied; the output settings stay as they were.</p></div></div></div></div><div class="opener opener-left" id="chapter-3"><img src="figures/c3-opener-l.png"></div>
+<div class="opener opener-right"><img src="figures/c3-opener-r.png">
+ <div class="opener-title" data-foot="Chapter 3: Reference"><p class="ch">Chapter 3</p><p class="name">Reference</p></div>
+</div>
+<div class="chapter chapter-contents"><div class="flow"><div class="margin"><h2 class="contents-head">Contents</h2></div><ul class="toc"><li class="part"><span class="toc-t">The Window</span><span class="toc-pg">33</span></li>
+<li class="part"><span class="toc-t">The Queue</span><span class="toc-pg">33</span></li>
+<li class="part"><span class="toc-t">The Picture and Its Frame</span><span class="toc-pg">35</span></li>
+<li class="part"><span class="toc-t">The Previews</span><span class="toc-pg">37</span></li>
+<li class="part"><span class="toc-t">Output and Export</span><span class="toc-pg">37</span></li>
+<li class="part"><span class="toc-t">The Menus</span><span class="toc-pg">38</span></li>
+<li class="part"><span class="toc-t">The Files It Makes</span><span class="toc-pg">39</span></li>
+<li class="part"><span class="toc-t">Limits and Settings</span><span class="toc-pg">40</span></li></ul></div></div><div class="chapter page-break"><div class="flow"><div class="section"><div class="keep"><div class="margin"><h2 class="margin-head" id="r-the-window">The Window</h2></div><p>Everything happens in one window. On the left, the queue of photographs and the details of the one you&rsquo;re working on; in the middle, the photograph with its frame, and the two previews; on the right, the output settings and the export buttons.</p></div><figure class="window wide"><svg class="callouts" width="448pt" height="316pt" viewBox="0 0 448 316"><rect x="0" y="0" width="448" height="315.9" fill="white"/><image href="figures/w-main.png" x="0" y="44" width="448" height="271.9" style="image-rendering: auto"/><text x="38.3" y="12" text-anchor="middle">The queue</text><polyline class="leader" points="38.3,16 38.3,149.4"/><text x="215.7" y="12" text-anchor="middle">The picture and its frame</text><polyline class="leader" points="215.7,16 215.7,107.9"/><text x="399.4" y="12" text-anchor="middle">Output and export</text><polyline class="leader" points="399.4,16 399.4,139.9"/><text x="121.4" y="28" text-anchor="middle">The print</text><polyline class="leader" points="121.4,32 121.4,210.2"/><text x="287.6" y="28" text-anchor="middle">The Mac Plus screen</text><polyline class="leader" points="287.6,32 287.6,210.2"/></svg></figure><p>The window&rsquo;s title is the project&rsquo;s name, or Untitled. Closing the window quits MacPhoto Utility, asking first if there are unsaved changes.</p></div><div class="section"><div class="keep"><div class="margin"><h2 class="margin-head" id="r-the-queue">The Queue</h2></div><p>The list of photographs you&rsquo;re working on, and the details of the one selected.</p></div><table class="ref controls"><thead><tr><th>Part</th><th>What it does</th></tr></thead><tbody><tr><td>+ button</td><td>Adds photographs (as Add Photographs).</td></tr><tr><td>Folder button</td><td>Adds the photographs in a folder (as Add Folder).</td></tr><tr><td>A row</td><td>A small picture, the name, the print&rsquo;s orientation (P or L) and its state: not looked at yet, looked at, small for its output, can&rsquo;t be read, exported, missing.</td></tr><tr><td>The count</td><td>How many photographs, how many can&rsquo;t be read, and how many files were skipped as not photographs (click it to see which).</td></tr><tr><td>Remove</td><td>Takes the selected photographs out of the queue (Delete does the same).</td></tr><tr><td>Remove All</td><td>Empties the queue.</td></tr><tr><td>The details</td><td>The selected photograph&rsquo;s kind, its size as stored and upright, how the camera turned it, any turns you&rsquo;ve made, and when it was last exported. For a missing photograph, where it was, with Locate and Locate in Folder.</td></tr></tbody></table><figure class="window"><img class="screen modern" src="figures/p-queue.png" style="width:118pt; height:328.9pt"></figure></div><div class="section"><div class="keep"><div class="margin"><h2 class="margin-head" id="r-the-picture-and-its-frame">The Picture and Its Frame</h2></div><p>The photograph, turned the right way up, with the frame you&rsquo;re setting drawn on it and everything outside the frame dimmed.</p></div><figure class="window wide"><img class="screen modern" src="figures/p-editor.png" style="width:448pt; height:188.4pt"></figure><table class="ref controls"><thead><tr><th>Control</th><th>What it does</th></tr></thead><tbody><tr><td>Print Crop, Screen Crop</td><td>Which frame you&rsquo;re setting (Command-1, Command-2, or Tab). The other shows as a dashed line.</td></tr><tr><td>Turn buttons</td><td>Turn the photograph a quarter to the left or right (Command-[, Command-]).</td></tr><tr><td>Portrait, Landscape</td><td>Which way the print stands. Shown only with Print Crop chosen.</td></tr><tr><td>Zoom slider</td><td>Makes the frame smaller (to the right) or larger, keeping its shape: from the largest the photograph allows to an eighth of that. A pinch or the scroll wheel does the same.</td></tr><tr><td>Reset</td><td>The frame back to the middle at full size (Command-0).</td></tr><tr><td>The frame</td><td>Drag inside it to move it, or a corner to size it. The arrow keys move it a little at a time.</td></tr></tbody></table></div><div class="section"><div class="keep"><div class="margin"><h2 class="margin-head" id="r-the-previews">The Previews</h2></div><p>Both are made from the whole photograph, a moment after each change: they&rsquo;re the pictures themselves, not sketches.</p></div><table class="ref controls"><thead><tr><th>Part</th><th>What it shows or does</th></tr></thead><tbody><tr><td>Print</td><td>The print image, scaled to fit: its size in pixels, its resolution, and any warning.</td></tr><tr><td>Mac Plus screen</td><td>The screen image, one dot of the Plus&rsquo;s screen to each point, in black and white.</td></tr><tr><td>Larger</td><td>The screen image twice the size.</td></tr><tr><td>Brightness, Contrast</td><td>&minus;100 to +100 each, for the screen image only. Each photograph keeps its own.</td></tr><tr><td>Normal</td><td>Brightness and contrast back to 0.</td></tr></tbody></table></div><div class="section"><div class="keep"><div class="margin"><h2 class="margin-head" id="r-output-and-export">Output and Export</h2></div><p>What to make, where, and the buttons that make it.</p></div><table class="ref controls"><thead><tr><th>Control</th><th>What it does</th></tr></thead><tbody><tr><td>360 PPI, 300 PPI</td><td>The print&rsquo;s resolution. The framing is the same either way.</td></tr><tr><td>Print PICT</td><td>The print image: 8-bit grey, for MacPhoto.</td></tr><tr><td>Screen PICT</td><td>The screen image: 1-bit, 512 by 342.</td></tr><tr><td>MacPaint</td><td>The screen image on a MacPaint page, in the middle.</td></tr><tr><td>Folder, Choose</td><td>Where the files go, in folders inside it named for the Plus.</td></tr><tr><td>Export All</td><td>Every photograph that can be read, one at a time (Shift-Command-E), with progress and Stop.</td></tr><tr><td>Export This Photograph</td><td>The selected one (Command-E).</td></tr></tbody></table><p>These settings are shared by every photograph, kept in a project, and remembered between times you use MacPhoto Utility.</p><figure class="window"><img class="screen modern" src="figures/p-output.png" style="width:150pt; height:229.6pt"></figure></div><div class="section"><div class="keep"><div class="margin"><h2 class="margin-head" id="r-the-menus">The Menus</h2></div><p>The File and Photograph menus hold MacPhoto Utility&rsquo;s own commands.</p></div><figure class="row"><img class="screen modern" src="figures/m-file.png" style="width:180pt; height:198.4pt"><img class="screen modern" src="figures/m-photograph.png" style="width:140pt; height:109.7pt"></figure><table class="ref narrow"><thead><tr><th>File menu</th><th>Keys</th><th></th></tr></thead><tbody><tr><td>New Project</td><td>&#8984;N</td><td>Empties the queue, asking first to save any changes.</td></tr><tr><td>Open Project&hellip;</td><td>&#8984;O</td><td>Opens a saved project.</td></tr><tr><td>Open Recent</td><td></td><td>The projects opened lately.</td></tr><tr><td>Add Photographs&hellip;</td><td>&#8984;I</td><td>Adds photographs to the queue.</td></tr><tr><td>Add Folder&hellip;</td><td>&#8679;&#8984;I</td><td>Adds the photographs in a folder.</td></tr><tr><td>Save, Save As&hellip;</td><td>&#8984;S, &#8679;&#8984;S</td><td>Saves the project.</td></tr><tr><td>Export This Photograph</td><td>&#8984;E</td><td>Exports the selected photograph.</td></tr><tr><td>Export All</td><td>&#8679;&#8984;E</td><td>Exports every photograph.</td></tr></tbody></table><table class="ref narrow"><thead><tr><th>Photograph menu</th><th>Keys</th><th></th></tr></thead><tbody><tr><td>Turn Left, Turn Right</td><td>&#8984;[, &#8984;]</td><td>Turns the photograph a quarter.</td></tr><tr><td>Edit Print Crop, Edit Screen Crop</td><td>&#8984;1, &#8984;2</td><td>Chooses which frame you&rsquo;re setting.</td></tr><tr><td>Reset Crop</td><td>&#8984;0</td><td>That frame back to the middle at full size.</td></tr></tbody></table><p>The MacPhoto Utility, Edit, Window and Help menus are the ones every Mac program has: About MacPhoto Utility and Quit are in the first.</p></div><div class="section"><div class="keep"><div class="margin"><h2 class="margin-head" id="r-the-files-it-makes">The Files It Makes</h2></div><p>In the folder you choose, MacPhoto Utility makes a folder for each kind of file, named as it will be on the Plus.</p></div><table class="ref narrow"><thead><tr><th>Folder</th><th>File</th><th>What it is</th></tr></thead><tbody><tr><td>Print Files</td><td><i>name</i>.pict</td><td>The print image: a PICT in 256 greys, at the print&rsquo;s exact size. About 1&nbsp;MB.</td></tr><tr><td>PICT Files</td><td><i>name</i>.pict</td><td>The screen image: a black-and-white PICT, 512 by 342. Under 23&nbsp;KB.</td></tr><tr><td>MacPaint Files</td><td><i>name</i>.MAC</td><td>The screen image in the middle of a MacPaint page. Under 52&nbsp;KB.</td></tr><tr><td></td><td>manifest.json</td><td>A record of every file exported into the folder: from which photograph, framed how, and its checksum. For your records; the Plus doesn&rsquo;t need it.</td></tr></tbody></table><p>Names are made to suit the Plus: up to 31 characters with the ending, without colons, and with letters the Plus can&rsquo;t show changed for the nearest it can. A project, saved where you choose, ends in .macphoto.</p></div><div class="section"><div class="keep"><div class="margin"><h2 class="margin-head" id="r-limits-and-settings">Limits and Settings</h2></div><p>The figures, for reference.</p></div><table class="ref spec"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Photographs</td><td>JPEG, HEIC, PNG and TIFF, up to 250 megapixels</td></tr><tr><td>Print, 360 PPI</td><td>900 &times; 1260 pixels (portrait) or 1260 &times; 900 (landscape)</td></tr><tr><td>Print, 300 PPI</td><td>750 &times; 1050 pixels or 1050 &times; 750</td></tr><tr><td>Print size</td><td>2.5 &times; 3.5 inches; no other size</td></tr><tr><td>Screen image</td><td>512 &times; 342 dots, black and white, Atkinson dithering</td></tr><tr><td>MacPaint page</td><td>576 &times; 720 dots; the screen image 32 dots in and 189 down</td></tr><tr><td>Zoom</td><td>1&times; to 8&times;</td></tr><tr><td>Brightness, contrast</td><td>&minus;100 to +100</td></tr><tr><td>File names on the Plus</td><td>31 characters</td></tr><tr><td>To start with</td><td>360 PPI; Print PICT and Screen PICT; no folder until you choose one</td></tr></tbody></table></div></div></div><div class="chapter page-break"><div class="appendix-title" id="appendix-a" data-foot="Appendix A: Messages"><p class="ch">Appendix A</p><h1 class="name">Messages</h1></div><div class="flow"><p>This appendix lists the messages MacPhoto Utility shows, with what they mean and what to do. <i>name</i> stands for a file&rsquo;s name.</p><div class="keep"><h3 class="ref-head loose" id="a-adding-and-opening-photographs">Adding and Opening Photographs</h3><p>These appear beside a photograph in the queue, or in a message when it&rsquo;s opened.</p><div class="msg"><p class="msg-text"><i>name</i>: the file isn&rsquo;t there.</p><p>It has been moved or deleted since it was added. In a project, see &ldquo;If a Photograph Is Missing&rdquo; in Chapter 2.</p></div></div><div class="msg"><p class="msg-text"><i>name</i>: the file is empty.</p><p>The file has nothing in it. Use another copy.</p></div><div class="msg"><p class="msg-text"><i>name</i>: not a picture this app can read.</p><p>It isn&rsquo;t a picture at all, or not one MacPhoto Utility understands.</p></div><div class="msg"><p class="msg-text"><i>name</i>: a <i>kind</i> picture. Only JPEG, HEIC, PNG and TIFF photographs are accepted.</p><p>A GIF, say. Save the picture as one of those four (Preview can) and add it again.</p></div><div class="msg"><p class="msg-text"><i>name</i>: the file is damaged (it ends before the picture does).</p><p>Part of the file is missing: it was cut short when it was copied or downloaded. Use another copy.</p></div><div class="msg"><p class="msg-text"><i>name</i>: the file is damaged (it can&rsquo;t be decoded).</p><p>The file is spoilt inside. Use another copy.</p></div><div class="msg"><p class="msg-text"><i>name</i>: <i>n</i> megapixels is more than the 250 this app accepts.</p><p>The picture is enormous. Make a smaller copy (Preview&rsquo;s Adjust Size will do it) and add that.</p></div><div class="keep"><h3 class="ref-head loose" id="a-warnings">Warnings</h3><p>These appear under the preview they affect. The picture is still made.</p><div class="msg"><p class="msg-text">The print crop is <i>w</i> &times; <i>h</i> photo pixels but the print needs <i>w</i> &times; <i>h</i>: it will be enlarged and may look soft.</p><p>See &ldquo;Small Photographs&rdquo; in Chapter 2.</p></div></div><div class="msg"><p class="msg-text">The screen crop is <i>w</i> &times; <i>h</i> photo pixels, less than the screen&rsquo;s 512 &times; 342: it will be enlarged.</p><p>Make the screen frame larger.</p></div><div class="keep"><h3 class="ref-head loose" id="a-exporting">Exporting</h3><div class="msg"><p class="msg-text">Nothing to export yet.</p><p>There&rsquo;s no photograph, no file is ticked under Output, or no folder has been chosen.</p></div></div><div class="msg"><p class="msg-text">Some of these files are already there.</p><p>Export This Photograph: Keep Both, Replace or Cancel.</p></div><div class="msg"><p class="msg-text"><i>n</i> photographs haven&rsquo;t been looked at.</p><p>Export All: they&rsquo;d be exported framed in the middle, at full size.</p></div><div class="msg"><p class="msg-text">Files for some photographs are already in the folder.</p><p>Export All: Keep Both, Replace, Skip Those Photographs or Cancel.</p></div><div class="msg"><p class="msg-text">Nothing was exported. The <i>kind</i> file failed its check, so nothing was exported.</p><p>A file didn&rsquo;t read back as it should. Nothing half-made is left in the folder. Try again; if it happens again, try another folder.</p></div><div class="msg"><p class="msg-text">Nothing was exported. The folder&rsquo;s manifest.json can&rsquo;t be read, so nothing was exported rather than overwrite it.</p><p>The record of exports in that folder is damaged. Move it aside, or choose another folder.</p></div><div class="keep"><h3 class="ref-head loose" id="a-projects">Projects</h3><div class="msg"><p class="msg-text">Do you want to save the changes to &ldquo;<i>project</i>&rdquo;?</p><p>On closing, quitting, New Project or Open Project. Save, Don&rsquo;t Save, or Cancel.</p></div></div><div class="msg"><p class="msg-text">&ldquo;<i>project</i>&rdquo; is open. Found where they had moved to, by their content&hellip; Not found&hellip;</p><p>Some photographs had moved and were found; any not found are marked Missing. Save the project to remember the new places.</p></div><div class="msg"><p class="msg-text">The project couldn&rsquo;t be opened. The project can&rsquo;t be read: it isn&rsquo;t a MacPhoto project.</p><p>Or it&rsquo;s damaged, or part of it is missing. The project that was open is left as it was.</p></div><div class="msg"><p class="msg-text">The project was saved by a newer MacPhoto Utility&hellip; Nothing was changed.</p><p>Use the newer MacPhoto Utility to open it.</p></div><div class="msg"><p class="msg-text">The project wasn&rsquo;t saved.</p><p>The disk may be full or locked. Try Save As, somewhere else.</p></div><div class="msg"><p class="msg-text">This isn&rsquo;t the same photograph.</p><p>Locate: the file you chose has different content. Cancel, or Use It Anyway to keep the frames with this file.</p></div><div class="msg"><p class="msg-text">That file can&rsquo;t be used.</p><p>Locate: the file can&rsquo;t be read.</p></div><div class="msg"><p class="msg-text">None of the missing photographs are there. Found <i>n</i>.</p><p>Locate in Folder: how many it found, and how many are still missing.</p></div></div></div>
+<div class="chapter page-break"><div class="appendix-title" id="appendix-b" data-foot="Appendix B: The Files on the Macintosh Plus"><p class="ch">Appendix B</p><h1 class="name">The Files on the Macintosh Plus</h1></div><div class="flow"><p>The Macintosh Transfer Utility puts MacPhoto Utility&rsquo;s files on a disk for the Plus, in the same three folders, and marks each one so the Plus knows what it is. <span class="check">CHECK</span></p><div class="keep"><h3 class="ref-head loose" id="a-the-three-folders">The Three Folders</h3><table class="ref spec"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Print Files</td><td>Print images: PICT files in 256 greys, for MacPhoto. Type PICT, creator MPho.</td></tr><tr><td>PICT Files</td><td>Screen images: black-and-white PICT files, 512 &times; 342. Type PICT, creator MPho.</td></tr><tr><td>MacPaint Files</td><td>Screen images on MacPaint pages. Type PNTG, creator MPNT.</td></tr></tbody></table></div><p>Files made by MacPhoto Utility open in MacPhoto when you double-click them (once MacPhoto exists). Until then, open them from inside a program.</p><div class="keep"><h3 class="ref-head loose" id="a-screen-images">Screen Images</h3><p>Any program that opens PICT files shows a screen image: SuperPaint, for instance, or the Scrapbook. In an emulated Plus, SuperPaint 2.0 opened one and showed it exactly. <span class="check">CHECK</span></p></div><div class="keep"><h3 class="ref-head loose" id="a-after-darks-slide-show">After Dark&rsquo;s Slide Show</h3><p>After Dark&rsquo;s Slide Show shows the PICT files in the Slide Show Folder, in After Dark Files in the System Folder. Copy screen images there, and choose Slide Show in the After Dark control panel. <span class="check">CHECK</span></p></div><p>Keep print images out of it: the Plus&rsquo;s own drawing can&rsquo;t show pictures in 256 greys.</p><div class="keep"><h3 class="ref-head loose" id="a-macpaint">MacPaint</h3><p>A MacPaint document holds the screen image in the middle of a MacPaint page: 32 dots in from the left and 189 down. MacPaint opens it like any of its own documents, and leaves your patterns as they were. In an emulated Plus it opened without trouble. <span class="check">CHECK</span></p></div><div class="keep"><h3 class="ref-head loose" id="a-print-images">Print Images</h3><p>A print image is for MacPhoto, the Plus&rsquo;s photograph editor, which reads it a strip at a time, so it never needs the whole megabyte in memory. Photoshop 1.0 can open one, as a grey picture: it did in an emulated Plus. <span class="check">CHECK</span></p></div></div></div>
+<div class="chapter page-break"><div class="appendix-title" id="appendix-c" data-foot="Appendix C: Troubleshooting"><p class="ch">Appendix C</p><h1 class="name">Troubleshooting</h1></div><div class="flow"><p>If something doesn&rsquo;t go as you expect, look for it here.</p><div class="entry"><div class="margin"><h4 class="cmd" id="t-macos-wont-open-macphoto-utility">macOS won&rsquo;t open MacPhoto Utility</h4></div><p>It&rsquo;s signed for its owner&rsquo;s own use, not by Apple. Open System Settings, click Privacy &amp; Security, and click Open Anyway beside its name. You need do it only once.</p></div><div class="entry"><div class="margin"><h4 class="cmd" id="t-a-photograph-wont-add">A photograph won&rsquo;t add</h4></div><p>If nothing appears, it may not be a photograph MacPhoto Utility reads: click the &ldquo;skipped&rdquo; line under the list to see why. A photograph marked ✕ is damaged; its reason is shown when you select it (Appendix A).</p><p>A photograph in your Photos library can be added once it&rsquo;s exported: in Photos, choose Export from the File menu.</p></div><div class="entry"><div class="margin"><h4 class="cmd" id="t-a-photograph-is-on-its-side">A photograph is on its side</h4></div><p>MacPhoto Utility turns photographs upright from the camera&rsquo;s own record. If a photograph was saved without one, turn it with Command-[ or Command-].</p></div><div class="entry"><div class="margin"><h4 class="cmd" id="t-the-screen-image-looks-too-dark-or-too-flat">The screen image looks too dark, or too flat</h4></div><p>Drag Brightness or Contrast under the Mac Plus screen preview. Detail in deep shadow is often brought back by a little more brightness.</p></div><div class="entry"><div class="margin"><h4 class="cmd" id="t-the-print-warns-its-small">The print warns it&rsquo;s small</h4></div><p>Make the frame larger, or choose 300 PPI (Chapter 2, &ldquo;Small Photographs&rdquo;).</p></div><div class="entry"><div class="margin"><h4 class="cmd" id="t-export-all-skipped-some-photographs">Export All skipped some photographs</h4></div><p>Photographs that can&rsquo;t be read are left out, and the summary says why. So are those you chose to skip because their files were already there.</p></div><div class="entry"><div class="margin"><h4 class="cmd" id="t-a-projects-photographs-are-missing">A project&rsquo;s photographs are missing</h4></div><p>They&rsquo;ve been deleted, or moved to another disk. Select one, and click Locate, or Locate in Folder to search a folder for all of them.</p></div><div class="entry"><div class="margin"><h4 class="cmd" id="t-nothing-shows-in-after-darks-slide-show">Nothing shows in After Dark&rsquo;s Slide Show</h4></div><p>Make sure the Slide Show Folder holds screen images (from PICT Files), not print images. <span class="check">CHECK</span></p></div></div></div>
+<div class="chapter page-break"><div class="appendix-title" id="appendix-d" data-foot="Appendix D: Specifications"><p class="ch">Appendix D</p><h1 class="name">Specifications</h1></div><div class="flow"><div class="keep"><h3 class="ref-head loose" id="a-the-print-image">The Print Image</h3><table class="ref spec"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Size</td><td>2.5 &times; 3.5 inches, portrait or landscape</td></tr><tr><td>Pixels</td><td>900 &times; 1260 at 360 PPI; 750 &times; 1050 at 300 PPI (or turned)</td></tr><tr><td>Greys</td><td>256 (8 bits a pixel), Gray Gamma 2.2</td></tr><tr><td>File</td><td>PICT version 2, one picture packed row by row, with MacPhoto&rsquo;s record of the print size and a checksum; about 1 MB at 360 PPI</td></tr></tbody></table></div><div class="keep"><h3 class="ref-head loose" id="a-the-screen-image">The Screen Image</h3><table class="ref spec"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Size</td><td>512 &times; 342 dots: the Macintosh Plus&rsquo;s whole screen</td></tr><tr><td>Colours</td><td>Black and white, Atkinson dithering</td></tr><tr><td>File</td><td>PICT version 1, packed row by row; under 23 KB</td></tr><tr><td>MacPaint</td><td>576 &times; 720 page, the image 32 dots in and 189 down; under 52 KB</td></tr></tbody></table></div><div class="keep"><h3 class="ref-head loose" id="a-photographs">Photographs</h3><table class="ref spec"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Kinds</td><td>JPEG, HEIC, PNG, TIFF</td></tr><tr><td>Largest</td><td>250 megapixels</td></tr><tr><td>Colour</td><td>Made grey by the Mac&rsquo;s own colour matching; transparency becomes white</td></tr></tbody></table></div><div class="keep"><h3 class="ref-head loose" id="a-what-you-need">What You Need</h3><table class="ref spec"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>To run it</td><td>An Apple silicon Mac with macOS 26</td></tr><tr><td>To carry the files</td><td>The Macintosh Transfer Utility <span class="check">CHECK</span></td></tr><tr><td>To use them</td><td>A Macintosh Plus with System 6.0.7 and a BlueSCSI</td></tr></tbody></table></div><p>The file formats are set out in full in the MacPhoto Utility&rsquo;s FILE_FORMATS document.</p></div></div>
+<div class="chapter page-break"><div class="appendix-title" id="glossary" data-foot="Glossary"><h1 class="name">Glossary</h1></div><div class="flow"><div class="gloss"><p class="term">Atkinson dithering</p><p>The way MacPhoto Utility turns greys into black and white dots, devised by Bill Atkinson for the first Macintosh: crisp, with clean whites and blacks.</p></div><div class="gloss"><p class="term">brightness, contrast</p><p>Settings for the screen image only, from &minus;100 to +100, under the Mac Plus screen preview.</p></div><div class="gloss"><p class="term">click</p><p>To position the pointer on something, and press and quickly release the mouse or trackpad button.</p></div><div class="gloss"><p class="term">crop</p><p>To leave part of a photograph out of a picture. Each photograph has a print crop and a screen crop.</p></div><div class="gloss"><p class="term">dither</p><p>To show shades of grey with patterns of black and white dots.</p></div><div class="gloss"><p class="term">export</p><p>To make the files: the print image, the screen image and, if chosen, a MacPaint document.</p></div><div class="gloss"><p class="term">Finder</p><p>The program that shows your disks, folders and files, on your Mac and on the Plus.</p></div><div class="gloss"><p class="term">frame</p><p>The rectangle drawn on the photograph, showing what a picture will hold.</p></div><div class="gloss"><p class="term">HEIC</p><p>The kind of photograph an iPhone makes.</p></div><div class="gloss"><p class="term">Macintosh Plus</p><p>The 1986 Macintosh the pictures are for, with a black and white screen 512 dots by 342.</p></div><div class="gloss"><p class="term">Macintosh Transfer Utility</p><p>MacPhoto Utility&rsquo;s companion, which puts files on a disk for the Plus.</p></div><div class="gloss"><p class="term">MacPaint document</p><p>A picture MacPaint opens: 576 by 720 dots, black and white. MacPhoto Utility puts the screen image in the middle.</p></div><div class="gloss"><p class="term">MacPhoto</p><p>The Plus&rsquo;s photograph editor, which opens the print images.</p></div><div class="gloss"><p class="term">manifest</p><p>The record, manifest.json, that MacPhoto Utility keeps in the export folder, of every file it made there.</p></div><div class="gloss"><p class="term">missing</p><p>Of a photograph in a project: not where it was when the project was saved, and not found by its content.</p></div><div class="gloss"><p class="term">opener</p><p>The picture across two pages at the start of each chapter.</p></div><div class="gloss"><p class="term">PICT</p><p>The Macintosh&rsquo;s picture file. The print image and the screen image are both PICT files.</p></div><div class="gloss"><p class="term">pixel</p><p>One dot of a picture.</p></div><div class="gloss"><p class="term">PPI</p><p>Pixels per inch: how many dots the print has to each inch. 360 or 300.</p></div><div class="gloss"><p class="term">print crop</p><p>The frame that chooses what the print shows: 2.5 by 3.5 inches, portrait or landscape.</p></div><div class="gloss"><p class="term">print image</p><p>The picture for printing and for MacPhoto: 2.5 by 3.5 inches, in 256 greys.</p></div><div class="gloss"><p class="term">project</p><p>A file (.macphoto) that keeps the queue, every photograph&rsquo;s frames and settings, and what was exported; never the photographs.</p></div><div class="gloss"><p class="term">queue</p><p>The list of photographs on the left of the window.</p></div><div class="gloss"><p class="term">relink</p><p>To tell a project where a missing photograph is now (Locate).</p></div><div class="gloss"><p class="term">screen crop</p><p>The frame that chooses what the screen image shows: the shape of the Plus&rsquo;s screen.</p></div><div class="gloss"><p class="term">screen image</p><p>The picture for the Plus&rsquo;s screen: 512 by 342 dots, black and white.</p></div><div class="gloss"><p class="term">Slide Show</p><p>After Dark&rsquo;s screen saver that shows the PICT files in its folder, one after another.</p></div><div class="gloss"><p class="term">System 6</p><p>The Plus&rsquo;s system software. MacPhoto Utility&rsquo;s pictures are for System 6.0.7.</p></div><div class="gloss"><p class="term">turn</p><p>To rotate a photograph a quarter at a time.</p></div><div class="gloss"><p class="term">warning</p><p>A note under a preview that a frame is too small for its picture, which will be enlarged.</p></div><div class="gloss"><p class="term">zoom</p><p>To make a frame smaller, so the picture shows less of the photograph, larger.</p></div></div></div>
+<div class="chapter page-break"><div class="appendix-title" id="index" data-foot="Index"><h1 class="name">Index</h1></div><div class="index-columns"><h3 class="index-letter">A</h3><p class="ix">adding photographs, 7, 18</p><p class="ix">After Dark, 12, 44, 46</p><p class="ix">Atkinson dithering, 9, 22</p><h3 class="index-letter">B</h3><p class="ix">brightness and contrast, 9, 22, 37</p><h3 class="index-letter">C</h3><p class="ix">can&rsquo;t be read, 19, 41</p><h3 class="index-letter">D</h3><p class="ix">dragging photographs, 7, 18</p><h3 class="index-letter">E</h3><p class="ix">Export All, 25&ndash;26</p><p class="ix">exporting, 11, 25, 42</p><h3 class="index-letter">F</h3><p class="ix">File menu, 38</p><p class="ix">files made, 11, 39, 44</p><p class="ix">folder, choosing, 11, 24</p><p class="ix">frames, 5, 8&ndash;9, 21, 35</p><h3 class="index-letter">G</h3><h3 class="index-letter">H</h3><p class="ix">HEIC, 7, 47</p><h3 class="index-letter">I</h3><p class="ix">installing, 6, 46</p><h3 class="index-letter">J</h3><h3 class="index-letter">K</h3><p class="ix">Keep Both, 26</p><p class="ix">keys, 38</p><h3 class="index-letter">L</h3><p class="ix">Larger, 9, 22</p><p class="ix">limits, 40, 47</p><p class="ix">Locate, Locate in Folder, 28</p><h3 class="index-letter">M</h3><p class="ix">MacPaint, 12, 45, 47</p><p class="ix">manifest.json, 39</p><p class="ix">messages, 41</p><p class="ix">missing photographs, 28, 46</p><p class="ix">moved photographs, 28</p><h3 class="index-letter">N</h3><h3 class="index-letter">O</h3><p class="ix">output, 11, 24, 37</p><h3 class="index-letter">P</h3><p class="ix">Photograph menu, 38</p><p class="ix">Photoshop 1.0, 12, 45</p><p class="ix">Portrait and Landscape, 8, 21</p><p class="ix">PPI, 11, 24, 47</p><p class="ix">previews, 8&ndash;9, 37</p><p class="ix">print image, 5, 8, 45, 47</p><p class="ix">projects, 27</p><h3 class="index-letter">Q</h3><p class="ix">queue, 20, 33</p><h3 class="index-letter">R</h3><p class="ix">Remove, 20</p><p class="ix">Reset, 8, 21</p><h3 class="index-letter">S</h3><p class="ix">saving, 27</p><p class="ix">screen image, 5, 9, 22, 44, 47</p><p class="ix">skipped files, 18</p><p class="ix">Slide Show. <i>See</i> After Dark</p><p class="ix">small photographs, 23, 46</p><p class="ix">SuperPaint, 12, 44</p><h3 class="index-letter">T</h3><p class="ix">Transfer Utility, 5, 12, 44</p><p class="ix">troubleshooting, 46</p><p class="ix">turning a photograph, 21, 46</p><h3 class="index-letter">U</h3><h3 class="index-letter">V</h3><h3 class="index-letter">W</h3><p class="ix">warnings, 23, 42</p><p class="ix">window, 7, 33</p><h3 class="index-letter">X</h3><h3 class="index-letter">Y</h3><h3 class="index-letter">Z</h3><p class="ix">zoom, 8, 21</p></div></div>
+
+<div class="chapter page-break"><div class="appendix-title" id="comments"
+ data-foot="Tell Us What You Think"><h1 class="name">Tell Us What You Think</h1></div>
+<div class="flow">
+ <p>This manual is meant to help you get the most from MacPhoto Utility.
+ Your comments, and the problems you find, make the next edition
+ better.</p>
+ <div class="form">
+  <p>Did MacPhoto Utility do what you expected?
+   <span class="tick">&#9744; Always</span><span class="tick">&#9744; Usually</span><span class="tick">&#9744; Rarely</span></p>
+  <p>Which parts of the manual did you use?
+   <span class="tick">&#9744; Learning</span><span class="tick">&#9744; Using</span><span class="tick">&#9744; Reference</span><span class="tick">&#9744; Appendixes</span></p>
+  <p>Which photograph looked best on the Plus?</p>
+  <div class="lines"></div>
+  <p>Did you find any mistakes? (Please give the page.)</p>
+  <div class="lines"></div>
+  <p>What would you like MacPhoto Utility to do next?</p>
+  <div class="lines"></div>
+ </div>
+ <p class="grey">Please pass your comments to the MacPhoto Utility project,
+ with your name if you&rsquo;d like a reply. Thank you.</p>
+</div></div>
+<div class="inside-back"></div>
+<div class="back-cover"><p class="publisher">MacPhoto Utility</p><div class="glance"><p class="glance-head">At a glance</p><ol><li>Add photographs (&#8984;I), or drag them in.</li><li>Frame the print: drag, zoom, Portrait or Landscape.</li><li>Frame the screen image (Tab), and set its brightness.</li><li>Choose 360 PPI, the files and the folder.</li><li>Export This Photograph (&#8984;E), or Export All (&#8679;&#8984;E).</li></ol><p><b>Save</b> (&#8984;S) keeps your work as a project. Screen images go in After Dark&rsquo;s Slide Show Folder; print images never do.</p></div><div class="back-logo"><img class="logo" src="figures/mp-icon.png" style="width:30pt; height:30.0pt"></div></div>
+
+</body></html>

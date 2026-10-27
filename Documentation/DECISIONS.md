@@ -99,7 +99,7 @@ renumber or delete an entry; mark it **Superseded by PHn**.
 | PH88 | **`tools/make-release.sh`** as the Transfer Utility's, into `releases/MacPhoto-Utility-1.0/`; ad hoc signed; for Jack's own use, not published. | Firm (Jack) | 2026-10-26 |
 | PH89 | **1.0 needs:** Plus checks and the freeze, Jack's acceptance of Phases 3–5, dark appearance and VoiceOver looked at, the release candidate tried; then the tag, the release, the catalogue, the Transfer session. | Firm (Jack) | 2026-10-26 |
 | PH90 | **Versions B-x.y.z, the British edition (P22)** (Jack, 27 Oct): **B-0.9.0** is a released, installable build made now, before the Transfer Utility's picture support exists and before anything has been tested on the Plus; **B-1.0.0** follows those tests. Supersedes PH80. PH89's list is what B-1.0.0 needs; B-0.9.0 needed only the tests, the fresh-checkout check and the release script. | Firm (Jack) | 2026-10-27 |
-| PH91 | **The crop switch's labels in title case,** "Print Crop" and "Screen Crop", as commands are named in the User's Guide (Jack, 27 Oct, from the manual's sample). Marked for the next build; the manual's figures are retaken after it. | Firm (Jack); to do | 2026-10-27 |
+| PH91 | **The crop switch's labels in title case,** "Print Crop" and "Screen Crop", as commands are named in the User's Guide (Jack, 27 Oct, from the manual's sample). Done after B-0.9.0; the manual's figures are taken from that build. | Firm (Jack) | 2026-10-27 |
 
 ## Open questions
 

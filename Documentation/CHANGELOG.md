@@ -1,5 +1,10 @@
 # Changelog
 
+## Since B-0.9.0
+
+- The crop switch reads Print Crop and Screen Crop, as the User's Guide
+  names them (PH91).
+
 ## B-0.9.0 (27 October 2026)
 
 The first release: installable, for use before the Plus checks (PH90).

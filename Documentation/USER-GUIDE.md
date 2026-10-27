@@ -27,14 +27,14 @@ the first time, open System Settings ▸ Privacy & Security and click
    the window or the Dock icon. JPEG, HEIC, PNG and TIFF photographs are
    read; the picture is turned the right way up from the camera's own
    record.
-2. **Frame the print.** With **Print crop** chosen above the picture, the
+2. **Frame the print.** With **Print Crop** chosen above the picture, the
    white frame is what will be printed; everything outside it is dimmed.
    Drag inside to move it; drag a corner to make it bigger or smaller
    (it keeps the print's shape); or use the zoom slider, a pinch or the
    scroll wheel. Turn the photograph with the turn buttons (⌘[ and ⌘]);
    choose **Portrait** or **Landscape** for the print. **Reset** (⌘0) puts
    the frame back to centred and full size.
-3. **Frame the screen image.** Choose **Screen crop** (or press Tab). The
+3. **Frame the screen image.** Choose **Screen Crop** (or press Tab). The
    screen has its own frame, the Plus screen's shape, set the same way;
    the print's frame shows as a yellow outline.
 4. **Look at the previews.** Underneath: the print as it will be, and the

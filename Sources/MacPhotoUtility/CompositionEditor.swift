@@ -37,8 +37,8 @@ struct CompositionEditor: View {
     private var toolbar: some View {
         HStack(spacing: 14) {
             Picker("Crop", selection: $session.editing) {
-                Text("Print crop").tag(CropKind.print)
-                Text("Screen crop").tag(CropKind.screen)
+                Text("Print Crop").tag(CropKind.print)
+                Text("Screen Crop").tag(CropKind.screen)
             }
             .pickerStyle(.segmented)
             .frame(width: 230)

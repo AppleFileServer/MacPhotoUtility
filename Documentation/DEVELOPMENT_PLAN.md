@@ -108,6 +108,6 @@ evidence from the real machine.
 - [ ] FILE_FORMATS.md 1.0 (PH82); the Transfer session told
 - [ ] **Jack:** acceptance of Phases 3–5
 - [x] **B-0.9.0** released into `releases/MacPhoto-Utility-B-0.9.0/`, tagged `vB-0.9.0` (PH90)
-- [ ] The crop switch's labels: "Print Crop", "Screen Crop" (PH91), before the manual's figures are retaken
+- [x] The crop switch's labels: "Print Crop", "Screen Crop" (PH91), before the manual's figures are retaken
 - [ ] The User's Guide (MANUAL-PLAN.md), its PDFs in the B-1.0.0 release
 - [ ] B-1.0.0: the release candidate tried, the tag, the release, the catalogue (PH89, PH90)
